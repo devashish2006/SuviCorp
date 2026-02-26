@@ -45,7 +45,7 @@ export const SuccessStories: React.FC = () => {
             key={index}
             className="bg-white/5 border border-white/[0.08] rounded-2xl p-8"
           >
-            <div className="text-[2.5rem] text-teal leading-none mb-4">"</div>
+            <div className="text-[2.5rem] text-teal leading-none mb-4">&ldquo;</div>
             <p className="text-white/70 text-[0.9rem] leading-relaxed mb-6">
               {story.quote}
             </p>

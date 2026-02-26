@@ -18,7 +18,7 @@ export const Dashboard: React.FC = () => {
             Real-Time Financial Intelligence at Your Fingertips
           </SectionTitle>
           <p className="text-slate-600 leading-relaxed my-4 mb-8">
-            Connect your ERP—NetSuite, QuickBooks, or SAP—and get an instant executive view of your organization's financial health. No spreadsheets. No lag. Just clarity.
+            Connect your ERP—NetSuite, QuickBooks, or SAP—and get an instant executive view of your organization&apos;s financial health. No spreadsheets. No lag. Just clarity.
           </p>
           
           <div className="grid grid-cols-2 gap-6 mb-8">

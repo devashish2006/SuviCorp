@@ -44,7 +44,7 @@ export const About: React.FC = () => {
             SUVI Internationals was founded on a simple, powerful premise: the best consulting insights deserve the best enabling technology. We are the strategic technology partner for accounting and consulting firms worldwide, amplifying your expertise with a robust ecosystem of SAAS solutions and technical talent.
           </p>
           <p className="text-slate-600 leading-relaxed my-4">
-            We enable our partners to deliver "Big Four" calibre technology solutions with the agility and cost-efficiency of a boutique firm. Our team brings together decades of experience from global consulting firms and specialized technology environments.
+            We enable our partners to deliver &ldquo;Big Four&rdquo; calibre technology solutions with the agility and cost-efficiency of a boutique firm. Our team brings together decades of experience from global consulting firms and specialized technology environments.
           </p>
 
           <div className="grid grid-cols-2 gap-4 mt-8">

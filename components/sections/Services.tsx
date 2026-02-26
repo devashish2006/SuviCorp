@@ -111,7 +111,7 @@ export const Services: React.FC = () => {
           Your Technology Hub, On Demand
         </SectionTitle>
         <p className="text-white/55 text-base leading-relaxed max-w-[550px] mx-auto">
-          Amplify your firm's expertise with our robust ecosystem of SAAS solutions and deep bench of technical talent.
+          Amplify your firm&apos;s expertise with our robust ecosystem of SAAS solutions and deep bench of technical talent.
         </p>
       </div>
 

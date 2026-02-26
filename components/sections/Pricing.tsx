@@ -72,7 +72,7 @@ export const Pricing: React.FC = () => {
           Solutions Engineered for Excellence
         </SectionTitle>
         <p className="text-slate-600 text-base max-w-[550px] mx-auto">
-          From Excel-powered automation to elite cloud platforms. All products can be white-labeled to carry your firm's brand.
+          From Excel-powered automation to elite cloud platforms. All products can be white-labeled to carry your firm&apos;s brand.
         </p>
       </div>
 
