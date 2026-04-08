@@ -4,11 +4,39 @@ import React, { useState } from 'react';
 
 export const CTA: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Email submitted:', email);
+
+    try {
+      setStatus('loading');
+      setMessage('');
+
+      const response = await fetch('/api/consultation-request', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setStatus('error');
+        setMessage(data.error ?? 'Something went wrong. Please try again.');
+        return;
+      }
+
+      setStatus('success');
+      setMessage('Thanks! We will contact you shortly.');
+      setEmail('');
+    } catch {
+      setStatus('error');
+      setMessage('Network error. Please try again.');
+    }
   };
 
   return (
@@ -31,11 +59,18 @@ export const CTA: React.FC = () => {
         />
         <button
           type="submit"
+          disabled={status === 'loading'}
           className="bg-navy text-white px-8 py-3.5 rounded-lg border-none font-bold text-[0.95rem] cursor-pointer font-sans transition-opacity duration-200 hover:opacity-85"
         >
-          Schedule Consultation →
+          {status === 'loading' ? 'Submitting...' : 'Schedule Consultation →'}
         </button>
       </form>
+
+      {message && (
+        <p className="mt-4 text-sm text-white/90" role="status" aria-live="polite">
+          {message}
+        </p>
+      )}
     </section>
   );
 };

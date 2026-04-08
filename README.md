@@ -96,6 +96,18 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Supabase Setup
+
+1. Copy `.env.example` to `.env.local` and fill:
+	- `NEXT_PUBLIC_SUPABASE_URL`
+	- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+	- `SUPABASE_SERVICE_ROLE_KEY`
+2. In Supabase SQL editor, run [supabase/schema.sql](supabase/schema.sql).
+3. Start app with `npm run dev`.
+
+Current DB-connected feature:
+- CTA email form now stores records in `consultation_requests` through `/api/consultation-request`.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 ## Project Structure
