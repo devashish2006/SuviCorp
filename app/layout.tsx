@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
+import ChatBot from "@/components/ui/ChatBot";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${playfair.variable} ${dmSans.variable} antialiased`}
       >
         {children}
+        <ChatBot />
       </body>
     </html>
   );
