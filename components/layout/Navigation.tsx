@@ -1,9 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { PartnerModal } from '../ui/PartnerModal';
 
 export const Navigation: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const navLinks = [
     { href: '#features', label: 'Advantage' },
     { href: '#services', label: 'Services' },
@@ -30,12 +33,14 @@ export const Navigation: React.FC = () => {
         ))}
       </div>
 
-      <Link
-        href="#cta"
+      <button
+        onClick={() => setIsModalOpen(true)}
         className="bg-blue-accent text-white px-5 py-2.5 rounded-md text-[0.85rem] font-semibold transition-colors duration-200 hover:bg-teal"
       >
         Partner With Us →
-      </Link>
+      </button>
+
+      <PartnerModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </nav>
   );
 };
