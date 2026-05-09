@@ -87,7 +87,7 @@ export const Features: React.FC = () => {
     <section
       id="features"
       ref={sectionRef}
-      className="relative py-28 px-[5%] overflow-hidden"
+      className="relative py-16 md:py-28 px-[5%] overflow-hidden"
       style={{ background: '#f8f9fc' }}
     >
       {/* ── Decorative background elements ── */}
@@ -185,7 +185,7 @@ export const Features: React.FC = () => {
 
         {/* ── Bottom CTA strip — mirrors hero CTA style ── */}
         <div
-          className="mt-16 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 px-10 py-9 overflow-hidden relative"
+          className="mt-16 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 px-6 md:px-10 py-8 md:py-9 overflow-hidden relative text-center md:text-left"
           style={{ background: 'var(--color-navy, #0a1628)' }}
         >
           {/* subtle grid same as hero */}

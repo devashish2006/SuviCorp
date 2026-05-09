@@ -26,8 +26,8 @@ const values = [
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="bg-white py-24 px-[5%]">
-      <div className="grid md:grid-cols-2 gap-20 items-center">
+    <section id="about" className="bg-white py-16 md:py-24 px-[5%]">
+      <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
         {/* Image/Visual */}
         <div className="bg-gradient-to-br from-navy to-blue h-[420px] rounded-[20px] flex items-center justify-center relative overflow-hidden">
           <div className="text-white/15 font-playfair text-[5rem] text-center font-black">SUVI</div>
@@ -47,7 +47,7 @@ export const About: React.FC = () => {
             We enable our partners to deliver &ldquo;Big Four&rdquo; calibre technology solutions with the agility and cost-efficiency of a boutique firm. Our team brings together decades of experience from global consulting firms and specialized technology environments.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
             {values.map((value, index) => (
               <div key={index} className="flex items-start gap-3">
                 <div className="w-9 h-9 bg-blue-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 text-sm">

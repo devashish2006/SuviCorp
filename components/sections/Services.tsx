@@ -104,7 +104,7 @@ export const Services: React.FC = () => {
   const activeContent = services.find((s) => s.id === activeService)!;
 
   return (
-    <section id="services" className="bg-navy py-24 px-[5%]">
+    <section id="services" className="bg-navy py-16 md:py-24 px-[5%]">
       <div className="text-center mb-12">
         <SectionTag variant="teal">Our Services/Ecosystem</SectionTag>
         <SectionTitle className="text-white mt-4 mb-4">
@@ -115,7 +115,7 @@ export const Services: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
+      <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-16 items-start">
         {/* Service Tabs */}
         <div className="flex flex-col gap-2">
           {services.map((service) => (

@@ -44,24 +44,27 @@ export const Hero: React.FC = () => {
         className="relative pt-28 pb-0 overflow-visible z-10 w-full"
         style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 40%, #0a1628 100%)' }}
       >
-        {/* Subtle grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }}
-        />
+        {/* Decorative Background Wrapper to prevent horizontal overflow */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Subtle grid overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
+              backgroundSize: '60px 60px',
+            }}
+          />
 
-        {/* Radial glow top-left */}
-        <div
-          className="absolute top-0 left-0 w-[700px] h-[700px] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse at 0% 0%, rgba(6,182,212,0.12) 0%, transparent 65%)',
-          }}
-        />
+          {/* Radial glow top-left */}
+          <div
+            className="absolute top-0 left-0 w-[700px] h-[700px]"
+            style={{
+              background:
+                'radial-gradient(ellipse at 0% 0%, rgba(6,182,212,0.12) 0%, transparent 65%)',
+            }}
+          />
+        </div>
 
         {/* Content grid */}
         <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-[1.1fr_0.9fr] gap-0 items-end min-h-[540px]">

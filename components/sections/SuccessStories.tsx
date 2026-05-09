@@ -31,7 +31,7 @@ const stories: Story[] = [
 
 export const SuccessStories: React.FC = () => {
   return (
-    <section id="stories" className="bg-gradient-to-br from-navy to-[#0d2845] py-24 px-[5%]">
+    <section id="stories" className="bg-gradient-to-br from-navy to-[#0d2845] py-16 md:py-24 px-[5%]">
       <div className="text-center">
         <SectionTag variant="teal">Partnership Success</SectionTag>
         <SectionTitle className="text-white mt-4">

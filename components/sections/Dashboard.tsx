@@ -10,8 +10,8 @@ const values = [
 
 export const Dashboard: React.FC = () => {
   return (
-    <section id="dashboard" className="bg-gradient-to-b from-[#f0f6ff] to-white py-24 px-[5%]">
-      <div className="grid md:grid-cols-2 gap-16 items-center">
+    <section id="dashboard" className="bg-gradient-to-b from-[#f0f6ff] to-white py-16 md:py-24 px-[5%]">
+      <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div>
           <SectionTag>CFO Dashboard</SectionTag>
           <SectionTitle className="mt-4 mb-4">
