@@ -202,7 +202,7 @@ export const Features: React.FC = () => {
               Ready to transform your practice?
             </p>
             <h4 className="font-playfair text-white text-2xl md:text-3xl font-bold leading-tight">
-              Let's Build Your{' '}
+              Let&apos;s Build Your{' '}
               <em className="italic font-light opacity-90">Strategic Advantage.</em>
             </h4>
           </div>
