@@ -20,7 +20,7 @@ export const Navigation: React.FC = () => {
       <div className="font-playfair text-[1.6rem] font-black text-white tracking-tight">
         SUVI<span className="text-teal"> Internationals</span>
       </div>
-      
+
       <div className="hidden md:flex gap-8">
         {navLinks.map((link) => (
           <Link
