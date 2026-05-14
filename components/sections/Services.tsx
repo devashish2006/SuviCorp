@@ -13,17 +13,31 @@ interface ServiceContent {
 
 const services: ServiceContent[] = [
   {
+    id: 'transformation',
+    icon: '🚀',
+    title: 'Financial Transformation Enablement',
+    description: 'We provide the tools and platforms that power digital transformation for your clients. Our solutions automate complex processes, deliver AI-driven insights, and cut delivery timelines dramatically, increasing your capacity and profitability.',
+    points: [
+      'Automate complex financial processes',
+      'Deploy AI-driven insights',
+      'Cut delivery timelines dramatically',
+      'Increase your engagement capacity',
+      'Boost profitability per project',
+      'Deliver consistent, enterprise-grade outputs',
+    ],
+  },
+  {
     id: 'bespoke',
     icon: '🛠️',
-    title: 'Bespoke SAAS Solution Development',
+    title: 'Bespoke SaaS Solution Development',
     description: 'Have a unique challenge or a visionary product idea? Our team specializes in building custom, cloud-based software tools tailored to your specific needs. From consolidation engines to automated financial reporting dashboards, we transform your requirements into powerful, secure, and scalable applications.',
     points: [
-      'Custom consolidation engines',
-      'Automated reporting dashboards',
-      'Cloud-native architecture',
-      'Secure & scalable platforms',
-      'API integrations',
-      'Real-time data processing',
+      'Transform visionary ideas into production-ready applications',
+      'Build exactly what you need',
+      'No off-the-shelf compromises',
+      'Enterprise-grade security and scalability',
+      'Seamless integration with existing systems',
+      'Future-proof architecture',
     ],
   },
   {
@@ -32,86 +46,58 @@ const services: ServiceContent[] = [
     title: 'The Dedicated Expert Hub',
     description: 'Access a curated ecosystem of technology professionals, each a specialist in financial systems, data analytics, and software development. This is not an outsourced team; it is an extension of your own, working collaboratively to bring your projects to life with precision and expertise.',
     points: [
-      'Financial systems specialists',
-      'Data analytics experts',
-      'Software development team',
-      'Collaborative integration',
-      'Project-specific scaling',
-      'Technical precision delivery',
+      'Access a curated ecosystem of specialists',
+      'Extension of your own organization',
+      'Collaborative partnership model',
+      'Bring ambitious projects to life',
+      'Scale your team up or down on demand',
+      'Benefit from collective expertise',
     ],
   },
   {
-    id: 'transformation',
-    icon: '🚀',
-    title: 'Financial Transformation Enablement',
-    description: 'We provide the tools and platforms that power digital transformation for your clients. Our solutions automate complex processes, deliver AI-driven insights, and cut delivery timelines dramatically, increasing your capacity and profitability.',
+    id: 'knowledge',
+    icon: '🧠',
+    title: 'The SUVI Knowledge Hub',
+    description: 'Technology is only half the equation. The other half? The people who wield it. The SUVI Knowledge Hub connects you with practitioners who\'ve lived through thousands of closes and navigated countless complex accounting scenarios. We transfer that wisdom directly to your team—through training on recent accounting changes, deep dives into complex topics, and battle-tested best practices that transform how you run financial processes. Because true capability isn\'t just having the right tools. It\'s knowing exactly how to use them.',
     points: [
-      'Process automation',
-      'AI-driven insights',
-      'Reduced delivery timelines',
-      'Increased capacity',
-      'Enhanced profitability',
-      'Digital transformation tools',
+      'Master complex accounting topics',
+      'Navigate new standards with confidence',
+      'Learn from practitioners',
+      'Implement best practices',
+      'Receive practical guidance',
+      'Stay ahead of the curve',
     ],
   },
   {
-    id: 'excel',
-    icon: '📊',
-    title: 'Excel-Powered Solutions & Managed Services',
-    description: 'For firms seeking immediate automation without major upfront investment. Our Excel-based tools deliver exceptional value by transforming the familiar spreadsheet into a powerful, automated engine for financial reporting and analysis.',
+    id: 'innovation',
+    icon: '🧪',
+    title: 'Innovation Lab',
+    description: 'The SUVI Innovation Lab is where financial intelligence becomes tangible. Where abstract problems meet concrete solutions. Consider us your research and development arm, where we build the tools that level the playing field.',
     points: [
-      'Custom-built Excel engines',
-      'Managed service team',
-      'Automated generation',
-      'Power BI integration',
-      '70% faster deliverables',
-      'Hyper-care support',
+      'Make financial intelligence tangible',
+      'Turn abstract problems into concrete solutions',
+      'Your R&D arm for tools',
+      'Level the playing field',
+      'Incubate new ideas',
+      'Test cutting-edge prototypes',
     ],
-  },
-  {
-    id: 'cloud',
-    icon: '☁️',
-    title: 'Elite Cloud & AI Platforms',
-    description: 'Fully custom, cloud-native SAAS applications built to be the single source of truth for your client\'s most critical financial functions. These are bespoke platforms engineered with the sophistication of Big Four tools, delivered with our signature efficiency.',
-    points: [
-      'Intelligent consolidation engine',
-      'Dynamic reporting suite',
-      'AI-powered CFO dashboard',
-      'One source of truth',
-      'Forward & backward integration',
-      'Predictive analytics',
-    ],
-  },
-  {
-    id: 'partnership',
-    icon: '🤝',
-    title: 'Strategic Alliances & Partnerships',
-    description: 'Our partnership model is flexible and built on mutual success. We collaborate closely with your firm to co-develop custom SAAS products, integrate our technology hub, or provide white-labelled solutions under your own brand.',
-    points: [
-      'Co-develop custom SAAS',
-      'Shared revenue streams',
-      'White-labelled solutions',
-      'Technology hub integration',
-      'Proprietary IP creation',
-      'Global partnerships',
-    ],
-  },
+  }
 ];
 
 export const Services: React.FC = () => {
-  const [activeService, setActiveService] = useState('bespoke');
+  const [activeService, setActiveService] = useState('transformation');
 
   const activeContent = services.find((s) => s.id === activeService)!;
 
   return (
     <section id="services" className="bg-navy py-16 md:py-24 px-[5%]">
       <div className="text-center mb-12">
-        <SectionTag variant="teal">Our Services/Ecosystem</SectionTag>
+        <SectionTag variant="teal">What we deliver</SectionTag>
         <SectionTitle className="text-white mt-4 mb-4">
-          Your Technology Hub, On Demand
+          Capabilities That Extend Your Reach
         </SectionTitle>
         <p className="text-white/55 text-base leading-relaxed max-w-[550px] mx-auto">
-          Amplify your firm&apos;s expertise with our robust ecosystem of SAAS solutions and deep bench of technical talent.
+          Amplify your firm&apos;s expertise with our robust ecosystem of SaaS solutions and deep bench of technical talent.
         </p>
       </div>
 

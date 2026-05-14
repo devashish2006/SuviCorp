@@ -82,7 +82,7 @@ export const Hero: React.FC = () => {
             </h1>
 
             <p className="text-white/70 md:text-lg leading-relaxed max-w-[520px] mb-10 font-light">
-              SUVI Internationals empowers accounting and consulting firms with
+              Suvicorp empowers accounting and consulting firms with
               elite technology ecosystems and specialized SAAS/AI solutions to
               deliver transformative financial outcomes without the overhead.
             </p>
