@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { SectionTag } from '../ui';
 
 const stats = [
@@ -134,9 +135,11 @@ export const Hero: React.FC = () => {
               }}
             />
 
-            <img
+            <Image
               src="/hero-image-new.png"
               alt="SUVI International Professional"
+              width={600}
+              height={620}
               className="relative z-10 w-full max-w-[420px] lg:max-w-[500px] xl:max-w-[580px] object-contain object-bottom transition-transform duration-500 hover:scale-[1.03] origin-bottom"
               style={{
                 filter: 'grayscale(100%) contrast(1.1) brightness(1.05) drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
@@ -160,9 +163,12 @@ export const Hero: React.FC = () => {
                 key={index}
                 className="flex-1 py-8 px-6 md:px-8 flex flex-col items-center text-center hover:bg-gray-50 transition-colors duration-300"
               >
-                <img
+                <Image
                   src={stat.icon}
                   alt=""
+                  width={40}
+                  height={40}
+                  unoptimized
                   className="w-10 h-10 mb-4 opacity-75"
                 />
                 <h3 className="font-playfair text-xl md:text-2xl font-bold text-navy mb-1">
@@ -227,9 +233,11 @@ export const Hero: React.FC = () => {
 
       {/* Cutout image — overflows outside the card */}
       <div className="absolute inset-0 overflow-visible pointer-events-none">
-        <img
+        <Image
           src={card.image}
           alt={card.title}
+          width={400}
+          height={400}
           className="absolute bottom-0 left-1/2 w-[80%] max-h-[310px] object-contain object-bottom transition-transform duration-500 group-hover:scale-[1.07]"
           style={{
             transform: 'translateX(-50%) translateY(-18%) scale(1.05)',
