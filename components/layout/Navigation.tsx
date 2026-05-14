@@ -36,7 +36,7 @@ export const Navigation: React.FC = () => {
             <div className="font-playfair text-[1.4rem] md:text-[1.6rem] font-black text-white tracking-tight leading-none">
               Suvicorp<sup className="text-[0.6em] font-medium ml-0.5">TM</sup>
             </div>
-            <span className="text-[0.65rem] text-white/70 uppercase tracking-widest mt-1.5 leading-none">
+            <span className="text-[0.55rem] md:text-[0.6rem] text-white/60 uppercase tracking-wider mt-1 leading-none">
               Enterprise Intelligence, Engineered for You
             </span>
           </div>
