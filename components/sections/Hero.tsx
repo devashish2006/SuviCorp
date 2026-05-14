@@ -178,7 +178,7 @@ export const Hero: React.FC = () => {
       </section>
 
       {/* ─── SECTION 3: White — Audience Cards (team-style layout matching reference) ─── */}
-      <section className="bg-white w-full pt-20 pb-24 relative overflow-hidden">
+      <section id="team" className="bg-white w-full pt-20 pb-24 relative overflow-hidden">
         {/* Decorative teal circle — top-right */}
         <div
           className="absolute -top-10 right-12 w-[60px] h-[60px] rounded-full pointer-events-none"

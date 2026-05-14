@@ -9,11 +9,11 @@ export const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: '#vision', label: 'Our Vision' },
-    { href: '#innovation-lab', label: 'Innovation Lab', icon: '🧪' },
+    { href: '#about', label: 'Our Vision' },
+    { href: '#features', label: 'Innovation Lab', icon: '🧪' },
     { href: '#services', label: 'Services' },
     { href: '#team', label: 'Team' },
-    { href: '#resources', label: 'Resources' },
+    { href: '#pricing', label: 'Resources' },
   ];
 
   return (
