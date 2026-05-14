@@ -148,12 +148,12 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Bottom padding area to create space for the overlapping stats bar */}
-        <div className="pb-24" />
+        <div className="pb-32 md:pb-[160px]" />
       </section>
 
       {/* ─── SECTION 2: Stats Bar — overlapping hero & white ─── */}
-      <section className="bg-white w-full pb-8 relative z-20">
-        <div className="max-w-5xl mx-auto px-6 -mt-[72px]">
+      <section className="bg-white w-full pb-8 relative z-20 flex flex-col">
+        <div className="max-w-5xl w-full mx-auto px-6 -mt-[100px] md:-mt-[150px]">
           <div className="bg-white rounded-2xl shadow-[0_20px_60px_-16px_rgba(0,0,0,0.18)] border border-gray-100 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-gray-200 overflow-hidden">
             {stats.map((stat, index) => (
               <div
