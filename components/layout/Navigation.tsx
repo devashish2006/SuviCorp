@@ -41,7 +41,6 @@ export const Navigation: React.FC = () => {
               href={link.href}
               className="flex items-center gap-1 text-white/75 text-[0.85rem] font-medium tracking-[0.5px] uppercase transition-colors duration-200 hover:text-teal"
             >
-              {link.icon && <span>{link.icon}</span>}
               {link.label}
             </Link>
           ))}
