@@ -42,7 +42,7 @@ export const Hero: React.FC = () => {
       {/* ─── SECTION 1: Dark Banner ─── */}
       <section
         id="hero"
-        className="relative pt-[88px] pb-0 overflow-visible z-10 w-full"
+        className="relative pt-[88px] pb-0 overflow-visible z-10 w-full bg-white"
       >
         {/* Rounded banner wrapper */}
         <div
