@@ -43,115 +43,87 @@ export const Hero: React.FC = () => {
       <section
         id="hero"
         className="relative pt-28 pb-0 overflow-visible z-10 w-full"
-        style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 40%, #0a1628 100%)' }}
       >
-        {/* Decorative Background Wrapper to prevent horizontal overflow */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Subtle grid overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-              backgroundSize: '60px 60px',
-            }}
-          />
+        {/* Rounded banner wrapper */}
+        <div
+          className="w-[95%] mx-auto rounded-[28px] md:rounded-[32px] overflow-visible relative"
+          style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 40%, #0a1628 100%)' }}
+        >
+          {/* Decorative Background Wrapper to prevent horizontal overflow */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[28px] md:rounded-[32px]">
+            {/* Subtle grid overlay */}
+            <div
+              className="absolute inset-0 opacity-[0.03]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
+                backgroundSize: '60px 60px',
+              }}
+            />
 
-          {/* Radial glow top-left */}
-          <div
-            className="absolute top-0 left-0 w-[700px] h-[700px]"
-            style={{
-              background:
-                'radial-gradient(ellipse at 0% 0%, rgba(6,182,212,0.12) 0%, transparent 65%)',
-            }}
-          />
-        </div>
+            {/* Radial glow top-left */}
+            <div
+              className="absolute top-0 left-0 w-[700px] h-[700px]"
+              style={{
+                background:
+                  'radial-gradient(ellipse at 0% 0%, rgba(6,182,212,0.12) 0%, transparent 65%)',
+              }}
+            />
+          </div>
 
-        {/* Content grid */}
-        <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-[1.1fr_0.9fr] gap-0 items-end min-h-[540px]">
-          {/* Left: Text */}
-          <div className="flex flex-col justify-center py-16 md:py-24 animate-fadeUp">
-            <SectionTag variant="teal">Strategic Technology Hub</SectionTag>
+          {/* Content — text only, left aligned */}
+          <div className="max-w-7xl mx-auto px-8 md:px-12 relative z-10 min-h-[65vh] flex items-center">
+            <div className="flex flex-col justify-center py-12 md:py-16 max-w-[700px] animate-fadeUp">
+              <SectionTag variant="teal">Strategic Technology Hub</SectionTag>
 
-            <h1 className="font-playfair text-4xl md:text-5xl lg:text-[3.6rem] font-bold text-white leading-[1.1] mt-6 mb-6">
-              Your <em className="italic font-light opacity-90">Strategic Hub</em>
-              <br />
-              for{' '}
-              <span className="text-blue-accent font-bold">
-                Accounting Excellence.
-              </span>
-            </h1>
-
-            <p className="text-white/70 md:text-lg leading-relaxed max-w-[520px] mb-10 font-light">
-              Suvicorp empowers accounting and consulting firms with
-              elite technology ecosystems and specialized SAAS/AI solutions to
-              deliver transformative financial outcomes without the overhead.
-            </p>
-
-            <div>
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-blue-accent hover:bg-blue-600 transition-all text-white font-medium rounded-full shadow-lg shadow-blue-accent/30 hover:scale-105 duration-200"
-              >
-                EXPLORE PARTNERSHIP
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <h1 className="font-playfair text-4xl md:text-6xl lg:text-[4rem] font-bold text-white leading-[1.1] mt-6 mb-6">
+                Your{' '}
+                <em
+                  className="not-italic"
+                  style={{ fontFamily: 'Playfair Display, Georgia, serif', fontStyle: 'italic', fontWeight: 300, opacity: 0.92 }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </a>
+                  Strategic Hub
+                </em>
+                <br />
+                for{' '}
+                <span className="text-blue-accent font-bold">
+                  Accounting Excellence.
+                </span>
+              </h1>
+
+              <p className="text-white/70 md:text-lg leading-relaxed max-w-[520px] mb-10 font-light">
+                Suvicorp empowers accounting and consulting firms with
+                elite technology ecosystems and specialized SAAS/AI solutions to
+                deliver transformative financial outcomes without the overhead.
+              </p>
+
+              <div>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-blue-accent hover:bg-blue-600 transition-all text-white font-medium rounded-full shadow-lg shadow-blue-accent/30 hover:scale-105 duration-200"
+                >
+                  EXPLORE PARTNERSHIP
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Right: Hero image with decorative geometric shapes — banner style */}
-          <div className="relative hidden md:flex items-end justify-center animate-fadeUp animation-delay-300 self-end">
-            {/* Large teal/blue decorative arc behind person — top-right */}
-            <div
-              className="absolute -top-8 -right-16 w-[320px] h-[320px] rounded-full pointer-events-none z-0"
-              style={{
-                background: 'linear-gradient(135deg, rgba(6,182,212,0.35) 0%, rgba(59,130,246,0.2) 100%)',
-              }}
-            />
-            {/* Smaller teal circle — bottom-left accent */}
-            <div
-              className="absolute bottom-24 -left-8 w-[100px] h-[100px] rounded-full pointer-events-none z-0"
-              style={{
-                background: 'rgba(6,182,212,0.25)',
-              }}
-            />
-            {/* Tiny circle accent — top-left */}
-            <div
-              className="absolute top-16 left-8 w-[40px] h-[40px] rounded-full pointer-events-none z-0"
-              style={{
-                background: 'rgba(59,130,246,0.3)',
-              }}
-            />
-
-            <Image
-              src="/hero-image-new.png"
-              alt="SUVI International Professional"
-              width={600}
-              height={620}
-              className="relative z-10 w-full max-w-[420px] lg:max-w-[500px] xl:max-w-[580px] object-contain object-bottom transition-transform duration-500 hover:scale-[1.03] origin-bottom"
-              style={{
-                filter: 'grayscale(100%) contrast(1.1) brightness(1.05) drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
-                maxHeight: '620px',
-                marginBottom: '-40px',
-              }}
-            />
-          </div>
+          {/* Bottom padding area to create space for the overlapping stats bar */}
+          <div className="pb-24 md:pb-[120px]" />
         </div>
-
-        {/* Bottom padding area to create space for the overlapping stats bar */}
-        <div className="pb-32 md:pb-[160px]" />
       </section>
 
       {/* ─── SECTION 2: Stats Bar — overlapping hero & white ─── */}
