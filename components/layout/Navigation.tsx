@@ -10,7 +10,7 @@ export const Navigation: React.FC = () => {
 
   const navLinks = [
     { href: '#about', label: 'Our Vision' },
-    { href: '#features', label: 'Innovation Lab', icon: '🧪' },
+    { href: '#features', label: 'Innovation Lab' },
     { href: '#services', label: 'Services' },
     { href: '#team', label: 'Team' },
     { href: '#pricing', label: 'Resources' },
