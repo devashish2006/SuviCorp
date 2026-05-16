@@ -42,15 +42,15 @@ export const Hero: React.FC = () => {
       {/* ─── SECTION 1: Dark Banner ─── */}
       <section
         id="hero"
-        className="relative pt-28 pb-0 overflow-visible z-10 w-full"
+        className="relative pt-[88px] pb-0 overflow-visible z-10 w-full"
       >
         {/* Rounded banner wrapper */}
         <div
-          className="w-[95%] mx-auto rounded-[28px] md:rounded-[32px] overflow-visible relative"
+          className="w-[98%] mx-auto rounded-[24px] md:rounded-[28px] overflow-visible relative"
           style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 40%, #0a1628 100%)' }}
         >
           {/* Decorative Background Wrapper to prevent horizontal overflow */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[28px] md:rounded-[32px]">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[24px] md:rounded-[28px]">
             {/* Subtle grid overlay */}
             <div
               className="absolute inset-0 opacity-[0.03]"
