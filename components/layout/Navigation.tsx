@@ -25,7 +25,10 @@ export const Navigation: React.FC = () => {
             <div className="font-playfair text-[1.5rem] md:text-[1.7rem] font-black tracking-tight leading-none">
               <span className="text-[#3b82f6]">Suvi</span><span className="text-white">corp</span>
             </div>
-            <span className="text-[0.55rem] md:text-[0.6rem] text-white/60 uppercase tracking-wider mt-1 leading-none">
+            <span
+              className="text-[0.68rem] md:text-[0.72rem] text-white/60 mt-1 leading-none"
+              style={{ fontFamily: 'Playfair Display, Georgia, serif', fontStyle: 'italic', fontWeight: 300 }}
+            >
               Enterprise Intelligence, Engineered for You
             </span>
           </div>
