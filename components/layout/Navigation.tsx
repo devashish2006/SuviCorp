@@ -19,22 +19,11 @@ export const Navigation: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-8 lg:px-12 py-4 md:py-5 bg-navy/95 backdrop-blur-xl border-b border-white/[0.06]">
       <div className="flex items-center justify-between max-w-[1920px] mx-auto w-full">
-        <div className="flex items-center gap-3">
-          {/* SVG Logo (3 arrows going up like buildings) - spans both lines */}
-          <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
-            {/* Left Arrow */}
-            <path d="M25 45 L25 80 L35 80 L35 45 L40 45 L30 30 L20 45 Z" fill="#ffffff" />
-            {/* Middle Arrow (Taller, Teal) */}
-            <path d="M45 35 L45 80 L55 80 L55 35 L60 35 L50 20 L40 35 Z" fill="#06b6d4" />
-            {/* Right Arrow */}
-            <path d="M65 45 L65 80 L75 80 L75 45 L80 45 L70 30 L60 45 Z" fill="#ffffff" />
-            {/* Base swoosh */}
-            <path d="M20 85 Q 50 70 80 85 L 80 90 Q 50 75 20 90 Z" fill="#06b6d4" />
-          </svg>
-          
+        <div className="flex items-center">
+          {/* Text-only wordmark */}
           <div className="flex flex-col justify-center">
-            <div className="font-playfair text-[1.4rem] md:text-[1.6rem] font-black text-white tracking-tight leading-none">
-              Suvicorp<sup className="text-[0.6em] font-medium ml-0.5">TM</sup>
+            <div className="font-playfair text-[1.5rem] md:text-[1.7rem] font-black tracking-tight leading-none">
+              <span className="text-[#3b82f6]">Suvi</span><span className="text-white">corp</span>
             </div>
             <span className="text-[0.55rem] md:text-[0.6rem] text-white/60 uppercase tracking-wider mt-1 leading-none">
               Enterprise Intelligence, Engineered for You
