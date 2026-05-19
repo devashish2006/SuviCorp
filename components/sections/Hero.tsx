@@ -15,24 +15,32 @@ const audienceCards = [
     label: '+ Accounting Firms',
     title: 'Accounting Firms',
     description: 'Upgrade your tech stack, streamline workflows, and deliver Big 4 caliber service without Big 4 overhead.',
+    imageOffset: '-65px',
+    imageScale: '90%',
   },
   {
     image: '/img2.png',
     label: '+ Consulting Practices',
     title: 'Consulting Practices',
     description: 'Access AI-powered tools and strategic SaaS ecosystems built to accelerate insight delivery and client outcomes.',
+    imageOffset: '-30px',
+    imageScale: '90%',
   },
   {
     image: '/img3.png',
     label: '+ Finance Teams',
     title: 'Finance Teams',
     description: 'Automate financial operations, reporting, and compliance with enterprise-grade technology made accessible.',
+    imageOffset: '-65px',
+    imageScale: '90%',
   },
   {
     image: '/img4.png',
     label: '+ Enterprise Leaders',
     title: 'Enterprise Leaders',
     description: 'Build global strategic partnerships backed by 15+ years of top-tier firm experience and proven outcomes.',
+    imageOffset: '-65px',
+    imageScale: '90%',
   },
 ];
 
@@ -185,13 +193,14 @@ export const Hero: React.FC = () => {
                 key={i}
                 className="group flex flex-col gap-4"
               >
-                {/* ─── Card: dark navy background, fixed height, overflow visible ─── */}
+                {/* ─── Card: dark navy background, fixed height, overflow hidden at bottom/sides but visible at top ─── */}
                 <div
-                  className="relative rounded-2xl overflow-visible transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-8px_rgba(6,182,212,0.25),0_8px_20px_rgba(0,0,0,0.3)]"
+                  className="relative rounded-2xl transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-8px_rgba(6,182,212,0.25),0_8px_20px_rgba(0,0,0,0.3)]"
                   style={{
                     height: '260px',
                     background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
                     border: '1px solid rgba(6,182,212,0.2)',
+                    clipPath: 'inset(-100px -25% 0 -25%)',
                   }}
                 >
                   {/* Subtle glow overlay */}
@@ -203,17 +212,23 @@ export const Hero: React.FC = () => {
                     }}
                   />
 
-                  {/* Cutout image — overflows outside the card */}
-                  <div className="absolute inset-0 overflow-visible pointer-events-none">
+                  {/* Cutout image — head overflows uniformly above card top */}
+                  <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'visible' }}>
                     <Image
                       src={card.image}
                       alt={card.title}
                       width={400}
-                      height={400}
-                      className="absolute bottom-0 left-1/2 w-[80%] max-h-[310px] object-contain object-bottom transition-transform duration-500 group-hover:scale-[1.07]"
+                      height={500}
+                      className="absolute left-1/2 transition-transform duration-500 group-hover:scale-[1.04]"
                       style={{
-                        transform: 'translateX(-50%) translateY(-18%) scale(1.05)',
-                        transformOrigin: 'bottom center',
+                        top: card.imageOffset,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        transformOrigin: 'top center',
+                        width: card.imageScale,
+                        height: '360px',
+                        objectFit: 'contain',
+                        objectPosition: 'top center',
                         filter:
                           'drop-shadow(0 -4px 20px rgba(6,182,212,0.2)) drop-shadow(0 12px 24px rgba(0,0,0,0.55))',
                       }}
