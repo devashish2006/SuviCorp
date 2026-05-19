@@ -11,25 +11,25 @@ const stats = [
 
 const audienceCards = [
   {
-    image: '/hero-image.png',
+    image: '/img1.png',
     label: '+ Accounting Firms',
     title: 'Accounting Firms',
     description: 'Upgrade your tech stack, streamline workflows, and deliver Big 4 caliber service without Big 4 overhead.',
   },
   {
-    image: '/hero-image.png',
+    image: '/img2.png',
     label: '+ Consulting Practices',
     title: 'Consulting Practices',
     description: 'Access AI-powered tools and strategic SaaS ecosystems built to accelerate insight delivery and client outcomes.',
   },
   {
-    image: '/hero-image.png',
+    image: '/img3.png',
     label: '+ Finance Teams',
     title: 'Finance Teams',
     description: 'Automate financial operations, reporting, and compliance with enterprise-grade technology made accessible.',
   },
   {
-    image: '/hero-image.png',
+    image: '/img4.png',
     label: '+ Enterprise Leaders',
     title: 'Enterprise Leaders',
     description: 'Build global strategic partnerships backed by 15+ years of top-tier firm experience and proven outcomes.',
@@ -181,67 +181,67 @@ export const Hero: React.FC = () => {
           {/* Cards grid — team/portrait style like the reference image */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {audienceCards.map((card, i) => (
-  <div
-    key={i}
-    className="group flex flex-col gap-4"
-  >
-    {/* ─── Card: dark navy background, fixed height, overflow visible ─── */}
-    <div
-      className="relative rounded-2xl overflow-visible transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-8px_rgba(6,182,212,0.25),0_8px_20px_rgba(0,0,0,0.3)]"
-      style={{
-        height: '260px',
-        background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
-        border: '1px solid rgba(6,182,212,0.2)',
-      }}
-    >
-      {/* Subtle glow overlay */}
-      <div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse at 30% 0%, rgba(6,182,212,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(59,130,246,0.10) 0%, transparent 55%)',
-        }}
-      />
+              <div
+                key={i}
+                className="group flex flex-col gap-4"
+              >
+                {/* ─── Card: dark navy background, fixed height, overflow visible ─── */}
+                <div
+                  className="relative rounded-2xl overflow-visible transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-8px_rgba(6,182,212,0.25),0_8px_20px_rgba(0,0,0,0.3)]"
+                  style={{
+                    height: '260px',
+                    background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
+                    border: '1px solid rgba(6,182,212,0.2)',
+                  }}
+                >
+                  {/* Subtle glow overlay */}
+                  <div
+                    className="absolute inset-0 rounded-2xl pointer-events-none"
+                    style={{
+                      background:
+                        'radial-gradient(ellipse at 30% 0%, rgba(6,182,212,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(59,130,246,0.10) 0%, transparent 55%)',
+                    }}
+                  />
 
-      {/* Cutout image — overflows outside the card */}
-      <div className="absolute inset-0 overflow-visible pointer-events-none">
-        <Image
-          src={card.image}
-          alt={card.title}
-          width={400}
-          height={400}
-          className="absolute bottom-0 left-1/2 w-[80%] max-h-[310px] object-contain object-bottom transition-transform duration-500 group-hover:scale-[1.07]"
-          style={{
-            transform: 'translateX(-50%) translateY(-18%) scale(1.05)',
-            transformOrigin: 'bottom center',
-            filter:
-              'drop-shadow(0 -4px 20px rgba(6,182,212,0.2)) drop-shadow(0 12px 24px rgba(0,0,0,0.55))',
-          }}
-        />
-      </div>
-    </div>
+                  {/* Cutout image — overflows outside the card */}
+                  <div className="absolute inset-0 overflow-visible pointer-events-none">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      width={400}
+                      height={400}
+                      className="absolute bottom-0 left-1/2 w-[80%] max-h-[310px] object-contain object-bottom transition-transform duration-500 group-hover:scale-[1.07]"
+                      style={{
+                        transform: 'translateX(-50%) translateY(-18%) scale(1.05)',
+                        transformOrigin: 'bottom center',
+                        filter:
+                          'drop-shadow(0 -4px 20px rgba(6,182,212,0.2)) drop-shadow(0 12px 24px rgba(0,0,0,0.55))',
+                      }}
+                    />
+                  </div>
+                </div>
 
-    {/* ─── Content below card ─── */}
-    <div className="px-1">
-      <h4 className="font-playfair text-lg font-bold text-navy mb-2 flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-blue-accent inline-block flex-shrink-0" />
-        {card.title}
-      </h4>
-      <p className="text-gray-500 text-sm leading-relaxed mb-3">
-        {card.description}
-      </p>
-      <a
-        href="#services"
-        className="inline-flex items-center gap-1 text-blue-accent text-sm font-semibold hover:gap-2 transition-all duration-200 uppercase tracking-wide"
-      >
-        FIND OUT MORE
-        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </a>
-    </div>
-  </div>
-))}
+                {/* ─── Content below card ─── */}
+                <div className="px-1">
+                  <h4 className="font-playfair text-lg font-bold text-navy mb-2 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-accent inline-block flex-shrink-0" />
+                    {card.title}
+                  </h4>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-3">
+                    {card.description}
+                  </p>
+                  <a
+                    href="#services"
+                    className="inline-flex items-center gap-1 text-blue-accent text-sm font-semibold hover:gap-2 transition-all duration-200 uppercase tracking-wide"
+                  >
+                    FIND OUT MORE
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
