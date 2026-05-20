@@ -42,6 +42,14 @@ const audienceCards = [
     imageOffset: '-65px',
     imageScale: '90%',
   },
+  {
+    image: '/aman-removebg-preview.png',
+    label: '+ Enterprise Leaders',
+    title: 'Enterprise Leaders',
+    description: 'Build global strategic partnerships backed by 15+ years of top-tier firm experience and proven outcomes.',
+    imageOffset: '-65px',
+    imageScale: '90%',
+  },
 ];
 
 export const Hero: React.FC = () => {
@@ -187,7 +195,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Cards grid — team/portrait style like the reference image */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {audienceCards.map((card, i) => (
               <div
                 key={i}
