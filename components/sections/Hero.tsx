@@ -1,6 +1,9 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { SectionTag } from '../ui';
+import { SectionTag, TeamProfileModal } from '../ui';
+import type { TeamMember } from '../ui';
 
 const stats = [
   { icon: 'https://cdn-icons-png.flaticon.com/512/3602/3602145.png', title: '15+ Years', label: 'Experience from Top-Tier Firms' },
@@ -9,50 +12,159 @@ const stats = [
   { icon: 'https://cdn-icons-png.flaticon.com/512/751/751381.png', title: 'Global', label: 'Strategic Partnerships Worldwide' },
 ];
 
-const audienceCards = [
+const teamMembers: TeamMember[] = [
   {
-    image: '/img1.png',
-    label: '+ Accounting Firms',
-    title: 'Accounting Firms',
-    description: 'Upgrade your tech stack, streamline workflows, and deliver Big 4 caliber service without Big 4 overhead.',
+    id: 'jatin-bhatia',
+    name: 'CA Jatin Bhatia',
+    role: 'Founder & Managing Partner',
+    image: '/img3.png',
     imageOffset: '-65px',
     imageScale: '90%',
+    tagline: 'Leading growth-oriented goals with a highly motivated and skilled team.',
+    highlights: [
+      'Founded SUVI to create a firm that excels in accounting, advisory, and the development of automation tools — committed to drive transformation and delivering high-quality services to clients, leveraging technology and innovation.',
+      'Chartered Accountant with over a decade of experience in auditing and accounting advisory. Worked with prestigious Big Four firms gaining invaluable insights and experience in running innovation agendas.',
+      'Experience in transactions such as M&A, IPO/SPAC and Divestitures.',
+    ],
+    expertise: [
+      {
+        label: 'Experience in Digital Transformation Space',
+        items: [
+          'Led the development of "STAT tool" for automating acquisition accounting, implemented on range of live engagements.',
+          'Furthered digital transformation agenda and contributed to the development of "PROFiler" — automating pro forma financial statements.',
+          'Developed tool for PMO function: project plan generation and standardized Power BI reporting.',
+          'Led IPO Data Hub development outlining insightful trends in IPO US markets.',
+          'Led development of IPO Enabler to help engagement teams run readiness engagements efficiently.',
+          'Led the layering of AI and machine learning in above products and introduced top-up enhancements.',
+        ],
+      },
+      {
+        label: 'Experience in Technical Accounting Space',
+        items: [
+          'Writing whitepapers/accounting memorandums on: business combinations, stock compensation, revenues, leases, segment reporting, asset impairment, debt etc.',
+          'Writing financial statements (incl. S-1/S-4 support, pro forma financial statements, management discussion and analyses), including upliftment.',
+          'Building acquisition accounting workbooks (incl. Day 1 and Day 2 accounting).',
+          'Writing accounting policy manuals for different clients on IPO engagements.',
+          'GAAP conversion engagements, Audit Support, Benchmarking (accounting and reporting, KPI, MD&A etc.).',
+        ],
+      },
+    ],
+    quote: 'Leading growth-oriented goal with a highly motivated and skilled team.',
   },
   {
+    id: 'ankur-tiwari',
+    name: 'Ankur Tiwari',
+    role: 'Full Stack Developer & Prod Lead',
+    image: '/img4.png',
+    imageOffset: '-65px',
+    imageScale: '90%',
+    tagline: 'Delivering high-quality full-stack solutions across front-end and back-end development.',
+    highlights: [
+      'Experienced and specialized Full Stack Java Developer with over 12 years of experience.',
+      'Proven track record of delivering high-quality solutions across both front-end and back-end development.',
+      'Expertise includes designing scalable architectures, implementing RESTful APIs, and optimizing database performance.',
+      'Thrives in agile environments — collaborates effectively with cross-functional teams and has a strong problem-solving mindset.',
+    ],
+    expertise: [
+      {
+        label: 'Core Technical Skills',
+        items: [
+          'Full Stack Java Development with 12+ years of hands-on expertise.',
+          'Scalable architecture design and system performance optimization.',
+          'RESTful API implementation and microservices architecture.',
+          'Database optimization and performance tuning at enterprise scale.',
+          'Agile methodologies and cross-functional team collaboration.',
+        ],
+      },
+    ],
+    quote: 'Building scalable, high-performance solutions that bridge technology and business outcomes.',
+  },
+  {
+    id: 'aman-garg',
+    name: 'Aman Garg',
+    role: 'Solution Architect',
+    image: '/aman-removebg-preview.png',
+    imageOffset: '-65px',
+    imageScale: '90%',
+    tagline: 'Results-oriented professional with over 14 years of experience managing large-scale global transformations.',
+    highlights: [
+      'Results-oriented professional with over 14 years of experience in managing large-scale global transformations and programs.',
+      'Expertise spans business consulting for financial services, fraud and risk mitigation, data analytics, operations management, and professional services.',
+      'Excels in strategy development, digital transformation, innovation, organizational change management, and process improvement.',
+    ],
+    expertise: [
+      {
+        label: 'Areas of Expertise',
+        items: [
+          'Business consulting for financial services and fraud & risk mitigation.',
+          'Data analytics and operations management at global scale.',
+          'Strategy development and digital transformation initiatives.',
+          'Innovation management and organizational change leadership.',
+          'Process improvement and large-scale program delivery.',
+        ],
+      },
+    ],
+    quote: 'Driving meaningful transformation through innovation, strategy, and relentless execution.',
+  },
+  {
+    id: 'priya-sharma',
+    name: 'Harshit',
+    role: 'Senior Accounting Advisor',
+    image: '/img1.png',
+    imageOffset: '-65px',
+    imageScale: '90%',
+    tagline: 'Bridging complex financial challenges with innovative advisory solutions.',
+    highlights: [
+      'Senior Accounting Advisor with 10+ years of experience across Big 4 firms and mid-market advisory practices.',
+      'Specializes in IPO readiness, financial statement preparation, and regulatory compliance frameworks.',
+      'Led multiple successful IPO/SPAC engagements across technology and financial services sectors.',
+    ],
+    expertise: [
+      {
+        label: 'Core Specializations',
+        items: [
+          'IPO and SPAC readiness assessments and advisory.',
+          'S-1/S-4 financial statement preparation and upliftment.',
+          'Technical accounting research and memoranda drafting.',
+          'GAAP and IFRS convergence advisory services.',
+          'Internal control design and Sarbanes-Oxley compliance.',
+        ],
+      },
+    ],
+    quote: 'Precision in numbers, clarity in strategy — that is what drives exceptional client outcomes.',
+  },
+  {
+    id: 'rahul-mehta',
+    name: 'Rahul Mehta',
+    role: 'Technology Partnerships Lead',
     image: '/img2.png',
-    label: '+ Consulting Practices',
-    title: 'Consulting Practices',
-    description: 'Access AI-powered tools and strategic SaaS ecosystems built to accelerate insight delivery and client outcomes.',
     imageOffset: '-30px',
     imageScale: '90%',
-  },
-  {
-    image: '/img3.png',
-    label: '+ Finance Teams',
-    title: 'Finance Teams',
-    description: 'Automate financial operations, reporting, and compliance with enterprise-grade technology made accessible.',
-    imageOffset: '-65px',
-    imageScale: '90%',
-  },
-  {
-    image: '/img4.png',
-    label: '+ Enterprise Leaders',
-    title: 'Enterprise Leaders',
-    description: 'Build global strategic partnerships backed by 15+ years of top-tier firm experience and proven outcomes.',
-    imageOffset: '-65px',
-    imageScale: '90%',
-  },
-  {
-    image: '/aman-removebg-preview.png',
-    label: '+ Enterprise Leaders',
-    title: 'Enterprise Leaders',
-    description: 'Build global strategic partnerships backed by 15+ years of top-tier firm experience and proven outcomes.',
-    imageOffset: '-65px',
-    imageScale: '90%',
+    tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
+    highlights: [
+      'Technology Partnerships Lead with 8+ years building strategic SaaS and enterprise technology alliances globally.',
+      'Proven ability to identify, evaluate, and onboard high-value technology partners across accounting and fintech verticals.',
+      'Orchestrates go-to-market strategies that drive mutual growth and client value across international markets.',
+    ],
+    expertise: [
+      {
+        label: 'Partnership & Growth Expertise',
+        items: [
+          'Strategic SaaS partnership identification and alliance management.',
+          'Go-to-market strategy design for technology and accounting sectors.',
+          'Partner enablement, onboarding, and co-selling motions.',
+          'Cross-border business development and market expansion.',
+          'Revenue operations and partnership performance analytics.',
+        ],
+      },
+    ],
+    quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
   },
 ];
 
 export const Hero: React.FC = () => {
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
   return (
     <>
       {/* ─── SECTION 1: Dark Banner ─── */}
@@ -171,7 +283,7 @@ export const Hero: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── SECTION 3: White — Audience Cards (team-style layout matching reference) ─── */}
+      {/* ─── SECTION 3: White — Audience Cards (team-style layout) ─── */}
       <section id="team" className="bg-white w-full pt-20 pb-24 relative overflow-hidden">
         {/* Decorative teal circle — top-right */}
         <div
@@ -187,23 +299,26 @@ export const Hero: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           {/* Section header */}
           <div className="text-center mb-14">
-            <SectionTag variant="teal">Who We Serve</SectionTag>
+            <SectionTag variant="teal">Our Team</SectionTag>
             <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-navy mt-5 leading-tight">
-              Empowering Excellence<br />
-              <em className="italic font-light opacity-80">Across Every Practice</em>
+              Meet The Minds<br />
+              <em className="italic font-light opacity-80">Behind SUVI Corp</em>
             </h2>
+            <p className="text-gray-500 text-sm mt-4">Click on any profile to learn more</p>
           </div>
 
-          {/* Cards grid — team/portrait style like the reference image */}
+          {/* Cards grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-            {audienceCards.map((card, i) => (
-              <div
-                key={i}
-                className="group flex flex-col gap-4"
+            {teamMembers.map((member) => (
+              <button
+                key={member.id}
+                onClick={() => setSelectedMember(member)}
+                className="group flex flex-col gap-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-accent focus-visible:ring-offset-2 rounded-2xl"
+                aria-label={`View profile of ${member.name}`}
               >
-                {/* ─── Card: dark navy background, fixed height, overflow hidden at bottom/sides but visible at top ─── */}
+                {/* Card: dark navy background */}
                 <div
-                  className="relative rounded-2xl transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-8px_rgba(6,182,212,0.25),0_8px_20px_rgba(0,0,0,0.3)]"
+                  className="relative rounded-2xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_24px_48px_-8px_rgba(6,182,212,0.3),0_8px_20px_rgba(0,0,0,0.35)]"
                   style={{
                     height: '260px',
                     background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
@@ -220,20 +335,39 @@ export const Hero: React.FC = () => {
                     }}
                   />
 
-                  {/* Cutout image — head overflows uniformly above card top */}
+                  {/* Hover teal border glow */}
+                  <div
+                    className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ border: '1px solid rgba(6,182,212,0.55)' }}
+                  />
+
+                  {/* "View Profile" pill — appears on hover */}
+                  <div
+                    className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
+                    style={{
+                      background: 'rgba(6,182,212,0.18)',
+                      color: '#06b6d4',
+                      border: '1px solid rgba(6,182,212,0.4)',
+                      backdropFilter: 'blur(6px)',
+                    }}
+                  >
+                    View Profile
+                  </div>
+
+                  {/* Cutout image — head overflows above card top */}
                   <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'visible' }}>
                     <Image
-                      src={card.image}
-                      alt={card.title}
+                      src={member.image}
+                      alt={member.name}
                       width={400}
                       height={500}
-                      className="absolute left-1/2 transition-transform duration-500 group-hover:scale-[1.04]"
+                      className="absolute left-1/2 transition-transform duration-500 group-hover:scale-[1.06]"
                       style={{
-                        top: card.imageOffset,
+                        top: member.imageOffset ?? '-65px',
                         left: '50%',
                         transform: 'translateX(-50%)',
                         transformOrigin: 'top center',
-                        width: card.imageScale,
+                        width: member.imageScale ?? '90%',
                         height: '360px',
                         objectFit: 'contain',
                         objectPosition: 'top center',
@@ -244,30 +378,38 @@ export const Hero: React.FC = () => {
                   </div>
                 </div>
 
-                {/* ─── Content below card ─── */}
+                {/* Content below card */}
                 <div className="px-1">
-                  <h4 className="font-playfair text-lg font-bold text-navy mb-2 flex items-center gap-2">
+                  <h4 className="font-playfair text-lg font-bold text-navy mb-1 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-blue-accent inline-block flex-shrink-0" />
-                    {card.title}
+                    {member.name}
                   </h4>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-3">
-                    {card.description}
+                  <p className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#06b6d4' }}>
+                    {member.role}
                   </p>
-                  <a
-                    href="#services"
-                    className="inline-flex items-center gap-1 text-blue-accent text-sm font-semibold hover:gap-2 transition-all duration-200 uppercase tracking-wide"
+                  <p className="text-gray-500 text-sm leading-relaxed mb-3 line-clamp-2">
+                    {member.highlights[0]}
+                  </p>
+                  <span
+                    className="inline-flex items-center gap-1 text-blue-accent text-sm font-semibold group-hover:gap-2 transition-all duration-200 uppercase tracking-wide"
                   >
-                    FIND OUT MORE
+                    VIEW PROFILE
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
-                  </a>
+                  </span>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ─── Team Profile Modal ─── */}
+      <TeamProfileModal
+        member={selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
     </>
   );
 };
