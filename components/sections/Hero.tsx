@@ -174,7 +174,7 @@ export const Hero: React.FC = () => {
       >
         {/* Rounded banner wrapper */}
         <div
-          className="w-[98%] mx-auto rounded-[24px] md:rounded-[28px] overflow-visible relative"
+          className="w-[calc(100%-16px)] mx-auto rounded-[24px] md:rounded-[28px] overflow-visible relative"
           style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 40%, #0a1628 100%)' }}
         >
           {/* Decorative Background Wrapper to prevent horizontal overflow */}
