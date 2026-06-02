@@ -341,19 +341,6 @@ export const Hero: React.FC = () => {
                     style={{ border: '1px solid rgba(6,182,212,0.55)' }}
                   />
 
-                  {/* "View Profile" pill — appears on hover */}
-                  <div
-                    className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
-                    style={{
-                      background: 'rgba(6,182,212,0.18)',
-                      color: '#06b6d4',
-                      border: '1px solid rgba(6,182,212,0.4)',
-                      backdropFilter: 'blur(6px)',
-                    }}
-                  >
-                    View Profile
-                  </div>
-
                   {/* Cutout image — head overflows above card top */}
                   <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'visible' }}>
                     <Image
