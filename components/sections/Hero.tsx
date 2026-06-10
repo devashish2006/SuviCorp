@@ -135,7 +135,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 'amit',
-    name: 'Rahul Mehta',
+    name: 'Amit',
     role: 'Technology Partnerships Lead',
     image: '/img2.png',
     imageOffset: '-40px',
