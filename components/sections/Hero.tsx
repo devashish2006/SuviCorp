@@ -308,7 +308,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-5 sm:gap-y-5 pt-0 sm:pt-0">
             {teamMembers.map((member) => (
               <button
                 key={member.id}
@@ -318,12 +318,10 @@ export const Hero: React.FC = () => {
               >
                 {/* Card: dark navy background */}
                 <div
-                  className="relative rounded-2xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_24px_48px_-8px_rgba(6,182,212,0.3),0_8px_20px_rgba(0,0,0,0.35)]"
+                  className="team-card-box relative rounded-2xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_24px_48px_-8px_rgba(6,182,212,0.3),0_8px_20px_rgba(0,0,0,0.35)]"
                   style={{
-                    height: '220px',
                     background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
                     border: '1px solid rgba(6,182,212,0.2)',
-                    clipPath: 'inset(-80px -25% 0 -25%)',
                   }}
                 >
                   {/* Subtle glow overlay */}
@@ -341,23 +339,15 @@ export const Hero: React.FC = () => {
                     style={{ border: '1px solid rgba(6,182,212,0.55)' }}
                   />
 
-                  {/* Cutout image — head overflows above card top */}
+                  {/* Cutout image — anchored to bottom, head overflows above card top */}
                   <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'visible' }}>
                     <Image
                       src={member.image}
                       alt={member.name}
                       width={400}
                       height={500}
-                      className="absolute left-1/2 transition-transform duration-500 group-hover:scale-[1.06]"
+                      className="team-member-img absolute transition-transform duration-500 group-hover:scale-[1.06]"
                       style={{
-                        top: member.imageOffset ?? '-50px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        transformOrigin: 'top center',
-                        width: '150%',
-                        height: '500px',
-                        objectFit: 'contain',
-                        objectPosition: 'top center',
                         filter:
                           'drop-shadow(0 -4px 20px rgba(6,182,212,0.2)) drop-shadow(0 12px 24px rgba(0,0,0,0.55))',
                       }}

@@ -75,3 +75,47 @@ body {
   color: var(--foreground);
   background: #ffffff;
 }
+
+/* ─── Team Section: responsive card + image overflow ─── */
+.team-card-box {
+  height: 260px;
+  clip-path: inset(0 0 0 0); /* contained on mobile */
+}
+
+.team-member-img {
+  bottom: 0px !important;
+  top: auto !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  transform-origin: bottom center !important;
+  width: 100% !important;
+  height: 260px !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+}
+
+/* sm: 2-col grid — allow slight overflow */
+@media (min-width: 640px) {
+  .team-card-box {
+    height: 200px;
+    clip-path: inset(-100px -25% 0 -25%);
+  }
+
+  .team-member-img {
+    width: 130% !important;
+    height: 360px !important;
+  }
+}
+
+/* lg: 5-col grid — full effect */
+@media (min-width: 1024px) {
+  .team-card-box {
+    height: 160px;
+    clip-path: inset(-160px -25% 0 -25%);
+  }
+
+  .team-member-img {
+    width: 150% !important;
+    height: 420px !important;
+  }
+}
