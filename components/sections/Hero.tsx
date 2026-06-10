@@ -354,8 +354,8 @@ export const Hero: React.FC = () => {
                         left: '50%',
                         transform: 'translateX(-50%)',
                         transformOrigin: 'top center',
-                        width: member.imageScale ?? '88%',
-                        height: '270px',
+                        width: '150%',
+                        height: '500px',
                         objectFit: 'contain',
                         objectPosition: 'top center',
                         filter:
