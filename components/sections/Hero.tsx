@@ -17,9 +17,9 @@ const teamMembers: TeamMember[] = [
     id: 'jatin-bhatia',
     name: 'CA Jatin Bhatia',
     role: 'Founder & Managing Partner',
-    image: '/img3.png',
-    imageOffset: '-65px',
-    imageScale: '90%',
+    image: '/jatinPos-removebg-preview.png',
+    imageOffset: '-50px',
+    imageScale: '88%',
     tagline: 'Leading growth-oriented goals with a highly motivated and skilled team.',
     highlights: [
       'Founded SUVI to create a firm that excels in accounting, advisory, and the development of automation tools — committed to drive transformation and delivering high-quality services to clients, leveraging technology and innovation.',
@@ -55,9 +55,9 @@ const teamMembers: TeamMember[] = [
     id: 'ankur-tiwari',
     name: 'Ankur Tiwari',
     role: 'Full Stack Developer & Prod Lead',
-    image: '/img4.png',
-    imageOffset: '-65px',
-    imageScale: '90%',
+    image: '/ankurPos-removebg-preview.png',
+    imageOffset: '-50px',
+    imageScale: '88%',
     tagline: 'Delivering high-quality full-stack solutions across front-end and back-end development.',
     highlights: [
       'Experienced and specialized Full Stack Java Developer with over 12 years of experience.',
@@ -83,9 +83,9 @@ const teamMembers: TeamMember[] = [
     id: 'aman-garg',
     name: 'Aman Garg',
     role: 'Solution Architect',
-    image: '/aman-removebg-preview.png',
-    imageOffset: '-65px',
-    imageScale: '90%',
+    image: '/AmanPos-removebg-preview.png',
+    imageOffset: '-50px',
+    imageScale: '88%',
     tagline: 'Results-oriented professional with over 14 years of experience managing large-scale global transformations.',
     highlights: [
       'Results-oriented professional with over 14 years of experience in managing large-scale global transformations and programs.',
@@ -108,11 +108,11 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 'priya-sharma',
-    name: 'Harshit',
-    role: 'Senior Accounting Advisor',
-    image: '/img1.png',
-    imageOffset: '-65px',
-    imageScale: '90%',
+    name: 'Devashish Mishra',
+    role: 'Software Developer',
+    image: '/devashishPos-removebg-preview.png',
+    imageOffset: '-50px',
+    imageScale: '88%',
     tagline: 'Bridging complex financial challenges with innovative advisory solutions.',
     highlights: [
       'Senior Accounting Advisor with 10+ years of experience across Big 4 firms and mid-market advisory practices.',
@@ -138,8 +138,8 @@ const teamMembers: TeamMember[] = [
     name: 'Rahul Mehta',
     role: 'Technology Partnerships Lead',
     image: '/img2.png',
-    imageOffset: '-30px',
-    imageScale: '90%',
+    imageOffset: '-40px',
+    imageScale: '88%',
     tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
     highlights: [
       'Technology Partnerships Lead with 8+ years building strategic SaaS and enterprise technology alliances globally.',
@@ -320,10 +320,10 @@ export const Hero: React.FC = () => {
                 <div
                   className="relative rounded-2xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_24px_48px_-8px_rgba(6,182,212,0.3),0_8px_20px_rgba(0,0,0,0.35)]"
                   style={{
-                    height: '260px',
+                    height: '220px',
                     background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
                     border: '1px solid rgba(6,182,212,0.2)',
-                    clipPath: 'inset(-100px -25% 0 -25%)',
+                    clipPath: 'inset(-80px -25% 0 -25%)',
                   }}
                 >
                   {/* Subtle glow overlay */}
@@ -350,12 +350,12 @@ export const Hero: React.FC = () => {
                       height={500}
                       className="absolute left-1/2 transition-transform duration-500 group-hover:scale-[1.06]"
                       style={{
-                        top: member.imageOffset ?? '-65px',
+                        top: member.imageOffset ?? '-50px',
                         left: '50%',
                         transform: 'translateX(-50%)',
                         transformOrigin: 'top center',
-                        width: member.imageScale ?? '90%',
-                        height: '360px',
+                        width: member.imageScale ?? '88%',
+                        height: '270px',
                         objectFit: 'contain',
                         objectPosition: 'top center',
                         filter:
