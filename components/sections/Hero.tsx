@@ -302,15 +302,146 @@ export const Hero: React.FC = () => {
 
       {/* ─── SECTION 3: White — Audience Cards (team-style layout) ─── */}
       <section id="team" className="bg-white w-full pt-20 pb-24 relative overflow-hidden">
-        {/* Decorative teal circle — top-right */}
+
+        {/* ── Premium Animated Bubble Layer ── */}
+
+        {/* Large teal orb — top-right, floating */}
         <div
-          className="absolute -top-10 right-12 w-[60px] h-[60px] rounded-full pointer-events-none"
-          style={{ background: 'rgba(6,182,212,0.35)' }}
+          className="absolute -top-14 right-8 w-[88px] h-[88px] rounded-full pointer-events-none animate-bubble-float"
+          style={{
+            background: 'radial-gradient(circle at 35% 35%, rgba(6,182,212,0.55) 0%, rgba(6,182,212,0.12) 60%, transparent 100%)',
+            boxShadow: '0 0 40px 10px rgba(6,182,212,0.18)',
+            animationDuration: '6s',
+          }}
         />
-        {/* Decorative teal circle — smaller, mid-right */}
+        {/* Ripple ring around large orb */}
         <div
-          className="absolute top-40 right-6 w-[24px] h-[24px] rounded-full pointer-events-none"
-          style={{ background: 'rgba(6,182,212,0.2)' }}
+          className="absolute -top-16 right-6 w-[100px] h-[100px] rounded-full pointer-events-none animate-bubble-ripple border border-cyan-400/30"
+          style={{ animationDuration: '4s', animationDelay: '0.5s' }}
+        />
+
+        {/* Medium teal bubble — mid-right */}
+        <div
+          className="absolute top-36 right-4 w-[36px] h-[36px] rounded-full pointer-events-none animate-bubble-drift"
+          style={{
+            background: 'radial-gradient(circle at 40% 30%, rgba(6,182,212,0.65) 0%, rgba(6,182,212,0.15) 70%, transparent 100%)',
+            boxShadow: '0 0 18px 4px rgba(6,182,212,0.22)',
+            animationDuration: '8s',
+            animationDelay: '1s',
+          }}
+        />
+
+        {/* Small dot — far right mid */}
+        <div
+          className="absolute top-64 right-16 w-[14px] h-[14px] rounded-full pointer-events-none animate-bubble-float"
+          style={{
+            background: 'rgba(6,182,212,0.45)',
+            boxShadow: '0 0 10px 3px rgba(6,182,212,0.25)',
+            animationDuration: '5s',
+            animationDelay: '2s',
+          }}
+        />
+
+        {/* Glowing blue orb — bottom-left corner */}
+        <div
+          className="absolute bottom-16 -left-10 w-[110px] h-[110px] rounded-full pointer-events-none animate-bubble-orb"
+          style={{
+            background: 'radial-gradient(circle at 40% 40%, rgba(59,130,246,0.45) 0%, rgba(59,130,246,0.10) 60%, transparent 100%)',
+            boxShadow: '0 0 50px 12px rgba(59,130,246,0.14)',
+            animationDuration: '9s',
+          }}
+        />
+        {/* Ripple ring around blue orb */}
+        <div
+          className="absolute bottom-12 -left-14 w-[130px] h-[130px] rounded-full pointer-events-none animate-bubble-ripple border border-blue-400/20"
+          style={{ animationDuration: '6s', animationDelay: '1.5s' }}
+        />
+
+        {/* Tiny navy dot — lower-left */}
+        <div
+          className="absolute bottom-32 left-12 w-[10px] h-[10px] rounded-full pointer-events-none animate-bubble-wander"
+          style={{
+            background: 'rgba(6,182,212,0.5)',
+            animationDuration: '10s',
+            animationDelay: '0.7s',
+          }}
+        />
+
+        {/* Large semi-transparent orb — top-left background */}
+        <div
+          className="absolute -top-20 -left-16 w-[200px] h-[200px] rounded-full pointer-events-none animate-bubble-shimmer"
+          style={{
+            background: 'radial-gradient(circle at 50% 50%, rgba(6,182,212,0.08) 0%, transparent 70%)',
+            animationDuration: '7s',
+          }}
+        />
+
+        {/* Accent bubble — upper-center */}
+        <div
+          className="absolute top-8 left-1/2 -translate-x-1/2 w-[18px] h-[18px] rounded-full pointer-events-none animate-bubble-drift"
+          style={{
+            background: 'rgba(6,182,212,0.38)',
+            boxShadow: '0 0 12px 4px rgba(6,182,212,0.18)',
+            animationDuration: '11s',
+            animationDelay: '3s',
+          }}
+        />
+
+        {/* Subtle gradient glow — right-center */}
+        <div
+          className="absolute top-1/2 -right-24 w-[280px] h-[280px] -translate-y-1/2 rounded-full pointer-events-none animate-bubble-shimmer"
+          style={{
+            background: 'radial-gradient(circle at 50% 50%, rgba(6,182,212,0.07) 0%, transparent 65%)',
+            animationDuration: '8s',
+            animationDelay: '2s',
+          }}
+        />
+
+        {/* Tiny cluster — bottom-right */}
+        <div
+          className="absolute bottom-10 right-24 w-[8px] h-[8px] rounded-full pointer-events-none animate-bubble-float"
+          style={{
+            background: 'rgba(6,182,212,0.6)',
+            animationDuration: '4.5s',
+            animationDelay: '1.2s',
+          }}
+        />
+        <div
+          className="absolute bottom-16 right-32 w-[5px] h-[5px] rounded-full pointer-events-none animate-bubble-float"
+          style={{
+            background: 'rgba(6,182,212,0.5)',
+            animationDuration: '6s',
+            animationDelay: '0.3s',
+          }}
+        />
+        <div
+          className="absolute bottom-6 right-20 w-[12px] h-[12px] rounded-full pointer-events-none animate-bubble-drift"
+          style={{
+            background: 'rgba(59,130,246,0.45)',
+            animationDuration: '9s',
+            animationDelay: '2.5s',
+          }}
+        />
+
+        {/* Diamond / rotated square accent — top right area */}
+        <div
+          className="absolute top-20 right-28 w-[18px] h-[18px] pointer-events-none animate-bubble-orb"
+          style={{
+            background: 'rgba(6,182,212,0.3)',
+            borderRadius: '4px',
+            transform: 'rotate(45deg)',
+            animationDuration: '8s',
+            animationDelay: '1.8s',
+          }}
+        />
+
+        {/* Gradient arc line — decorative top */}
+        <div
+          className="absolute top-0 left-0 w-full h-[3px] pointer-events-none animate-bubble-shimmer"
+          style={{
+            background: 'linear-gradient(90deg, transparent 0%, rgba(6,182,212,0.25) 30%, rgba(59,130,246,0.2) 60%, transparent 100%)',
+            animationDuration: '6s',
+          }}
         />
 
         <div className="max-w-7xl mx-auto px-6">
