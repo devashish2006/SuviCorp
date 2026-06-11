@@ -54,11 +54,6 @@ const Ic = {
       <path d="M11.73 17a2 2 0 0 1-3.46 0"/>
     </svg>
   ),
-  ArrowUp: () => (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-2.5 h-2.5">
-      <polyline points="14 4 10 8 6 4"/><line x1="10" y1="4" x2="10" y2="13"/>
-    </svg>
-  ),
   Zap: () => (
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3">
       <polygon points="9 1 2 9 8 9 7 15 14 7 8 7"/>
@@ -83,7 +78,6 @@ const Ic = {
 
 /* ═══════════════════════════════════════════
    SMOOTH CUBIC BEZIER LINE CHART
-   (converts points → smooth SVG path)
 ═══════════════════════════════════════════ */
 function smoothPath(pts: {x: number; y: number}[]): string {
   if (pts.length < 2) return '';
@@ -100,10 +94,43 @@ function smoothPath(pts: {x: number; y: number}[]): string {
   return d;
 }
 
-/* ─── Sparkline ─── */
-function Sparkline({ color = '#06b6d4', values = [30,45,38,55,48,62,58,72,78,92] }: {
-  color?: string; values?: number[];
+/* ═══════════════════════════════════════════
+   COUNTER HOOK — smooth easeOutCubic count-up
+═══════════════════════════════════════════ */
+function useCounter(target: number, duration = 1400, delay = 0, active = true) {
+  const [val, setVal] = useState(0);
+  const rafRef = useRef<number>(0);
+  useEffect(() => {
+    if (!active) return;
+    let timer: ReturnType<typeof setTimeout>;
+    timer = setTimeout(() => {
+      let startTime = 0;
+      const tick = (ts: number) => {
+        if (!startTime) startTime = ts;
+        const p = Math.min((ts - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        setVal(eased * target);
+        if (p < 1) rafRef.current = requestAnimationFrame(tick);
+        else setVal(target);
+      };
+      rafRef.current = requestAnimationFrame(tick);
+    }, delay);
+    return () => { clearTimeout(timer); cancelAnimationFrame(rafRef.current); };
+  }, [target, duration, delay, active]);
+  return val;
+}
+
+/* ─── Animated Sparkline — draws itself in ─── */
+function Sparkline({ color = '#06b6d4', values = [30,45,38,55,48,62,58,72,78,92], animDelay = 0, animate = false }: {
+  color?: string; values?: number[]; animDelay?: number; animate?: boolean;
 }) {
+  const [drawn, setDrawn] = useState(false);
+  useEffect(() => {
+    if (!animate) return;
+    const t = setTimeout(() => setDrawn(true), animDelay + 200);
+    return () => clearTimeout(t);
+  }, [animate, animDelay]);
+
   const W = 76; const H = 24;
   const min = Math.min(...values); const max = Math.max(...values);
   const range = max - min || 1;
@@ -114,6 +141,8 @@ function Sparkline({ color = '#06b6d4', values = [30,45,38,55,48,62,58,72,78,92]
   const linePath = smoothPath(pts);
   const areaPath = `M${pts[0].x},${H} ` + linePath.slice(1) + ` L${pts[pts.length-1].x},${H} Z`;
   const gId = `sp-${color.replace('#', '')}`;
+  const isActive = animate ? drawn : true;
+
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="overflow-visible" style={{ display: 'block' }}>
       <defs>
@@ -122,14 +151,30 @@ function Sparkline({ color = '#06b6d4', values = [30,45,38,55,48,62,58,72,78,92]
           <stop offset="100%" stopColor={color} stopOpacity="0"/>
         </linearGradient>
       </defs>
-      <path d={areaPath} fill={`url(#${gId})`}/>
-      <path d={linePath} fill="none" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d={areaPath} fill={`url(#${gId})`}
+        style={{ opacity: isActive ? 1 : 0, transition: `opacity 0.7s ease ${animDelay + 500}ms` }}
+      />
+      <path
+        d={linePath} fill="none" stroke={color} strokeWidth="1.4"
+        strokeLinecap="round" strokeLinejoin="round"
+        pathLength={1}
+        strokeDasharray="1"
+        strokeDashoffset={isActive ? 0 : 1}
+        style={{ transition: `stroke-dashoffset 1.1s cubic-bezier(0.4,0,0.2,1) ${animDelay + 100}ms` }}
+      />
     </svg>
   );
 }
 
-/* ─── Revenue line chart ─── */
-function RevenueChart() {
+/* ─── Animated Revenue Line Chart ─── */
+function RevenueChart({ animate = false }: { animate?: boolean }) {
+  const [drawn, setDrawn] = useState(false);
+  useEffect(() => {
+    if (!animate) return;
+    const t = setTimeout(() => setDrawn(true), 600);
+    return () => clearTimeout(t);
+  }, [animate]);
+
   const data = [1.18, 1.38, 1.28, 1.52, 1.66, 1.58, 1.82, 1.97, 1.88, 2.08, 2.26, 2.45];
   const W = 280; const H = 88;
   const min = 1.0; const max = 2.6;
@@ -140,6 +185,13 @@ function RevenueChart() {
   const linePath = smoothPath(pts);
   const areaPath = `M${pts[0].x},${H} ` + linePath.slice(1) + ` L${pts[pts.length-1].x},${H} Z`;
   const last = pts[pts.length - 1];
+  const isActive = animate ? drawn : true;
+
+  const prevPts = data.map((v, i) => ({
+    x: 6 + (i / (data.length - 1)) * (W - 12),
+    y: H - 4 - ((v * 0.78 - min) / (max - min)) * (H - 12),
+  }));
+
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <svg width="100%" height="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet">
@@ -155,23 +207,35 @@ function RevenueChart() {
           const y = H - 4 - f * (H - 12);
           return <line key={i} x1="6" y1={y} x2={W - 6} y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="1" strokeDasharray="4 4"/>;
         })}
-        {/* Area + line */}
-        <path d={areaPath} fill="url(#rcGrad)"/>
-        <path d={linePath} fill="none" stroke="#06b6d4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" filter="url(#rcGlow)"/>
-        {/* Live endpoint */}
-        <circle cx={last.x} cy={last.y} r="5" fill="#06b6d4" fillOpacity="0.18"/>
-        <circle cx={last.x} cy={last.y} r="2.8" fill="#06b6d4"/>
-        {/* Secondary comparison line (prev year) */}
-        {(() => {
-          const prev = data.map((v, i) => ({
-            x: 6 + (i / (data.length - 1)) * (W - 12),
-            y: H - 4 - ((v * 0.78 - min) / (max - min)) * (H - 12),
-          }));
-          return <path d={smoothPath(prev)} fill="none" stroke="rgba(59,130,246,0.3)" strokeWidth="1.2" strokeDasharray="4 3" strokeLinecap="round"/>;
-        })()}
+        {/* Animated area */}
+        <path d={areaPath} fill="url(#rcGrad)"
+          style={{ opacity: isActive ? 1 : 0, transition: 'opacity 0.8s ease 0.9s' }}
+        />
+        {/* Animated main line */}
+        <path d={linePath} fill="none" stroke="#06b6d4" strokeWidth="1.8"
+          strokeLinecap="round" strokeLinejoin="round" filter="url(#rcGlow)"
+          pathLength={1} strokeDasharray="1"
+          strokeDashoffset={isActive ? 0 : 1}
+          style={{ transition: 'stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1) 0.4s' }}
+        />
+        {/* Animated prev year line */}
+        <path d={smoothPath(prevPts)} fill="none" stroke="rgba(59,130,246,0.3)" strokeWidth="1.2"
+          strokeDasharray="4 3" strokeLinecap="round"
+          pathLength={1}
+          strokeDashoffset={isActive ? 0 : 1}
+          style={{ strokeDasharray: isActive ? '4 3' : '1', transition: 'stroke-dashoffset 1.2s ease 0.6s' }}
+        />
+        {/* Live endpoint dot — pulses */}
+        <circle cx={last.x} cy={last.y} r="6" fill="#06b6d4" fillOpacity="0.15"
+          style={{ opacity: isActive ? 1 : 0, transition: 'opacity 0.4s ease 1.8s' }}
+        />
+        <circle cx={last.x} cy={last.y} r="3" fill="#06b6d4"
+          style={{ opacity: isActive ? 1 : 0, transition: 'opacity 0.4s ease 1.8s' }}
+        />
       </svg>
       {/* Month axis */}
-      <div className="flex justify-between mt-1" style={{ paddingLeft: 6, paddingRight: 6 }}>
+      <div className="flex justify-between mt-1" style={{ paddingLeft: 6, paddingRight: 6,
+        opacity: isActive ? 1 : 0, transition: 'opacity 0.5s ease 1.6s' }}>
         {['J','F','M','A','M','J','J','A','S','O','N','D'].map((m, i) => (
           <span key={i} style={{ fontSize: 7, color: 'rgba(255,255,255,0.2)', fontWeight: 600, letterSpacing: '0.03em' }}>{m}</span>
         ))}
@@ -180,8 +244,24 @@ function RevenueChart() {
   );
 }
 
-/* ─── Donut chart ─── */
-function DonutChart() {
+/* ─── Animated Donut Chart ─── */
+function DonutChart({ animate = false }: { animate?: boolean }) {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    if (!animate) { setProgress(1); return; }
+    const t = setTimeout(() => {
+      let start = 0;
+      const tick = (ts: number) => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / 900, 1);
+        setProgress(1 - Math.pow(1 - p, 2));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, 700);
+    return () => clearTimeout(t);
+  }, [animate]);
+
   const segs = [
     { label: 'Advisory', pct: 38, color: '#06b6d4' },
     { label: 'Audit',    pct: 27, color: '#3b82f6' },
@@ -192,12 +272,13 @@ function DonutChart() {
   const circ = 2 * Math.PI * r;
   let cum = 0;
   const arcs = segs.map(s => {
-    const dash = (s.pct / 100) * circ;
+    const dash = (s.pct / 100) * circ * progress;
     const gap  = circ - dash;
     const rot  = (cum / 100) * 360 - 90;
     cum += s.pct;
     return { ...s, dash, gap, rot };
   });
+
   return (
     <div className="flex items-center gap-2.5 w-full">
       <svg width="76" height="76" viewBox="0 0 76 76" className="flex-shrink-0">
@@ -205,14 +286,15 @@ function DonutChart() {
           <circle key={i} cx={cx} cy={cy} r={r}
             fill="none" stroke={a.color} strokeWidth="9"
             strokeDasharray={`${a.dash} ${a.gap}`}
-            style={{ transform: `rotate(${a.rot}deg)`, transformOrigin: `${cx}px ${cy}px`, transition: 'stroke-dasharray 0.6s ease' }}
+            style={{ transform: `rotate(${a.rot}deg)`, transformOrigin: `${cx}px ${cy}px`, transition: 'stroke-dasharray 0.05s linear' }}
           />
         ))}
         <circle cx={cx} cy={cy} r="20" fill="#091525"/>
         <text x={cx} y={cy - 4} textAnchor="middle" fill="white" fontSize="7.5" fontWeight="700">$2.45M</text>
         <text x={cx} y={cy + 6} textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="5.5">total</text>
       </svg>
-      <div className="flex flex-col gap-1.5 flex-1 min-w-0">
+      <div className="flex flex-col gap-1.5 flex-1 min-w-0"
+        style={{ opacity: progress > 0.5 ? 1 : 0, transition: 'opacity 0.4s ease' }}>
         {segs.map((s, i) => (
           <div key={i} className="flex items-center gap-1.5">
             <div style={{ width: 5, height: 5, borderRadius: '50%', backgroundColor: s.color, flexShrink: 0 }}/>
@@ -225,8 +307,15 @@ function DonutChart() {
   );
 }
 
-/* ─── Cash flow bar chart ─── */
-function BarChart() {
+/* ─── Animated Bar Chart — bars grow from bottom ─── */
+function BarChart({ animate = false }: { animate?: boolean }) {
+  const [grown, setGrown] = useState(false);
+  useEffect(() => {
+    if (!animate) { setGrown(true); return; }
+    const t = setTimeout(() => setGrown(true), 800);
+    return () => clearTimeout(t);
+  }, [animate]);
+
   const data = [
     { q: 'Q1', i: 72, o: 44 },
     { q: 'Q2', i: 85, o: 52 },
@@ -235,20 +324,23 @@ function BarChart() {
   ];
   const maxVal = 100;
   const barH = 48;
+
   return (
     <div>
       <div className="flex items-end gap-1.5" style={{ height: barH }}>
         {data.map((d, i) => (
           <div key={i} className="flex items-end gap-0.5 flex-1">
             <div className="flex-1 rounded-t-[3px]" style={{
-              height: (d.i / maxVal) * barH,
+              height: grown ? (d.i / maxVal) * barH : 0,
               background: 'linear-gradient(180deg, #06b6d4 0%, #0284c7 100%)',
               minWidth: 6,
+              transition: `height 0.7s cubic-bezier(0.4,0,0.2,1) ${i * 80}ms`,
             }}/>
             <div className="flex-1 rounded-t-[3px]" style={{
-              height: (d.o / maxVal) * barH,
+              height: grown ? (d.o / maxVal) * barH : 0,
               background: 'linear-gradient(180deg, #8b5cf6 0%, #6d28d9 100%)',
               minWidth: 6,
+              transition: `height 0.7s cubic-bezier(0.4,0,0.2,1) ${i * 80 + 60}ms`,
             }}/>
           </div>
         ))}
@@ -263,25 +355,39 @@ function BarChart() {
 }
 
 /* ═══════════════════════════════════════════
-   KPI CARD
+   KPI CARD — staggered entrance + live flash
 ═══════════════════════════════════════════ */
-interface KpiProps { title: string; value: string; change: string; icon: React.ReactNode; color: string; spark?: number[]; }
-function KpiCard({ title, value, change, icon, color, spark }: KpiProps) {
+interface KpiProps { title: string; value: string; change: string; icon: React.ReactNode; color: string; spark?: number[]; staggerIdx?: number; animate?: boolean; liveFlash?: boolean; }
+
+function KpiCard({ title, value, change, icon, color, spark, staggerIdx = 0, animate = false, liveFlash = false }: KpiProps) {
+  const delay = staggerIdx * 90;
   return (
     <div className="hd-card relative overflow-hidden flex flex-col gap-1.5 p-2.5 rounded-[14px]"
       style={{
         background: 'linear-gradient(150deg, rgba(15,28,52,0.95) 0%, rgba(9,21,37,0.98) 100%)',
-        border: '1px solid rgba(255,255,255,0.065)',
+        border: `1px solid ${liveFlash ? `${color}50` : 'rgba(255,255,255,0.065)'}`,
+        animation: animate ? `hd-slide-up 0.55s cubic-bezier(0.22,0.68,0,1.2) ${delay}ms both` : 'none',
+        transition: 'border-color 0.4s ease',
       }}>
       {/* Color accent hairline */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent 0%, ${color}55 50%, transparent 100%)` }}/>
+      {/* Live flash shimmer */}
+      {liveFlash && (
+        <div style={{
+          position: 'absolute', inset: 0, borderRadius: 14, pointerEvents: 'none',
+          background: `linear-gradient(90deg, transparent 0%, ${color}08 50%, transparent 100%)`,
+          animation: 'hd-shimmer 0.8s ease-out',
+        }}/>
+      )}
       <div className="flex items-center justify-between">
         <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.08em', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase' }}>{title}</span>
         <div style={{ width: 22, height: 22, borderRadius: 8, background: `${color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', color, flexShrink: 0 }}>
           {icon}
         </div>
       </div>
-      <div style={{ fontSize: 17, fontWeight: 800, color: '#fff', lineHeight: 1, letterSpacing: '-0.02em' }}>{value}</div>
+      <div style={{ fontSize: 17, fontWeight: 800, color: '#fff', lineHeight: 1, letterSpacing: '-0.02em',
+        animation: liveFlash ? 'hd-value-pop 0.4s ease' : 'none',
+      }}>{value}</div>
       <div className="flex items-center gap-1">
         <div style={{ display: 'flex', alignItems: 'center', gap: 2, color: '#10b981' }}>
           <Ic.TrendUp/>
@@ -290,29 +396,40 @@ function KpiCard({ title, value, change, icon, color, spark }: KpiProps) {
         <span style={{ fontSize: 7.5, color: 'rgba(255,255,255,0.2)' }}>vs prior period</span>
       </div>
       <div style={{ marginTop: 2 }}>
-        <Sparkline color={color} values={spark}/>
+        <Sparkline color={color} values={spark} animDelay={delay} animate={animate}/>
       </div>
     </div>
   );
 }
 
 /* ═══════════════════════════════════════════
-   PANEL WRAPPER (reusable card shell)
+   PANEL WRAPPER
 ═══════════════════════════════════════════ */
-function Panel({ label, accent, children, style }: {
-  label: string; accent?: string; children: React.ReactNode; style?: React.CSSProperties;
+function Panel({ label, accent, children, style, animate = false, animDelay = 0 }: {
+  label: string; accent?: string; children: React.ReactNode; style?: React.CSSProperties; animate?: boolean; animDelay?: number;
 }) {
   return (
     <div className="hd-card overflow-hidden flex flex-col gap-1.5 p-2.5 rounded-[14px]"
       style={{
         background: 'linear-gradient(150deg, rgba(15,28,52,0.95) 0%, rgba(9,21,37,0.98) 100%)',
         border: `1px solid ${accent ? `${accent}20` : 'rgba(255,255,255,0.065)'}`,
+        animation: animate ? `hd-slide-up 0.55s cubic-bezier(0.22,0.68,0,1.2) ${animDelay}ms both` : 'none',
         ...style,
       }}>
       <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', color: accent || 'rgba(255,255,255,0.3)', textTransform: 'uppercase', marginBottom: 2 }}>{label}</div>
       {children}
     </div>
   );
+}
+
+/* ═══════════════════════════════════════════
+   LIVE COUNTER DISPLAY
+═══════════════════════════════════════════ */
+function LiveValue({ prefix = '', suffix = '', target, decimals = 0, delay = 0, animate = false }: {
+  prefix?: string; suffix?: string; target: number; decimals?: number; delay?: number; animate?: boolean;
+}) {
+  const val = useCounter(target, 1400, delay, animate);
+  return <>{prefix}{val.toFixed(decimals)}{suffix}</>;
 }
 
 /* ═══════════════════════════════════════════
@@ -333,25 +450,45 @@ export const HeroDashboard: React.FC = () => {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
+  /* mount trigger for entrance animations */
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 120);
+    return () => clearTimeout(t);
+  }, []);
+
+  /* live data simulation — ticks every 4.5 seconds */
+  const [liveTick, setLiveTick] = useState(0);
+  const [flashIdx, setFlashIdx] = useState(-1);
+  const [liveRevenue, setLiveRevenue] = useState(2.45);
+  const [liveClients, setLiveClients] = useState(128);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveTick(t => t + 1);
+      const idx = Math.floor(Math.random() * 4);
+      setFlashIdx(idx);
+      if (idx === 0) setLiveRevenue(v => parseFloat((v + (Math.random() * 0.04 - 0.01)).toFixed(2)));
+      if (idx === 1) setLiveClients(v => v + (Math.random() > 0.4 ? 1 : 0));
+      setTimeout(() => setFlashIdx(-1), 1000);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
+
   /* ── data ── */
-  const kpis: KpiProps[] = [
-    { title: 'Total Revenue',    value: '$2.45M', change: '+18.2%', color: '#06b6d4',
-      icon: <Ic.Dollar/>,  spark: [28,38,33,50,44,60,56,72,66,80,75,92] },
-    { title: 'Active Clients',   value: '128',    change: '+12',    color: '#3b82f6',
-      icon: <Ic.Users/>,   spark: [50,55,48,60,58,65,62,68,70,74,72,80] },
-    { title: 'In Progress',      value: '24',     change: '+3',     color: '#8b5cf6',
-      icon: <Ic.File/>,    spark: [20,24,22,28,25,30,28,32,30,34,32,38] },
-    { title: 'Profit Margin',    value: '32.6%',  change: '+2.1%',  color: '#10b981',
-      icon: <Ic.Chart/>,   spark: [55,58,54,60,57,62,60,64,62,66,64,70] },
+  const kpis = [
+    { title: 'Total Revenue',  change: '+18.2%', color: '#06b6d4', icon: <Ic.Dollar/>,  spark: [28,38,33,50,44,60,56,72,66,80,75,92] },
+    { title: 'Active Clients', change: '+12',    color: '#3b82f6', icon: <Ic.Users/>,   spark: [50,55,48,60,58,65,62,68,70,74,72,80] },
+    { title: 'In Progress',    change: '+3',      color: '#8b5cf6', icon: <Ic.File/>,    spark: [20,24,22,28,25,30,28,32,30,34,32,38] },
+    { title: 'Profit Margin',  change: '+2.1%',  color: '#10b981', icon: <Ic.Chart/>,   spark: [55,58,54,60,57,62,60,64,62,66,64,70] },
   ];
 
   const navItems = [
-    { label: 'Overview',   icon: <Ic.Grid/>,  active: true  },
-    { label: 'Analytics',  icon: <Ic.Wave/>  },
-    { label: 'Clients',    icon: <Ic.Users/> },
-    { label: 'Projects',   icon: <Ic.File/>  },
-    { label: 'Reports',    icon: <Ic.Chart/> },
-    { label: 'AI Insights',icon: <Ic.Spark/> },
+    { label: 'Overview',    icon: <Ic.Grid/>,  active: true  },
+    { label: 'Analytics',   icon: <Ic.Wave/>  },
+    { label: 'Clients',     icon: <Ic.Users/> },
+    { label: 'Projects',    icon: <Ic.File/>  },
+    { label: 'Reports',     icon: <Ic.Chart/> },
+    { label: 'AI Insights', icon: <Ic.Spark/> },
   ];
 
   const clients = [
@@ -367,16 +504,33 @@ export const HeroDashboard: React.FC = () => {
     { icon: <Ic.Shield/>,  color: '#10b981', text: 'Profit margin 32.6% — 8pts above industry benchmark' },
   ];
 
+  /* KPI display values (live-updated for first two) */
+  const kpiValues = [
+    `$${liveRevenue.toFixed(2)}M`,
+    `${liveClients}`,
+    '24',
+    '32.6%',
+  ];
+
   return (
     <>
       {/* ── Injected keyframes ── */}
       <style>{`
-        @keyframes hd-fadein  { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
-        @keyframes hd-pulse   { 0%,100% { opacity:.45; transform:scale(1); } 50% { opacity:1; transform:scale(1.15); } }
-        @keyframes hd-scanline { from { transform:translateY(-100%); } to { transform:translateY(100%); } }
-        .hd-root { animation: hd-fadein 0.85s cubic-bezier(.22,.68,0,1.2) both; }
-        .hd-pulse { animation: hd-pulse 2.2s ease-in-out infinite; }
-        .hd-card  { transition: box-shadow 0.25s ease, transform 0.25s ease; }
+        @keyframes hd-fadein    { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes hd-slide-up  { from { opacity:0; transform:translateY(16px) scale(0.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+        @keyframes hd-slide-right { from { opacity:0; transform:translateX(-18px); } to { opacity:1; transform:translateX(0); } }
+        @keyframes hd-slide-left  { from { opacity:0; transform:translateX(22px); } to { opacity:1; transform:translateX(0); } }
+        @keyframes hd-slide-down  { from { opacity:0; transform:translateY(-14px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes hd-scale-in  { from { opacity:0; transform:scale(0.88); } to { opacity:1; transform:scale(1); } }
+        @keyframes hd-pulse     { 0%,100% { opacity:.45; transform:scale(1); } 50% { opacity:1; transform:scale(1.18); } }
+        @keyframes hd-shimmer   { 0% { transform:translateX(-100%); opacity:0; } 30% { opacity:1; } 100% { transform:translateX(200%); opacity:0; } }
+        @keyframes hd-value-pop { 0% { transform:scale(1); } 40% { transform:scale(1.08); color:#10b981; } 100% { transform:scale(1); } }
+        @keyframes hd-scanline  { 0% { transform:translateY(-8px); opacity:0; } 10% { opacity:1; } 90% { opacity:0.6; } 100% { transform:translateY(100%); opacity:0; } }
+        @keyframes hd-glow-ring { 0%,100% { box-shadow:0 0 0 0 rgba(6,182,212,0.4); } 50% { box-shadow:0 0 0 4px rgba(6,182,212,0.12); } }
+        @keyframes hd-topbar    { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+        .hd-root   { animation: hd-fadein 0.85s cubic-bezier(.22,.68,0,1.2) both; }
+        .hd-pulse  { animation: hd-pulse 2.2s ease-in-out infinite; }
+        .hd-card   { transition: box-shadow 0.25s ease, transform 0.25s ease; }
         .hd-card:hover { box-shadow: 0 0 20px rgba(6,182,212,0.10); transform: translateY(-1px); }
         .hd-nav-item { transition: background 0.2s, color 0.2s; }
       `}</style>
@@ -419,7 +573,7 @@ export const HeroDashboard: React.FC = () => {
             zIndex: 1,
           }}
         >
-          {/* Subtle grid watermark (matches hero section grid) */}
+          {/* Subtle grid watermark */}
           <div style={{
             position: 'absolute', inset: 0, pointerEvents: 'none',
             backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
@@ -427,12 +581,21 @@ export const HeroDashboard: React.FC = () => {
             opacity: 0.018,
             zIndex: 0,
           }}/>
-          {/* Top radial glow (same as hero banner) */}
+          {/* Top radial glow */}
           <div style={{
             position: 'absolute', top: 0, left: 0, width: 320, height: 200, pointerEvents: 'none',
             background: 'radial-gradient(ellipse at 0% 0%, rgba(6,182,212,0.1) 0%, transparent 65%)',
             zIndex: 0,
           }}/>
+          {/* Animated scanline sweep */}
+          {mounted && (
+            <div style={{
+              position: 'absolute', left: 0, right: 0, height: 1, pointerEvents: 'none',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(6,182,212,0.35) 40%, rgba(59,130,246,0.35) 60%, transparent 100%)',
+              animation: 'hd-scanline 3.5s cubic-bezier(0.4,0,0.6,1) 0.5s both',
+              zIndex: 10,
+            }}/>
+          )}
 
           {/* ── SIDEBAR ── */}
           <div style={{
@@ -441,13 +604,15 @@ export const HeroDashboard: React.FC = () => {
             padding: '14px 0', gap: 2,
             background: 'rgba(6,182,212,0.025)',
             borderRight: '1px solid rgba(255,255,255,0.045)',
+            animation: mounted ? 'hd-slide-right 0.55s cubic-bezier(0.22,0.68,0,1.2) 0.05s both' : 'none',
           }}>
-            {/* Logo hex */}
+            {/* Logo icon */}
             <div style={{
               width: 28, height: 28, borderRadius: 9, marginBottom: 10, flexShrink: 0,
-              background: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
-              boxShadow: '0 0 14px rgba(6,182,212,0.5)',
+              background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+              boxShadow: '0 0 14px rgba(59,130,246,0.5)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
+              animation: 'hd-glow-ring 2.5s ease-in-out infinite',
             }}>
               <svg viewBox="0 0 14 14" fill="white" width={12} height={12}>
                 <polygon points="7,1 13,4.3 13,9.7 7,13 1,9.7 1,4.3" fillOpacity="0.95"/>
@@ -457,6 +622,8 @@ export const HeroDashboard: React.FC = () => {
             {navItems.map((item, i) => (
               <div key={i} className="hd-nav-item" style={{
                 position: 'relative', width: '100%', display: 'flex', justifyContent: 'center', padding: '4px 0',
+                animation: mounted ? `hd-slide-right 0.4s ease ${i * 55 + 150}ms both` : 'none',
+                opacity: mounted ? 1 : 0,
               }}>
                 {item.active && (
                   <div style={{
@@ -483,12 +650,14 @@ export const HeroDashboard: React.FC = () => {
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8, padding: '12px 12px 12px 10px', zIndex: 1, minWidth: 0 }}>
 
             {/* ─── TOP BAR ─── */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 2 }}>
-              {/* Suvicorp branding */}
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 2,
+              animation: mounted ? 'hd-topbar 0.45s ease 0.1s both' : 'none',
+            }}>
+              {/* Suvicorp branding — matches navbar exactly: Suvi=blue, corp=white */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <span style={{ fontSize: 11, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>
-                  Suvi
-                  <span style={{ color: '#06b6d4' }}>corp</span>
+                <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 }}>
+                  <span style={{ color: '#3b82f6' }}>Suvi</span><span style={{ color: '#ffffff' }}>corp</span>
                 </span>
                 <div style={{
                   fontSize: 7, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
@@ -498,38 +667,17 @@ export const HeroDashboard: React.FC = () => {
               </div>
               {/* Right controls */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                {/* Search */}
-                <div style={{
-                  width: 22, height: 22, borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  background: 'rgba(255,255,255,0.045)', color: 'rgba(255,255,255,0.4)', cursor: 'pointer',
-                }}>
+                <div style={{ width: 22, height: 22, borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.045)', color: 'rgba(255,255,255,0.4)', cursor: 'pointer' }}>
                   <Ic.Search/>
                 </div>
-                {/* Notification dot */}
                 <div style={{ position: 'relative' }}>
-                  <div style={{
-                    width: 22, height: 22, borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: 'rgba(255,255,255,0.045)', color: 'rgba(255,255,255,0.4)', cursor: 'pointer',
-                  }}>
+                  <div style={{ width: 22, height: 22, borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.045)', color: 'rgba(255,255,255,0.4)', cursor: 'pointer' }}>
                     <Ic.Bell/>
                   </div>
-                  <div className="hd-pulse" style={{
-                    position: 'absolute', top: 4, right: 4, width: 5, height: 5, borderRadius: '50%',
-                    background: '#f59e0b', border: '1px solid #091525',
-                  }}/>
+                  <div className="hd-pulse" style={{ position: 'absolute', top: 4, right: 4, width: 5, height: 5, borderRadius: '50%', background: '#f59e0b', border: '1px solid #091525' }}/>
                 </div>
-                {/* Avatar */}
-                <div style={{
-                  width: 22, height: 22, borderRadius: 8, flexShrink: 0,
-                  background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 8, fontWeight: 800, color: '#fff',
-                }}>JB</div>
-                {/* Live indicator */}
-                <div style={{
-                  display: 'flex', alignItems: 'center', gap: 4, padding: '3px 7px',
-                  borderRadius: 20, background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.22)',
-                }}>
+                <div style={{ width: 22, height: 22, borderRadius: 8, flexShrink: 0, background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 8, fontWeight: 800, color: '#fff' }}>JB</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '3px 7px', borderRadius: 20, background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.22)' }}>
                   <div className="hd-pulse" style={{ width: 5, height: 5, borderRadius: '50%', background: '#10b981' }}/>
                   <span style={{ fontSize: 7.5, fontWeight: 700, color: '#10b981', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Live</span>
                 </div>
@@ -537,39 +685,51 @@ export const HeroDashboard: React.FC = () => {
             </div>
 
             {/* Page label */}
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 0 }}>
+            <div style={{
+              display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 0,
+              animation: mounted ? 'hd-topbar 0.45s ease 0.18s both' : 'none',
+            }}>
               <span style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.8)', letterSpacing: '-0.01em' }}>Overview</span>
               <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.25)', fontWeight: 500 }}>· Financial Dashboard · FY 2024</span>
             </div>
 
             {/* ── KPI row (2×2) ── */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 7 }}>
-              {kpis.map((k, i) => <KpiCard key={i} {...k}/>)}
+              {kpis.map((k, i) => (
+                <KpiCard key={i} {...k}
+                  value={kpiValues[i]}
+                  staggerIdx={i}
+                  animate={mounted}
+                  liveFlash={flashIdx === i}
+                />
+              ))}
             </div>
 
             {/* ── Middle: Revenue trend + Donut ── */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 152px', gap: 7 }}>
-              <Panel label="Revenue Trend" accent="#06b6d4" style={{ paddingBottom: 6 }}>
+              <Panel label="Revenue Trend" accent="#06b6d4" style={{ paddingBottom: 6 }} animate={mounted} animDelay={360}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>$2.45M</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>
+                    ${liveRevenue.toFixed(2)}M
+                  </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                       <div style={{ width: 16, height: 2, borderRadius: 2, background: '#06b6d4' }}/>
                       <span style={{ fontSize: 7, color: 'rgba(255,255,255,0.35)', fontWeight: 600 }}>2024</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                      <div style={{ width: 16, height: 2, borderRadius: 2, background: 'rgba(59,130,246,0.4)', backgroundImage: 'repeating-linear-gradient(90deg,transparent,transparent 3px,rgba(255,255,255,0) 3px,rgba(255,255,255,0) 6px)' }}/>
+                      <div style={{ width: 16, height: 2, borderRadius: 2, background: 'rgba(59,130,246,0.4)' }}/>
                       <span style={{ fontSize: 7, color: 'rgba(255,255,255,0.25)', fontWeight: 600 }}>2023</span>
                     </div>
                   </div>
                 </div>
                 <div style={{ height: 92 }}>
-                  <RevenueChart/>
+                  <RevenueChart animate={mounted}/>
                 </div>
               </Panel>
 
-              <Panel label="Breakdown">
-                <DonutChart/>
+              <Panel label="Breakdown" animate={mounted} animDelay={440}>
+                <DonutChart animate={mounted}/>
               </Panel>
             </div>
 
@@ -577,17 +737,17 @@ export const HeroDashboard: React.FC = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 7 }}>
 
               {/* Top Clients */}
-              <Panel label="Top Clients">
+              <Panel label="Top Clients" animate={mounted} animDelay={520}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                   {clients.map((c, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 5, justifyContent: 'space-between' }}>
+                    <div key={i} style={{
+                      display: 'flex', alignItems: 'center', gap: 5, justifyContent: 'space-between',
+                      opacity: mounted ? 1 : 0,
+                      transform: mounted ? 'none' : 'translateX(-6px)',
+                      transition: `opacity 0.4s ease ${560 + i * 70}ms, transform 0.4s ease ${560 + i * 70}ms`,
+                    }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0, flex: 1 }}>
-                        <div style={{
-                          width: 16, height: 16, borderRadius: 5, flexShrink: 0,
-                          background: `${c.c}20`, color: c.c,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          fontSize: 7, fontWeight: 800,
-                        }}>{c.name[0]}</div>
+                        <div style={{ width: 16, height: 16, borderRadius: 5, flexShrink: 0, background: `${c.c}20`, color: c.c, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 7, fontWeight: 800 }}>{c.name[0]}</div>
                         <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.55)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{c.name}</span>
                       </div>
                       <span style={{ fontSize: 8, fontWeight: 700, color: '#10b981', flexShrink: 0 }}>{c.g}</span>
@@ -597,23 +757,20 @@ export const HeroDashboard: React.FC = () => {
               </Panel>
 
               {/* AI Insights */}
-              <Panel label="AI Insights" accent="#06b6d4">
+              <Panel label="AI Insights" accent="#06b6d4" animate={mounted} animDelay={580}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4, marginTop: -2 }}>
-                  <div className="hd-pulse" style={{
-                    width: 10, height: 10, borderRadius: '50%', flexShrink: 0,
-                    background: 'radial-gradient(circle, #06b6d4, #3b82f6)',
-                    boxShadow: '0 0 8px rgba(6,182,212,0.7)',
-                  }}/>
+                  <div className="hd-pulse" style={{ width: 10, height: 10, borderRadius: '50%', flexShrink: 0, background: 'radial-gradient(circle, #06b6d4, #3b82f6)', boxShadow: '0 0 8px rgba(6,182,212,0.7)' }}/>
                   <span style={{ fontSize: 7.5, color: '#06b6d4', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase' }}>3 New Findings</span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                   {insights.map((ins, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 5 }}>
-                      <div style={{
-                        width: 16, height: 16, borderRadius: 5, flexShrink: 0, marginTop: 1,
-                        background: `${ins.color}18`, color: ins.color,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      }}>
+                    <div key={i} style={{
+                      display: 'flex', alignItems: 'flex-start', gap: 5,
+                      opacity: mounted ? 1 : 0,
+                      transform: mounted ? 'none' : 'translateY(6px)',
+                      transition: `opacity 0.4s ease ${620 + i * 90}ms, transform 0.4s ease ${620 + i * 90}ms`,
+                    }}>
+                      <div style={{ width: 16, height: 16, borderRadius: 5, flexShrink: 0, marginTop: 1, background: `${ins.color}18`, color: ins.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         {ins.icon}
                       </div>
                       <p style={{ fontSize: 7.5, color: 'rgba(255,255,255,0.45)', lineHeight: 1.4, margin: 0, flex: 1 }}>{ins.text}</p>
@@ -623,8 +780,8 @@ export const HeroDashboard: React.FC = () => {
               </Panel>
 
               {/* Cash Flow */}
-              <Panel label="Cash Flow">
-                <BarChart/>
+              <Panel label="Cash Flow" animate={mounted} animDelay={640}>
+                <BarChart animate={mounted}/>
                 <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
                   {[['#06b6d4','Inflow'],['#8b5cf6','Outflow']].map(([c, l]) => (
                     <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
@@ -653,6 +810,8 @@ export const HeroDashboard: React.FC = () => {
           boxShadow: '0 8px 28px rgba(0,0,0,0.45), 0 0 14px rgba(16,185,129,0.1)',
           backdropFilter: 'blur(12px)',
           zIndex: 10,
+          animation: mounted ? 'hd-slide-down 0.5s cubic-bezier(0.22,0.68,0,1.2) 0.25s both' : 'none',
+          opacity: 0,
         }}>
           <div className="hd-pulse" style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981' }}/>
           <span style={{ fontSize: 9, fontWeight: 700, color: '#10b981', letterSpacing: '0.04em' }}>AI Active</span>
@@ -669,12 +828,19 @@ export const HeroDashboard: React.FC = () => {
           boxShadow: '0 8px 28px rgba(0,0,0,0.5), 0 0 16px rgba(59,130,246,0.08)',
           backdropFilter: 'blur(12px)',
           zIndex: 10, minWidth: 130,
+          animation: mounted ? 'hd-slide-up 0.5s cubic-bezier(0.22,0.68,0,1.2) 0.35s both' : 'none',
+          opacity: 0,
         }}>
           <div style={{ fontSize: 7.5, color: 'rgba(255,255,255,0.28)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 5 }}>Automation Rate</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 16, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>94.7%</span>
             <div style={{ flex: 1, height: 4, borderRadius: 4, background: 'rgba(255,255,255,0.07)', overflow: 'hidden', minWidth: 60 }}>
-              <div style={{ height: '100%', width: '94.7%', borderRadius: 4, background: 'linear-gradient(90deg, #06b6d4, #3b82f6)' }}/>
+              <div style={{
+                height: '100%', borderRadius: 4,
+                background: 'linear-gradient(90deg, #06b6d4, #3b82f6)',
+                width: mounted ? '94.7%' : '0%',
+                transition: 'width 1.2s cubic-bezier(0.4,0,0.2,1) 0.8s',
+              }}/>
             </div>
           </div>
         </div>
@@ -689,6 +855,8 @@ export const HeroDashboard: React.FC = () => {
           boxShadow: '0 6px 20px rgba(0,0,0,0.45), 0 0 12px rgba(6,182,212,0.08)',
           backdropFilter: 'blur(12px)',
           zIndex: 10,
+          animation: mounted ? 'hd-slide-left 0.5s cubic-bezier(0.22,0.68,0,1.2) 0.45s both' : 'none',
+          opacity: 0,
         }}>
           <div style={{ color: '#10b981', display: 'flex' }}><Ic.TrendUp/></div>
           <span style={{ fontSize: 9, fontWeight: 700, color: '#10b981' }}>+18.2%</span>
