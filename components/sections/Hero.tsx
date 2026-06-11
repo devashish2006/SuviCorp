@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { SectionTag, TeamProfileModal } from '../ui';
 import type { TeamMember } from '../ui';
+import { HeroDashboard } from './HeroDashboard';
 
 const stats = [
   { icon: 'https://cdn-icons-png.flaticon.com/512/3602/3602145.png', title: '15+ Years', label: 'Experience from Top-Tier Firms' },
@@ -199,53 +200,63 @@ export const Hero: React.FC = () => {
             />
           </div>
 
-          {/* Content — text only, left aligned */}
-          <div className="max-w-7xl mx-auto px-8 md:px-12 relative z-10 min-h-[65vh] flex items-center">
-            <div className="flex flex-col justify-center py-12 md:py-16 max-w-[700px] animate-fadeUp">
-              <SectionTag variant="teal">Strategic Technology Hub</SectionTag>
+          {/* Content — two-column: text left, dashboard right */}
+          <div className="w-full mx-auto px-6 md:px-10 relative z-10 min-h-[65vh] flex items-center">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-8 xl:gap-12 py-12 md:py-16">
 
-              <h1 className="font-playfair text-4xl md:text-6xl lg:text-[4rem] font-bold text-white leading-[1.1] mt-6 mb-6">
-                Your{' '}
-                <em
-                  className="not-italic"
-                  style={{ fontFamily: 'Playfair Display, Georgia, serif', fontStyle: 'italic', fontWeight: 300, opacity: 0.92 }}
-                >
-                  Strategic Hub
-                </em>
-                <br />
-                for{' '}
-                <span className="text-blue-accent font-bold">
-                  Accounting Excellence.
-                </span>
-              </h1>
+              {/* ── Left: text + CTA ── */}
+              <div className="flex flex-col justify-center animate-fadeUp">
+                <SectionTag variant="teal">Strategic Technology Hub</SectionTag>
 
-              <p className="text-white/70 md:text-lg leading-relaxed max-w-[520px] mb-10 font-light">
-                Suvicorp empowers accounting and consulting firms with
-                elite technology ecosystems and specialized SAAS/AI solutions to
-                deliver transformative financial outcomes without the overhead.
-              </p>
-
-              <div>
-                <a
-                  href="#services"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-blue-accent hover:bg-blue-600 transition-all text-white font-medium rounded-full shadow-lg shadow-blue-accent/30 hover:scale-105 duration-200"
-                >
-                  EXPLORE PARTNERSHIP
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <h1 className="font-playfair text-4xl md:text-6xl lg:text-[4rem] font-bold text-white leading-[1.1] mt-6 mb-6">
+                  Your{' '}
+                  <em
+                    className="not-italic"
+                    style={{ fontFamily: 'Playfair Display, Georgia, serif', fontStyle: 'italic', fontWeight: 300, opacity: 0.92 }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
+                    Strategic Hub
+                  </em>
+                  <br />
+                  for{' '}
+                  <span className="text-blue-accent font-bold">
+                    Accounting Excellence.
+                  </span>
+                </h1>
+
+                <p className="text-white/70 md:text-lg leading-relaxed max-w-[480px] mb-10 font-light">
+                  Suvicorp empowers accounting and consulting firms with
+                  elite technology ecosystems and specialized SAAS/AI solutions to
+                  deliver transformative financial outcomes without the overhead.
+                </p>
+
+                <div>
+                  <a
+                    href="#services"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-blue-accent hover:bg-blue-600 transition-all text-white font-medium rounded-full shadow-lg shadow-blue-accent/30 hover:scale-105 duration-200"
+                  >
+                    EXPLORE PARTNERSHIP
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </div>
+
+              {/* ── Right: Dashboard visual ── */}
+              <div className="hidden lg:flex justify-end items-center overflow-visible">
+                <HeroDashboard />
+              </div>
+
             </div>
           </div>
 
