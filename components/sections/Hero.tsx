@@ -177,7 +177,7 @@ const teamMembers: TeamMember[] = [
     id: 'amit',
     name: 'Amit',
     role: 'Technology Partnerships Lead',
-    image: '/img2.png',
+    image: '/amitPosture-removebg-preview.png',
     imageOffset: '-40px',
     imageScale: '88%',
     tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
