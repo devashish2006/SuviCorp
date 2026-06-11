@@ -24,8 +24,8 @@ export default {
         },
       },
       fontFamily: {
-        playfair: ['Playfair Display', 'serif'],
-        sans: ['DM Sans', 'sans-serif'],
+        playfair: ['Cambria', 'Georgia', 'Times New Roman', 'serif'],
+        sans: ['Cambria', 'Georgia', 'Times New Roman', 'serif'],
       },
       backgroundImage: {
         'hero-gradient': 'linear-gradient(135deg, #0a1628 0%, #112240 50%, #0d2845 100%)',
