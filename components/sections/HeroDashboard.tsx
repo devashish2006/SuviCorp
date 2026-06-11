@@ -94,31 +94,6 @@ function smoothPath(pts: {x: number; y: number}[]): string {
   return d;
 }
 
-/* ═══════════════════════════════════════════
-   COUNTER HOOK — smooth easeOutCubic count-up
-═══════════════════════════════════════════ */
-function useCounter(target: number, duration = 1400, delay = 0, active = true) {
-  const [val, setVal] = useState(0);
-  const rafRef = useRef<number>(0);
-  useEffect(() => {
-    if (!active) return;
-    let timer: ReturnType<typeof setTimeout>;
-    timer = setTimeout(() => {
-      let startTime = 0;
-      const tick = (ts: number) => {
-        if (!startTime) startTime = ts;
-        const p = Math.min((ts - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        setVal(eased * target);
-        if (p < 1) rafRef.current = requestAnimationFrame(tick);
-        else setVal(target);
-      };
-      rafRef.current = requestAnimationFrame(tick);
-    }, delay);
-    return () => { clearTimeout(timer); cancelAnimationFrame(rafRef.current); };
-  }, [target, duration, delay, active]);
-  return val;
-}
 
 /* ─── Animated Sparkline — draws itself in ─── */
 function Sparkline({ color = '#06b6d4', values = [30,45,38,55,48,62,58,72,78,92], animDelay = 0, animate = false }: {
@@ -422,15 +397,7 @@ function Panel({ label, accent, children, style, animate = false, animDelay = 0 
   );
 }
 
-/* ═══════════════════════════════════════════
-   LIVE COUNTER DISPLAY
-═══════════════════════════════════════════ */
-function LiveValue({ prefix = '', suffix = '', target, decimals = 0, delay = 0, animate = false }: {
-  prefix?: string; suffix?: string; target: number; decimals?: number; delay?: number; animate?: boolean;
-}) {
-  const val = useCounter(target, 1400, delay, animate);
-  return <>{prefix}{val.toFixed(decimals)}{suffix}</>;
-}
+
 
 /* ═══════════════════════════════════════════
    MAIN EXPORTED COMPONENT
@@ -458,7 +425,7 @@ export const HeroDashboard: React.FC = () => {
   }, []);
 
   /* live data simulation — ticks every 4.5 seconds */
-  const [liveTick, setLiveTick] = useState(0);
+  const [, setLiveTick] = useState(0);
   const [flashIdx, setFlashIdx] = useState(-1);
   const [liveRevenue, setLiveRevenue] = useState(2.45);
   const [liveClients, setLiveClients] = useState(128);
