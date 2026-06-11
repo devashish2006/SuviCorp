@@ -5,7 +5,7 @@ import { SectionTag, SectionTitle } from '../ui';
 
 interface ServiceContent {
   id: string;
-  icon: string;
+  icon: React.ReactNode;
   title: string;
   description: string;
   points: string[];

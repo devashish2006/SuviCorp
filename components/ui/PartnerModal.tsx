@@ -176,7 +176,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
               </div>
               <div>
                 <p className="text-white font-semibold text-lg">Message Sent!</p>
-                <p className="text-white/50 text-sm mt-1">We'll be in touch very soon.</p>
+                <p className="text-white/50 text-sm mt-1">We&apos;ll be in touch very soon.</p>
               </div>
             </div>
           ) : (
