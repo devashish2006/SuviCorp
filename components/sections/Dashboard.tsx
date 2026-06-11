@@ -2,10 +2,47 @@ import React from 'react';
 import { SectionTag, SectionTitle, Button } from '../ui';
 
 const values = [
-  { icon: '⚡', title: 'Live Data Sync', subtitle: 'Updates in real time' },
-  { icon: '🔒', title: 'Bank-Grade Security', subtitle: 'SOC 2 Type II certified' },
-  { icon: '📱', title: 'Mobile Ready', subtitle: 'Access anywhere' },
-  { icon: '📤', title: 'Board Reports', subtitle: 'One-click PDF export' },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
+    title: 'Live Data Sync',
+    subtitle: 'Updates in real time',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      </svg>
+    ),
+    title: 'Bank-Grade Security',
+    subtitle: 'SOC 2 Type II certified',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+        <line x1="12" y1="18" x2="12.01" y2="18" />
+      </svg>
+    ),
+    title: 'Mobile Ready',
+    subtitle: 'Access anywhere',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="12" y1="18" x2="12" y2="12" />
+        <line x1="9" y1="15" x2="15" y2="15" />
+      </svg>
+    ),
+    title: 'Board Reports',
+    subtitle: 'One-click PDF export',
+  },
 ];
 
 export const Dashboard: React.FC = () => {
@@ -24,7 +61,7 @@ export const Dashboard: React.FC = () => {
           <div className="grid grid-cols-2 gap-6 mb-8">
             {values.map((value, index) => (
               <div key={index} className="flex items-start gap-3">
-                <div className="w-9 h-9 bg-blue-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 text-sm">
+                <div className="w-9 h-9 bg-blue-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 text-blue-accent">
                   {value.icon}
                 </div>
                 <div>

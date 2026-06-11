@@ -14,7 +14,11 @@ interface ServiceContent {
 const services: ServiceContent[] = [
   {
     id: 'transformation',
-    icon: '🚀',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
     title: 'Financial Transformation Enablement',
     description: 'We provide the tools and platforms that power digital transformation for your clients. Our solutions automate complex processes, deliver AI-driven insights, and cut delivery timelines dramatically, increasing your capacity and profitability.',
     points: [
@@ -28,7 +32,12 @@ const services: ServiceContent[] = [
   },
   {
     id: 'bespoke',
-    icon: '🛠️',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
     title: 'Bespoke SaaS Solution Development',
     description: 'Have a unique challenge or a visionary product idea? Our team specializes in building custom, cloud-based software tools tailored to your specific needs. From consolidation engines to automated financial reporting dashboards, we transform your requirements into powerful, secure, and scalable applications.',
     points: [
@@ -42,7 +51,14 @@ const services: ServiceContent[] = [
   },
   {
     id: 'expert',
-    icon: '👥',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
     title: 'The Dedicated Expert Hub',
     description: 'Access a curated ecosystem of technology professionals, each a specialist in financial systems, data analytics, and software development. This is not an outsourced team; it is an extension of your own, working collaboratively to bring your projects to life with precision and expertise.',
     points: [
@@ -56,7 +72,12 @@ const services: ServiceContent[] = [
   },
   {
     id: 'knowledge',
-    icon: '🧠',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+      </svg>
+    ),
     title: 'The SUVI Knowledge Hub',
     description: 'Technology is only half the equation. The other half? The people who wield it. The SUVI Knowledge Hub connects you with practitioners who\'ve lived through thousands of closes and navigated countless complex accounting scenarios. We transfer that wisdom directly to your team—through training on recent accounting changes, deep dives into complex topics, and battle-tested best practices that transform how you run financial processes. Because true capability isn\'t just having the right tools. It\'s knowing exactly how to use them.',
     points: [
@@ -70,7 +91,12 @@ const services: ServiceContent[] = [
   },
   {
     id: 'innovation',
-    icon: '🧪',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+      </svg>
+    ),
     title: 'Innovation Lab',
     description: 'The SUVI Innovation Lab is where financial intelligence becomes tangible. Where abstract problems meet concrete solutions. Consider us your research and development arm, where we build the tools that level the playing field.',
     points: [
@@ -108,13 +134,14 @@ export const Services: React.FC = () => {
             <button
               key={service.id}
               onClick={() => setActiveService(service.id)}
-              className={`px-6 py-4 rounded-lg cursor-pointer border transition-all duration-200 text-left font-medium ${
+              className={`px-6 py-4 rounded-lg cursor-pointer border transition-all duration-200 text-left font-medium flex items-center gap-3 ${
                 activeService === service.id
                   ? 'bg-blue-accent/15 border-blue-accent/30 text-teal'
                   : 'border-transparent text-white/55 hover:bg-blue-accent/15 hover:border-blue-accent/30 hover:text-white'
               }`}
             >
-              {service.icon} {service.title.split(' ')[0]} {service.title.split(' ')[1]}
+              <span className="opacity-80">{service.icon}</span>
+              {service.title.split(' ')[0]} {service.title.split(' ')[1]}
             </button>
           ))}
         </div>

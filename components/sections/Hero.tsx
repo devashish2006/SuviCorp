@@ -4,13 +4,52 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { SectionTag, TeamProfileModal } from '../ui';
 import type { TeamMember } from '../ui';
-import { HeroDashboard } from './HeroDashboard';
 
 const stats = [
-  { icon: 'https://cdn-icons-png.flaticon.com/512/3602/3602145.png', title: '15+ Years', label: 'Experience from Top-Tier Firms' },
-  { icon: 'https://cdn-icons-png.flaticon.com/512/2921/2921222.png', title: '70% Faster', label: 'Deliverable Generation' },
-  { icon: 'https://cdn-icons-png.flaticon.com/512/610/610413.png', title: 'Big 4 Caliber', label: 'Technology Solutions' },
-  { icon: 'https://cdn-icons-png.flaticon.com/512/751/751381.png', title: 'Global', label: 'Strategic Partnerships Worldwide' },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-accent">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+        <path d="M17 3.34A9 9 0 0 1 21 12" />
+        <path d="M7 3.34A9 9 0 0 0 3 12" />
+      </svg>
+    ),
+    title: '15+ Years',
+    label: 'Experience from Top-Tier Firms',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-accent">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
+    title: '70% Faster',
+    label: 'Deliverable Generation',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-accent">
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+        <path d="M7 8h.01M11 8h6" />
+        <path d="M7 12h.01M11 12h6" />
+      </svg>
+    ),
+    title: 'Big 4 Caliber',
+    label: 'Technology Solutions',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-accent">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M2 12h20" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+    ),
+    title: 'Global',
+    label: 'Strategic Partnerships Worldwide',
+  },
 ];
 
 const teamMembers: TeamMember[] = [
@@ -200,14 +239,12 @@ export const Hero: React.FC = () => {
             />
           </div>
 
-          {/* Content — two-column: text left, dashboard right */}
+          {/* Content — left text + CTA */}
           <div className="w-full mx-auto px-6 md:px-10 relative z-10 min-h-[65vh] flex items-center">
-            <div className="w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-8 xl:gap-12 py-12 md:py-16">
+            <div className="w-full py-12 md:py-16">
 
               {/* ── Left: text + CTA ── */}
               <div className="flex flex-col justify-center animate-fadeUp">
-                <SectionTag variant="teal">Strategic Technology Hub</SectionTag>
-
                 <h1 className="font-playfair text-4xl md:text-6xl lg:text-[4rem] font-bold text-white leading-[1.1] mt-6 mb-6">
                   Your{' '}
                   <em
@@ -229,32 +266,6 @@ export const Hero: React.FC = () => {
                   deliver transformative financial outcomes without the overhead.
                 </p>
 
-                <div>
-                  <a
-                    href="#services"
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-blue-accent hover:bg-blue-600 transition-all text-white font-medium rounded-full shadow-lg shadow-blue-accent/30 hover:scale-105 duration-200"
-                  >
-                    EXPLORE PARTNERSHIP
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              {/* ── Right: Dashboard visual ── */}
-              <div className="hidden lg:flex justify-end items-center overflow-visible">
-                <HeroDashboard />
               </div>
 
             </div>
@@ -274,14 +285,9 @@ export const Hero: React.FC = () => {
                 key={index}
                 className="flex-1 py-8 px-6 md:px-8 flex flex-col items-center text-center hover:bg-gray-50 transition-colors duration-300"
               >
-                <Image
-                  src={stat.icon}
-                  alt=""
-                  width={40}
-                  height={40}
-                  unoptimized
-                  className="w-10 h-10 mb-4 opacity-75"
-                />
+                <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-xl bg-blue-accent/8">
+                  {stat.icon}
+                </div>
                 <h3 className="font-playfair text-xl md:text-2xl font-bold text-navy mb-1">
                   {stat.title}
                 </h3>

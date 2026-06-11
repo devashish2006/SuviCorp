@@ -3,22 +3,46 @@ import { SectionTag, SectionTitle, Button } from '../ui';
 
 const values = [
   {
-    icon: '�️',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+        <path d="M17 3.34A9 9 0 0 1 21 12" />
+        <path d="M7 3.34A9 9 0 0 0 3 12" />
+      </svg>
+    ),
     title: 'Top-Tier Experience',
     subtitle: '15+ years from leading firms',
   },
   {
-    icon: '🚀',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
     title: 'Rapid Development',
     subtitle: 'Months, not years',
   },
   {
-    icon: '🌐',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M2 12h20" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+    ),
     title: 'Global Partnerships',
     subtitle: 'Worldwide alliances',
   },
   {
-    icon: '🤝',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+        <path d="M17 11c0 4-5 9-5 9S7 15 7 11a5 5 0 0 1 10 0z" />
+        <path d="M12 11v.01" />
+        <path d="M3.34 7a10 10 0 0 1 17.32 0" />
+        <path d="M3.34 17a10 10 0 0 0 17.32 0" />
+      </svg>
+    ),
     title: 'Collaborative Model',
     subtitle: 'Your team, extended',
   },
@@ -50,7 +74,7 @@ export const About: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
             {values.map((value, index) => (
               <div key={index} className="flex items-start gap-3">
-                <div className="w-9 h-9 bg-blue-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 text-sm">
+                <div className="w-9 h-9 bg-blue-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 text-blue-accent">
                   {value.icon}
                 </div>
                 <div>

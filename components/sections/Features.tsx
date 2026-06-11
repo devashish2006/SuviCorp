@@ -6,42 +6,78 @@ import { SectionTag, SectionTitle } from '../ui';
 const features = [
   {
     number: '01',
-    icon: '🏗️',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+    ),
     title: 'Architected by Industry Veterans',
     description:
       'Our solutions are designed by financial architects with over 15 years of experience from top-tier firms. Every feature is purpose-built to solve real-world financial and accounting challenges.',
   },
   {
     number: '02',
-    icon: '⚡',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
     title: 'Elite Efficiency, Exceptional Value',
     description:
       'We replicate the sophistication and power of multi-million-dollar technology platforms at a fraction of the cost and time. Rapid, high-fidelity development at competitive pricing.',
   },
   {
     number: '03',
-    icon: '🎯',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="12" cy="12" r="9" />
+        <line x1="12" y1="3" x2="12" y2="1" />
+        <line x1="12" y1="23" x2="12" y2="21" />
+        <line x1="3" y1="12" x2="1" y2="12" />
+        <line x1="23" y1="12" x2="21" y2="12" />
+      </svg>
+    ),
     title: 'Focus on Your Core Business',
     description:
       'Our alliance model allows you to offer cutting-edge technology solutions without diverting focus, capital, or resources from your core consulting practice.',
   },
   {
     number: '04',
-    icon: '🔧',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+        <path d="M6 8h.01M10 8h8" />
+        <path d="M6 12h.01M10 12h8" />
+      </svg>
+    ),
     title: 'Bespoke SAAS Development',
     description:
       'Custom, cloud-based software tools tailored to your specific needs. From consolidation engines to automated financial reporting dashboards.',
   },
   {
     number: '05',
-    icon: '👥',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
     title: 'Dedicated Expert Hub',
     description:
       'Access a curated ecosystem of technology professionals, each a specialist in financial systems, data analytics, and software development.',
   },
   {
     number: '06',
-    icon: '🚀',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    ),
     title: 'Financial Transformation Enablement',
     description:
       'Tools and platforms that power digital transformation. Our solutions automate complex processes, deliver AI-driven insights, and cut delivery timelines dramatically.',
@@ -154,7 +190,7 @@ export const Features: React.FC = () => {
 
               {/* Icon badge */}
               <div
-                className="w-[52px] h-[52px] rounded-xl flex items-center justify-center mb-6 text-2xl
+                className="w-[52px] h-[52px] rounded-xl flex items-center justify-center mb-6 text-white
                            group-hover:scale-105 transition-transform duration-300"
                 style={{ background: 'linear-gradient(135deg, var(--color-navy, #0a1628) 0%, #0ea5e9 100%)' }}
               >
