@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { SectionTag, TeamProfileModal } from '../ui';
 import type { TeamMember } from '../ui';
@@ -200,7 +200,220 @@ const teamMembers: TeamMember[] = [
     ],
     quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
   },
+  {
+    id: 'Saima ',
+    name: 'Saima ',
+    role: 'Technology Partnerships Lead',
+    image: '/saima-removebg-preview.png',
+    imageOffset: '-40px',
+    imageScale: '88%',
+    tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
+    highlights: [
+      'Technology Partnerships Lead with 8+ years building strategic SaaS and enterprise technology alliances globally.',
+      'Proven ability to identify, evaluate, and onboard high-value technology partners across accounting and fintech verticals.',
+      'Orchestrates go-to-market strategies that drive mutual growth and client value across international markets.',
+    ],
+    expertise: [
+      {
+        label: 'Partnership & Growth Expertise',
+        items: [
+          'Strategic SaaS partnership identification and alliance management.',
+          'Go-to-market strategy design for technology and accounting sectors.',
+          'Partner enablement, onboarding, and co-selling motions.',
+          'Cross-border business development and market expansion.',
+          'Revenue operations and partnership performance analytics.',
+        ],
+      },
+    ],
+    quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
+  },
 ];
+
+/* ─── Team Carousel: shows 4 cards, scrolls to reveal remaining ─── */
+const VISIBLE_COUNT = 4;
+
+interface TeamCarouselProps {
+  members: TeamMember[];
+  onSelect: (member: TeamMember) => void;
+}
+
+const TeamCarousel: React.FC<TeamCarouselProps> = ({ members, onSelect }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(members.length > VISIBLE_COUNT);
+
+  const updateScrollState = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener('scroll', updateScrollState, { passive: true });
+    return () => el.removeEventListener('scroll', updateScrollState);
+  }, [updateScrollState]);
+
+  const scroll = (dir: 'left' | 'right') => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.scrollWidth / members.length;
+    el.scrollBy({ left: dir === 'right' ? cardWidth : -cardWidth, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="relative overflow-visible">
+      {/* Scroll Buttons */}
+      {canScrollLeft && (
+        <button
+          onClick={() => scroll('left')}
+          aria-label="Scroll team left"
+          className="absolute -left-5 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-11 h-11 rounded-full shadow-lg transition-all duration-200 hover:scale-110 active:scale-95"
+          style={{
+            background: 'linear-gradient(135deg, #0d1f3c 0%, #0a1628 100%)',
+            border: '1px solid rgba(6,182,212,0.45)',
+            boxShadow: '0 4px 20px rgba(6,182,212,0.2)',
+          }}
+        >
+          <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+      )}
+
+      {canScrollRight && (
+        <button
+          onClick={() => scroll('right')}
+          aria-label="Scroll team right"
+          className="absolute -right-5 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-11 h-11 rounded-full shadow-lg transition-all duration-200 hover:scale-110 active:scale-95"
+          style={{
+            background: 'linear-gradient(135deg, #0d1f3c 0%, #0a1628 100%)',
+            border: '1px solid rgba(6,182,212,0.45)',
+            boxShadow: '0 4px 20px rgba(6,182,212,0.2)',
+          }}
+        >
+          <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      )}
+
+      {/* Scrollable track — hidden scrollbar, snap on each card */}
+      <div
+        ref={scrollRef}
+        className="team-carousel-track flex gap-5 overflow-x-auto pb-2"
+        style={{
+          scrollSnapType: 'x mandatory',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          paddingTop: '180px',
+          marginTop: '-180px',
+        }}
+      >
+        <style>{`.team-carousel-track::-webkit-scrollbar { display: none; }`}</style>
+        {members.map((member) => (
+          <button
+            key={member.id}
+            onClick={() => onSelect(member)}
+            aria-label={`View profile of ${member.name}`}
+            className="group flex flex-col gap-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-accent focus-visible:ring-offset-2 rounded-2xl flex-shrink-0"
+            style={{
+              scrollSnapAlign: 'start',
+              width: `calc((100% - ${(VISIBLE_COUNT - 1) * 20}px) / ${VISIBLE_COUNT})`,
+              minWidth: '220px',
+            }}
+          >
+            {/* Card: dark navy background */}
+            <div
+              className="team-card-box relative rounded-2xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_24px_48px_-8px_rgba(6,182,212,0.3),0_8px_20px_rgba(0,0,0,0.35)]"
+              style={{
+                background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
+                border: '1px solid rgba(6,182,212,0.2)',
+              }}
+            >
+              {/* Subtle glow overlay */}
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none"
+                style={{
+                  background:
+                    'radial-gradient(ellipse at 30% 0%, rgba(6,182,212,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(59,130,246,0.10) 0%, transparent 55%)',
+                }}
+              />
+
+              {/* Hover teal border glow */}
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ border: '1px solid rgba(6,182,212,0.55)' }}
+              />
+
+              {/* Cutout image — anchored to bottom, head overflows above card top */}
+              <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'visible' }}>
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={400}
+                  height={500}
+                  className="team-member-img absolute transition-transform duration-500 group-hover:scale-[1.06]"
+                  style={{
+                    filter:
+                      'drop-shadow(0 -4px 20px rgba(6,182,212,0.2)) drop-shadow(0 12px 24px rgba(0,0,0,0.55))',
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Content below card */}
+            <div className="px-1">
+              <h4 className="font-playfair text-lg font-bold text-navy mb-1 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-blue-accent inline-block flex-shrink-0" />
+                {member.name}
+              </h4>
+              <p className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#06b6d4' }}>
+                {member.role}
+              </p>
+              <p className="text-gray-500 text-sm leading-relaxed mb-3 line-clamp-2">
+                {member.highlights[0]}
+              </p>
+              <span className="inline-flex items-center gap-1 text-blue-accent text-sm font-semibold group-hover:gap-2 transition-all duration-200 uppercase tracking-wide">
+                VIEW PROFILE
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* Dot indicators */}
+      {members.length > VISIBLE_COUNT && (
+        <div className="flex justify-center gap-2 mt-6">
+          {Array.from({ length: members.length - VISIBLE_COUNT + 1 }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                const el = scrollRef.current;
+                if (!el) return;
+                const cardWidth = el.scrollWidth / members.length;
+                el.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
+              }}
+              className="w-2 h-2 rounded-full transition-all duration-300"
+              style={{
+                background: canScrollLeft
+                  ? i === 0 ? 'rgba(6,182,212,0.4)' : 'rgba(6,182,212,0.9)'
+                  : i === 0 ? 'rgba(6,182,212,0.9)' : 'rgba(6,182,212,0.3)',
+              }}
+              aria-label={`Go to position ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const Hero: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -301,7 +514,7 @@ export const Hero: React.FC = () => {
       </section>
 
       {/* ─── SECTION 3: White — Audience Cards (team-style layout) ─── */}
-      <section id="team" className="bg-white w-full pt-20 pb-24 relative overflow-hidden">
+      <section id="team" className="bg-white w-full pt-20 pb-24 relative overflow-visible">
 
         {/* ── Premium Animated Bubble Layer ── */}
 
@@ -455,78 +668,8 @@ export const Hero: React.FC = () => {
             <p className="text-gray-500 text-sm mt-4">Click on any profile to learn more</p>
           </div>
 
-          {/* Cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-5 sm:gap-y-5 pt-0 sm:pt-0">
-            {teamMembers.map((member) => (
-              <button
-                key={member.id}
-                onClick={() => setSelectedMember(member)}
-                className="group flex flex-col gap-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-accent focus-visible:ring-offset-2 rounded-2xl"
-                aria-label={`View profile of ${member.name}`}
-              >
-                {/* Card: dark navy background */}
-                <div
-                  className="team-card-box relative rounded-2xl transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-[0_24px_48px_-8px_rgba(6,182,212,0.3),0_8px_20px_rgba(0,0,0,0.35)]"
-                  style={{
-                    background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
-                    border: '1px solid rgba(6,182,212,0.2)',
-                  }}
-                >
-                  {/* Subtle glow overlay */}
-                  <div
-                    className="absolute inset-0 rounded-2xl pointer-events-none"
-                    style={{
-                      background:
-                        'radial-gradient(ellipse at 30% 0%, rgba(6,182,212,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(59,130,246,0.10) 0%, transparent 55%)',
-                    }}
-                  />
-
-                  {/* Hover teal border glow */}
-                  <div
-                    className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ border: '1px solid rgba(6,182,212,0.55)' }}
-                  />
-
-                  {/* Cutout image — anchored to bottom, head overflows above card top */}
-                  <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'visible' }}>
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={400}
-                      height={500}
-                      className="team-member-img absolute transition-transform duration-500 group-hover:scale-[1.06]"
-                      style={{
-                        filter:
-                          'drop-shadow(0 -4px 20px rgba(6,182,212,0.2)) drop-shadow(0 12px 24px rgba(0,0,0,0.55))',
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Content below card */}
-                <div className="px-1">
-                  <h4 className="font-playfair text-lg font-bold text-navy mb-1 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-blue-accent inline-block flex-shrink-0" />
-                    {member.name}
-                  </h4>
-                  <p className="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#06b6d4' }}>
-                    {member.role}
-                  </p>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-3 line-clamp-2">
-                    {member.highlights[0]}
-                  </p>
-                  <span
-                    className="inline-flex items-center gap-1 text-blue-accent text-sm font-semibold group-hover:gap-2 transition-all duration-200 uppercase tracking-wide"
-                  >
-                    VIEW PROFILE
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
+          {/* Cards carousel — shows 4 at a time, scroll buttons for more */}
+          <TeamCarousel members={teamMembers} onSelect={setSelectedMember} />
         </div>
       </section>
 

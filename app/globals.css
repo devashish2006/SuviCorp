@@ -136,7 +136,7 @@ body {
 /* ─── Team Section: responsive card + image overflow ─── */
 .team-card-box {
   height: 260px;
-  clip-path: inset(0 0 0 0); /* contained on mobile */
+  clip-path: inset(-180px -25% 0 -25%); /* allow face to overflow above */
 }
 
 .team-member-img {
