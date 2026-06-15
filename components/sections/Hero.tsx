@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { SectionTag, TeamProfileModal } from '../ui';
 import type { TeamMember } from '../ui';
 
+
 const stats = [
   {
     icon: (
@@ -205,6 +206,7 @@ const teamMembers: TeamMember[] = [
     name: 'Saima ',
     role: 'Technology Partnerships Lead',
     image: '/saima-removebg-preview.png',
+    imageClass: 'team-member-img--saima',
     imageOffset: '-40px',
     imageScale: '88%',
     tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
@@ -356,7 +358,7 @@ const TeamCarousel: React.FC<TeamCarouselProps> = ({ members, onSelect }) => {
                   alt={member.name}
                   width={400}
                   height={500}
-                  className="team-member-img absolute transition-transform duration-500 group-hover:scale-[1.06]"
+                  className={`team-member-img absolute transition-transform duration-500 group-hover:scale-[1.06]${member.imageClass ? ` ${member.imageClass}` : ''}`}
                   style={{
                     filter:
                       'drop-shadow(0 -4px 20px rgba(6,182,212,0.2)) drop-shadow(0 12px 24px rgba(0,0,0,0.55))',
