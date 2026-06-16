@@ -177,12 +177,10 @@ body {
   }
 }
 
-/* ─── Saima image fix: PNG has large transparent space at bottom ─── */
-/* Keep anchored to bottom like all others; shift down via margin    */
-/* so her figure rises from the card bottom edge as expected.         */
+/* ─── Saima image: push down slightly so figure starts from card base ─── */
 .team-member-img--saima {
-  bottom: -30% !important;
-  transform: translateX(-50%) !important;
+  bottom: 0 !important;
   object-fit: contain !important;
-  object-position: top center !important;
+  object-position: bottom center !important;
+  transform: translateX(-50%) translateY(15%) !important;
 }
