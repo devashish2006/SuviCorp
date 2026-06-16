@@ -93,6 +93,73 @@ const teamMembers: TeamMember[] = [
     quote: 'Leading growth-oriented goal with a highly motivated and skilled team.',
   },
   {
+    id: 'Mark-Warzecha',
+    name: 'Mark-Warzecha',
+    role: 'Founder & Managing Partner',
+    image: '/mark-removebg-preview.png',
+    imageClass: 'team-member-img--mark',
+    imageOffset: '-50px',
+    imageScale: '88%',
+    tagline: 'Leading growth-oriented goals with a highly motivated and skilled team.',
+    highlights: [
+      'Founded SUVI to create a firm that excels in accounting, advisory, and the development of automation tools — committed to drive transformation and delivering high-quality services to clients, leveraging technology and innovation.',
+      'Chartered Accountant with over a decade of experience in auditing and accounting advisory. Worked with prestigious Big Four firms gaining invaluable insights and experience in running innovation agendas.',
+      'Experience in transactions such as M&A, IPO/SPAC and Divestitures.',
+    ],
+    expertise: [
+      {
+        label: 'Experience in Digital Transformation Space',
+        items: [
+          'Led the development of "STAT tool" for automating acquisition accounting, implemented on range of live engagements.',
+          'Furthered digital transformation agenda and contributed to the development of "PROFiler" — automating pro forma financial statements.',
+          'Developed tool for PMO function: project plan generation and standardized Power BI reporting.',
+          'Led IPO Data Hub development outlining insightful trends in IPO US markets.',
+          'Led development of IPO Enabler to help engagement teams run readiness engagements efficiently.',
+          'Led the layering of AI and machine learning in above products and introduced top-up enhancements.',
+        ],
+      },
+      {
+        label: 'Experience in Technical Accounting Space',
+        items: [
+          'Writing whitepapers/accounting memorandums on: business combinations, stock compensation, revenues, leases, segment reporting, asset impairment, debt etc.',
+          'Writing financial statements (incl. S-1/S-4 support, pro forma financial statements, management discussion and analyses), including upliftment.',
+          'Building acquisition accounting workbooks (incl. Day 1 and Day 2 accounting).',
+          'Writing accounting policy manuals for different clients on IPO engagements.',
+          'GAAP conversion engagements, Audit Support, Benchmarking (accounting and reporting, KPI, MD&A etc.).',
+        ],
+      },
+    ],
+    quote: 'Leading growth-oriented goal with a highly motivated and skilled team.',
+  },
+  {
+    id: 'Saima ',
+    name: 'Saima ',
+    role: 'Technology Partnerships Lead',
+    image: '/saima-removebg-preview.png',
+    imageClass: 'team-member-img--saima',
+    imageOffset: '-40px',
+    imageScale: '88%',
+    tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
+    highlights: [
+      'Technology Partnerships Lead with 8+ years building strategic SaaS and enterprise technology alliances globally.',
+      'Proven ability to identify, evaluate, and onboard high-value technology partners across accounting and fintech verticals.',
+      'Orchestrates go-to-market strategies that drive mutual growth and client value across international markets.',
+    ],
+    expertise: [
+      {
+        label: 'Partnership & Growth Expertise',
+        items: [
+          'Strategic SaaS partnership identification and alliance management.',
+          'Go-to-market strategy design for technology and accounting sectors.',
+          'Partner enablement, onboarding, and co-selling motions.',
+          'Cross-border business development and market expansion.',
+          'Revenue operations and partnership performance analytics.',
+        ],
+      },
+    ],
+    quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
+  },
+  {
     id: 'ankur-tiwari',
     name: 'Ankur Tiwari',
     role: 'Full Stack Developer & Prod Lead',
@@ -201,34 +268,7 @@ const teamMembers: TeamMember[] = [
     ],
     quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
   },
-  {
-    id: 'Saima ',
-    name: 'Saima ',
-    role: 'Technology Partnerships Lead',
-    image: '/saima-removebg-preview.png',
-    imageClass: 'team-member-img--saima',
-    imageOffset: '-40px',
-    imageScale: '88%',
-    tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
-    highlights: [
-      'Technology Partnerships Lead with 8+ years building strategic SaaS and enterprise technology alliances globally.',
-      'Proven ability to identify, evaluate, and onboard high-value technology partners across accounting and fintech verticals.',
-      'Orchestrates go-to-market strategies that drive mutual growth and client value across international markets.',
-    ],
-    expertise: [
-      {
-        label: 'Partnership & Growth Expertise',
-        items: [
-          'Strategic SaaS partnership identification and alliance management.',
-          'Go-to-market strategy design for technology and accounting sectors.',
-          'Partner enablement, onboarding, and co-selling motions.',
-          'Cross-border business development and market expansion.',
-          'Revenue operations and partnership performance analytics.',
-        ],
-      },
-    ],
-    quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
-  },
+
 ];
 
 /* ─── Team Carousel: shows 4 cards, scrolls to reveal remaining ─── */

@@ -184,3 +184,13 @@ body {
   object-position: bottom center !important;
   transform: translateX(-50%) translateY(15%) !important;
 }
+
+/* ─── Mark image: scale down so figure is same relative size as Jatin ─── */
+.team-member-img--mark {
+  bottom: 0 !important;
+  top: auto !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  transform: translateX(-50%) scale(0.82) !important;
+  transform-origin: bottom center !important;
+}
