@@ -160,6 +160,60 @@ const teamMembers: TeamMember[] = [
     quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
   },
   {
+    id: 'aman-garg',
+    name: 'Aman Garg',
+    role: 'Solution Architect',
+    image: '/amanArmsFolded-removebg-preview.png',
+    imageOffset: '-50px',
+    imageScale: '88%',
+    tagline: 'Results-oriented professional with over 14 years of experience managing large-scale global transformations.',
+    highlights: [
+      'Results-oriented professional with over 14 years of experience in managing large-scale global transformations and programs.',
+      'Expertise spans business consulting for financial services, fraud and risk mitigation, data analytics, operations management, and professional services.',
+      'Excels in strategy development, digital transformation, innovation, organizational change management, and process improvement.',
+    ],
+    expertise: [
+      {
+        label: 'Areas of Expertise',
+        items: [
+          'Business consulting for financial services and fraud & risk mitigation.',
+          'Data analytics and operations management at global scale.',
+          'Strategy development and digital transformation initiatives.',
+          'Innovation management and organizational change leadership.',
+          'Process improvement and large-scale program delivery.',
+        ],
+      },
+    ],
+    quote: 'Driving meaningful transformation through innovation, strategy, and relentless execution.',
+  },
+  {
+    id: 'amit',
+    name: 'Amit',
+    role: 'Technology Partnerships Lead',
+    image: '/amitPosture-removebg-preview.png',
+    imageOffset: '-40px',
+    imageScale: '88%',
+    tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
+    highlights: [
+      'Technology Partnerships Lead with 8+ years building strategic SaaS and enterprise technology alliances globally.',
+      'Proven ability to identify, evaluate, and onboard high-value technology partners across accounting and fintech verticals.',
+      'Orchestrates go-to-market strategies that drive mutual growth and client value across international markets.',
+    ],
+    expertise: [
+      {
+        label: 'Partnership & Growth Expertise',
+        items: [
+          'Strategic SaaS partnership identification and alliance management.',
+          'Go-to-market strategy design for technology and accounting sectors.',
+          'Partner enablement, onboarding, and co-selling motions.',
+          'Cross-border business development and market expansion.',
+          'Revenue operations and partnership performance analytics.',
+        ],
+      },
+    ],
+    quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
+  },
+  {
     id: 'ankur-tiwari',
     name: 'Ankur Tiwari',
     role: 'Full Stack Developer & Prod Lead',
@@ -188,33 +242,6 @@ const teamMembers: TeamMember[] = [
     quote: 'Building scalable, high-performance solutions that bridge technology and business outcomes.',
   },
   {
-    id: 'aman-garg',
-    name: 'Aman Garg',
-    role: 'Solution Architect',
-    image: '/amanArmsFolded-removebg-preview.png',
-    imageOffset: '-50px',
-    imageScale: '88%',
-    tagline: 'Results-oriented professional with over 14 years of experience managing large-scale global transformations.',
-    highlights: [
-      'Results-oriented professional with over 14 years of experience in managing large-scale global transformations and programs.',
-      'Expertise spans business consulting for financial services, fraud and risk mitigation, data analytics, operations management, and professional services.',
-      'Excels in strategy development, digital transformation, innovation, organizational change management, and process improvement.',
-    ],
-    expertise: [
-      {
-        label: 'Areas of Expertise',
-        items: [
-          'Business consulting for financial services and fraud & risk mitigation.',
-          'Data analytics and operations management at global scale.',
-          'Strategy development and digital transformation initiatives.',
-          'Innovation management and organizational change leadership.',
-          'Process improvement and large-scale program delivery.',
-        ],
-      },
-    ],
-    quote: 'Driving meaningful transformation through innovation, strategy, and relentless execution.',
-  },
-  {
     id: 'priya-sharma',
     name: 'Devashish Mishra',
     role: 'Software Developer',
@@ -240,33 +267,6 @@ const teamMembers: TeamMember[] = [
       },
     ],
     quote: 'Good software is not just functional — it\'s intuitive, elegant, and built to last.',
-  },
-  {
-    id: 'amit',
-    name: 'Amit',
-    role: 'Technology Partnerships Lead',
-    image: '/amitPosture-removebg-preview.png',
-    imageOffset: '-40px',
-    imageScale: '88%',
-    tagline: 'Building and nurturing strategic global technology ecosystems for long-term growth.',
-    highlights: [
-      'Technology Partnerships Lead with 8+ years building strategic SaaS and enterprise technology alliances globally.',
-      'Proven ability to identify, evaluate, and onboard high-value technology partners across accounting and fintech verticals.',
-      'Orchestrates go-to-market strategies that drive mutual growth and client value across international markets.',
-    ],
-    expertise: [
-      {
-        label: 'Partnership & Growth Expertise',
-        items: [
-          'Strategic SaaS partnership identification and alliance management.',
-          'Go-to-market strategy design for technology and accounting sectors.',
-          'Partner enablement, onboarding, and co-selling motions.',
-          'Cross-border business development and market expansion.',
-          'Revenue operations and partnership performance analytics.',
-        ],
-      },
-    ],
-    quote: 'The right partnerships don\'t just open doors — they build entire new corridors of opportunity.',
   },
 
 ];
