@@ -701,7 +701,7 @@ export const Hero: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-6">
           {/* Section header */}
-          <div className="text-center mb-14">
+          <div className="text-center mb-28">
             <SectionTag variant="teal">Our Team</SectionTag>
             <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-navy mt-5 leading-tight">
               Meet The Minds<br />
