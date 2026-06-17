@@ -272,7 +272,7 @@ const teamMembers: TeamMember[] = [
 ];
 
 /* ─── Team Carousel: shows 4 cards, scrolls to reveal remaining ─── */
-const VISIBLE_COUNT = 4;
+const VISIBLE_COUNT = 5;
 
 interface TeamCarouselProps {
   members: TeamMember[];
@@ -707,7 +707,6 @@ export const Hero: React.FC = () => {
               Meet The Minds<br />
               <em className="italic font-light opacity-80">Behind SUVI Corp</em>
             </h2>
-            <p className="text-gray-500 text-sm mt-4">Click on any profile to learn more</p>
           </div>
 
           {/* Cards carousel — shows 4 at a time, scroll buttons for more */}
