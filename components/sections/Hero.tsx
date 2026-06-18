@@ -268,6 +268,34 @@ const teamMembers: TeamMember[] = [
     ],
     quote: 'Good software is not just functional — it\'s intuitive, elegant, and built to last.',
   },
+  {
+    id: 'ritesh',
+    name: 'Ritesh',
+    role: 'Team Member',
+    image: '/ritesh-removebg-preview.png',
+    imageClass: 'team-member-img--ritesh',
+    imageOffset: '-50px',
+    imageScale: '88%',
+    tagline: 'Bringing expertise and dedication to drive meaningful results at SUVI Corp.',
+    highlights: [
+      'Dedicated team member at SUVI Corp contributing to the firm\'s mission of delivering transformative accounting and technology solutions.',
+      'Collaborative professional with a strong work ethic and commitment to excellence across client engagements.',
+      'Supports cross-functional initiatives and plays a key role in advancing SUVI Corp\'s growth-oriented goals.',
+    ],
+    expertise: [
+      {
+        label: 'Areas of Contribution',
+        items: [
+          'Cross-functional collaboration and project support.',
+          'Client engagement and service delivery.',
+          'Process improvement and operational efficiency.',
+          'Knowledge sharing and team enablement.',
+          'Contributing to SUVI Corp\'s technology and advisory mission.',
+        ],
+      },
+    ],
+    quote: 'Every contribution, no matter the scale, drives the team closer to excellence.',
+  },
 
 ];
 

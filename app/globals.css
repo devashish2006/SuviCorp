@@ -194,3 +194,13 @@ body {
   transform: translateX(-50%) scale(0.82) !important;
   transform-origin: bottom center !important;
 }
+
+/* ─── Ritesh image: scale down to match Devashish's size ─── */
+.team-member-img--ritesh {
+  bottom: 0 !important;
+  top: auto !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  transform: translateX(-50%) scale(0.72) !important;
+  transform-origin: bottom center !important;
+}
