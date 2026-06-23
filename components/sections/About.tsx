@@ -53,9 +53,25 @@ export const About: React.FC = () => {
     <section id="about" className="bg-white py-16 md:py-24 px-[5%]">
       <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
         {/* Image/Visual */}
-        <div className="bg-gradient-to-br from-navy to-blue h-[420px] rounded-[20px] flex items-center justify-center relative overflow-hidden">
-          <div className="text-white/15 font-playfair text-[5rem] text-center font-black">SUVI</div>
-          <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-teal/20 to-transparent" />
+        <div
+          className="relative h-[420px] rounded-[20px] flex items-center justify-center overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)' }}
+        >
+          {/* Grid overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
+              backgroundSize: '48px 48px',
+            }}
+          />
+          {/* Top cyan glow */}
+          <div
+            className="absolute top-0 left-0 w-full h-64 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.15) 0%, transparent 70%)' }}
+          />
+          <div className="relative text-white/10 font-playfair text-[5rem] text-center font-black select-none">SUVI</div>
+          <div className="absolute bottom-0 left-0 right-0 h-2/5" style={{ background: 'linear-gradient(to top, rgba(6,182,212,0.12) 0%, transparent 100%)' }} />
         </div>
 
         {/* Content */}
