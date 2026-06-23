@@ -126,8 +126,9 @@ export const Navigation: React.FC = () => {
           </div>
         )}
 
-        <PartnerModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </nav>
+
+      <PartnerModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Search Overlay */}
       {isSearchOpen && (
