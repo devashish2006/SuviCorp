@@ -7,3 +7,4 @@ export { Pricing } from './Pricing';
 export { SuccessStories } from './SuccessStories';
 export { About } from './About';
 export { CTA } from './CTA';
+export { TrustedPartners } from './TrustedPartners';
