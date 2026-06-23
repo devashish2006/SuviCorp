@@ -485,6 +485,241 @@ const TeamCarousel: React.FC<TeamCarouselProps> = ({ members, onSelect }) => {
   );
 };
 
+/* ─── Hub Diagram Component ─── */
+const hubItems = [
+  {
+    id: 1,
+    label: 'Strategic Technology Partners',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+    position: 'top-left',
+  },
+  {
+    id: 2,
+    label: 'Domain Expertise',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    ),
+    position: 'top-right',
+  },
+  {
+    id: 3,
+    label: 'Democratizing Elite Technology',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    ),
+    position: 'mid-left',
+  },
+  {
+    id: 4,
+    label: 'Less Time to Market',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+    position: 'mid-right',
+  },
+  {
+    id: 5,
+    label: 'Fractional Investment',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <line x1="12" y1="1" x2="12" y2="23" />
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      </svg>
+    ),
+    position: 'bottom-left',
+  },
+  {
+    id: 6,
+    label: 'Increased Focus on Core Business',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <polyline points="22 4 12 14.01 9 11.01" />
+      </svg>
+    ),
+    position: 'bottom-right',
+  },
+];
+
+/* ── Shared hub circle used in both layouts ── */
+const HubCircle: React.FC<{ size?: number }> = ({ size = 110 }) => (
+  <div className="relative flex flex-col items-center justify-center" style={{ width: size, height: size }}>
+    <div
+      className="absolute inset-0 rounded-full animate-ping"
+      style={{ background: 'transparent', border: '1px solid rgba(6,182,212,0.35)', animationDuration: '2.5s' }}
+    />
+    <div
+      className="absolute rounded-full animate-ping"
+      style={{ inset: '-16px', background: 'transparent', border: '1px solid rgba(6,182,212,0.18)', animationDuration: '2.5s', animationDelay: '0.6s' }}
+    />
+    <div
+      className="relative flex flex-col items-center justify-center w-full h-full rounded-full"
+      style={{
+        background: 'radial-gradient(circle at 35% 35%, rgba(6,182,212,0.35) 0%, rgba(10,22,40,0.98) 65%)',
+        border: '2px solid rgba(6,182,212,0.6)',
+        boxShadow: '0 0 40px rgba(6,182,212,0.35), 0 0 80px rgba(6,182,212,0.12), inset 0 0 20px rgba(6,182,212,0.08)',
+      }}
+    >
+      <svg viewBox="0 0 48 48" fill="none" style={{ width: size * 0.38, height: size * 0.38, filter: 'drop-shadow(0 0 8px rgba(6,182,212,0.7))' }}>
+        <circle cx="24" cy="24" r="22" fill="rgba(6,182,212,0.12)" stroke="rgba(6,182,212,0.4)" strokeWidth="1" />
+        <path d="M24 12 C18 12 13 16 13 21 C13 25 15 28 19 29 L19 36 L29 36 L29 29 C33 28 35 25 35 21 C35 16 30 12 24 12Z"
+          fill="rgba(6,182,212,0.2)" stroke="rgba(6,182,212,0.8)" strokeWidth="1.2" strokeLinejoin="round" />
+        <circle cx="18" cy="20" r="2" fill="rgba(6,182,212,0.9)" />
+        <circle cx="24" cy="17" r="2" fill="rgba(6,182,212,0.9)" />
+        <circle cx="30" cy="20" r="2" fill="rgba(6,182,212,0.9)" />
+        <line x1="18" y1="20" x2="24" y2="17" stroke="rgba(6,182,212,0.6)" strokeWidth="1" />
+        <line x1="24" y1="17" x2="30" y2="20" stroke="rgba(6,182,212,0.6)" strokeWidth="1" />
+        <line x1="18" y1="20" x2="30" y2="20" stroke="rgba(6,182,212,0.4)" strokeWidth="1" />
+        <line x1="24" y1="29" x2="24" y2="36" stroke="rgba(6,182,212,0.5)" strokeWidth="1.5" />
+      </svg>
+      <span className="font-bold tracking-widest text-cyan-400 mt-1" style={{ fontSize: size * 0.082, letterSpacing: '0.15em' }}>THE HUB</span>
+    </div>
+  </div>
+);
+
+const HubDiagram: React.FC = () => {
+  return (
+    <>
+      {/* ══════════════════════════════════════
+          MOBILE LAYOUT  (hidden on lg+)
+          Centre hub → 2-column grid of cards
+      ══════════════════════════════════════ */}
+      <div className="lg:hidden animate-fadeUp w-full flex flex-col items-center gap-6 py-4">
+        {/* Hub circle centred */}
+        <div className="flex items-center justify-center">
+          <HubCircle size={90} />
+        </div>
+
+        {/* 2-column card grid */}
+        <div className="grid grid-cols-2 gap-3 w-full max-w-sm mx-auto">
+          {hubItems.map((item, i) => (
+            <HubNode key={item.id} item={item} delay={i * 0.07} mobile />
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════
+          DESKTOP LAYOUT  (hidden below lg)
+          Radial diagram with absolute nodes
+      ══════════════════════════════════════ */}
+      <div
+        className="hidden lg:flex relative items-center justify-center animate-fadeUp w-full"
+        style={{ minHeight: '420px', animationDelay: '0.2s' }}
+      >
+        {/* Background glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.08) 0%, transparent 70%)' }}
+        />
+
+        {/* SVG connector lines */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          viewBox="0 0 480 420"
+          preserveAspectRatio="xMidYMid meet"
+          style={{ opacity: 0.45 }}
+        >
+          <line x1="240" y1="210" x2="95"  y2="85"  stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="385" y2="85"  stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="75"  y2="210" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="405" y2="210" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="95"  y2="340" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="385" y2="340" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <defs>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.3" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        {/* Node cards — absolute radial positions */}
+        <div className="hub-node absolute" style={{ top: '2%',  left: '0%' }}><HubNode item={hubItems[0]} delay={0}   /></div>
+        <div className="hub-node absolute" style={{ top: '2%',  right: '0%' }}><HubNode item={hubItems[1]} delay={0.1} /></div>
+        <div className="hub-node absolute" style={{ top: '50%', left: '0%',  transform: 'translateY(-50%)' }}><HubNode item={hubItems[2]} delay={0.2} /></div>
+        <div className="hub-node absolute" style={{ top: '50%', right: '0%', transform: 'translateY(-50%)' }}><HubNode item={hubItems[3]} delay={0.3} /></div>
+        <div className="hub-node absolute" style={{ bottom: '2%', left: '0%' }}><HubNode item={hubItems[4]} delay={0.4} /></div>
+        <div className="hub-node absolute" style={{ bottom: '2%', right: '0%' }}><HubNode item={hubItems[5]} delay={0.5} /></div>
+
+        {/* Central hub */}
+        <HubCircle size={110} />
+
+        <style>{`
+          .hub-node { width: 148px; }
+          @media (max-width: 1280px) { .hub-node { width: 130px; } }
+          @keyframes hubNodeIn {
+            from { opacity: 0; transform: scale(0.85) translateY(8px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+          }
+          .hub-card { animation: hubNodeIn 0.5s ease-out both; }
+        `}</style>
+      </div>
+    </>
+  );
+};
+
+interface HubNodeProps {
+  item: typeof hubItems[0];
+  delay: number;
+  mobile?: boolean;
+}
+
+const HubNode: React.FC<HubNodeProps & { mobile?: boolean }> = ({ item, delay, mobile }) => (
+  <div
+    className="hub-card group flex flex-col gap-2 rounded-xl cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(6,182,212,0.25)]"
+    style={{
+      padding: mobile ? '10px' : '12px',
+      background: 'linear-gradient(145deg, rgba(10,22,40,0.92) 0%, rgba(13,31,60,0.88) 100%)',
+      border: '1px solid rgba(6,182,212,0.22)',
+      backdropFilter: 'blur(8px)',
+      animationDelay: `${delay}s`,
+    }}
+  >
+    {/* Icon */}
+    <div
+      className="flex items-center justify-center rounded-lg flex-shrink-0 transition-colors duration-300 group-hover:bg-cyan-500/25"
+      style={{
+        width: mobile ? 28 : 32,
+        height: mobile ? 28 : 32,
+        background: 'rgba(6,182,212,0.15)',
+        color: '#06b6d4',
+      }}
+    >
+      {item.icon}
+    </div>
+    {/* Label */}
+    <p
+      className="text-white/85 font-semibold leading-tight group-hover:text-cyan-300 transition-colors duration-300"
+      style={{ fontSize: mobile ? '10px' : '11px' }}
+    >
+      {item.label}
+    </p>
+    {/* Accent line */}
+    <div
+      className="h-[2px] w-5 rounded-full transition-all duration-300 group-hover:w-full"
+      style={{ background: 'linear-gradient(90deg, #06b6d4, #3b82f6)' }}
+    />
+  </div>
+);
+
 export const Hero: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
@@ -522,13 +757,13 @@ export const Hero: React.FC = () => {
             />
           </div>
 
-          {/* Content — left text + CTA */}
-          <div className="w-full mx-auto px-6 md:px-10 relative z-10 min-h-[65vh] flex items-center">
-            <div className="w-full py-12 md:py-16">
+          {/* Content — left text + right hub diagram */}
+          <div className="w-full mx-auto px-6 md:px-10 relative z-10 flex items-center">
+            <div className="w-full py-8 md:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
               {/* ── Left: text + CTA ── */}
               <div className="flex flex-col justify-center animate-fadeUp">
-                <h1 className="font-playfair text-4xl md:text-6xl lg:text-[4rem] font-bold text-white leading-[1.1] mt-6 mb-6">
+                <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-[4rem] font-bold text-white leading-[1.1] mt-4 mb-4 md:mt-6 md:mb-6">
                   Your{' '}
                   <em
                     className="not-italic"
@@ -543,13 +778,16 @@ export const Hero: React.FC = () => {
                   </span>
                 </h1>
 
-                <p className="text-white/70 md:text-lg leading-relaxed max-w-[480px] mb-10 font-light">
+                <p className="text-white/70 text-sm md:text-lg leading-relaxed max-w-[480px] mb-6 md:mb-10 font-light">
                   Suvicorp empowers accounting and consulting firms with
                   elite technology ecosystems and specialized SAAS/AI solutions to
                   deliver transformative financial outcomes without the overhead.
                 </p>
 
               </div>
+
+              {/* ── Right: Hub Diagram ── */}
+              <HubDiagram />
 
             </div>
           </div>
