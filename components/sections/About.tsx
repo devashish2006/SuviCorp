@@ -56,7 +56,7 @@ export const About: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
         {/* Image/Visual */}
         <div
-          className="relative h-[420px] rounded-[20px] flex items-center justify-center overflow-hidden"
+          className="relative h-[420px] rounded-[20px] flex items-center justify-center overflow-hidden group cursor-default shadow-2xl"
           style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)' }}
         >
           {/* Grid overlay */}
@@ -69,10 +69,41 @@ export const About: React.FC = () => {
           />
           {/* Top cyan glow */}
           <div
-            className="absolute top-0 left-0 w-full h-64 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.15) 0%, transparent 70%)' }}
+            className="absolute top-0 left-0 w-full h-64 pointer-events-none transition-opacity duration-700 opacity-60 group-hover:opacity-100"
+            style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.25) 0%, transparent 70%)' }}
           />
-          <div className="relative text-white/10 font-playfair text-[5rem] text-center font-black select-none">SC</div>
+          
+          {/* SC Text Interactive */}
+          <div className="relative flex items-center justify-center select-none z-10 transition-transform duration-700 ease-out group-hover:scale-[1.15]">
+            <span 
+              className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text transition-all duration-700"
+              style={{ backgroundImage: 'linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.1))' }}
+            >
+              S
+            </span>
+            <span 
+              className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text transition-all duration-700"
+              style={{ backgroundImage: 'linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.1))' }}
+            >
+              C
+            </span>
+            
+            {/* Overlay Gradients that fade in on hover */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+              <span 
+                className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(59,130,246,0.5)]"
+                style={{ backgroundImage: 'linear-gradient(to right, #3b82f6, #60a5fa)' }}
+              >
+                S
+              </span>
+              <span 
+                className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(255,255,255,0.4)]"
+                style={{ backgroundImage: 'linear-gradient(to right, #ffffff, #f8fafc)' }}
+              >
+                C
+              </span>
+            </div>
+          </div>
           <div className="absolute bottom-0 left-0 right-0 h-2/5" style={{ background: 'linear-gradient(to top, rgba(6,182,212,0.12) 0%, transparent 100%)' }} />
         </div>
 
