@@ -40,7 +40,7 @@ export const Navigation: React.FC = () => {
           <div className="hidden md:flex gap-6 items-center">
             {navLinks.map((link) => (
               <Link
-                key={link.href}
+                key={link.label}
                 href={link.href}
                 className="flex items-center gap-1 text-white/75 text-[0.85rem] font-medium tracking-[0.5px] uppercase transition-colors duration-200 hover:text-teal"
               >
@@ -77,7 +77,7 @@ export const Navigation: React.FC = () => {
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-white/10 pt-4">
             {navLinks.map((link) => (
               <Link
-                key={link.href}
+                key={link.label}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-white/75 text-[0.95rem] font-medium tracking-[0.5px] uppercase hover:text-teal transition-colors"
