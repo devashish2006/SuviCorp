@@ -532,7 +532,6 @@ const ProductPill: React.FC<{ product: Product; onClick: () => void; isElite: bo
       border: `1px solid rgba(255,255,255,0.08)`,
       padding: '22px 24px',
       boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 24px rgba(0,0,0,0.2)',
-      focusRingColor: product.badgeColor,
     }}
     aria-label={`View details for ${product.name}`}
   >
