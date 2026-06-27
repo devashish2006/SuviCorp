@@ -753,7 +753,7 @@ export const Hero: React.FC = () => {
 
           {/* ── Marquee strip ── */}
           <div
-            className="mt-28 md:mt-32 overflow-hidden w-full max-w-5xl mx-auto px-4 pb-20 text-center"
+            className="mt-12 md:mt-16 overflow-hidden w-full max-w-5xl mx-auto px-4 pb-20 text-center"
             style={{ animation: 'fadeUp 0.8s ease-out 1s both' }}
           >
             {/* Tag & Description */}
@@ -764,7 +764,7 @@ export const Hero: React.FC = () => {
               </span>
             </div>
 
-            <h3 className="mb-12 text-2xl md:text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight">
+            <h3 className="mb-20 text-2xl md:text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight">
               A growing network of elite accounting and consulting partners who trust Suvicorp to deliver{' '}
               <span className="relative inline-block whitespace-nowrap">
                 <span className="relative z-10 bg-gradient-to-r from-blue-400 via-teal to-cyan-300 bg-clip-text text-transparent">
@@ -774,7 +774,7 @@ export const Hero: React.FC = () => {
               </span>
             </h3>
 
-            <div className="flex items-center gap-4 mb-8 justify-center opacity-80">
+            <div className="flex items-center gap-4 mb-12 justify-center opacity-80">
               <div className="h-px flex-1 max-w-[160px] bg-gradient-to-r from-transparent to-slate-600" />
               <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-slate-400">
                 Our Partnership Network
