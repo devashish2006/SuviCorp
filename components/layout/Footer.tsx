@@ -32,14 +32,8 @@ export const Footer: React.FC = () => {
       <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-2 font-playfair text-[1.6rem] font-black text-white tracking-tight mb-4">
-            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M25 45 L25 80 L35 80 L35 45 L40 45 L30 30 L20 45 Z" fill="#ffffff" />
-              <path d="M45 35 L45 80 L55 80 L55 35 L60 35 L50 20 L40 35 Z" fill="#06b6d4" />
-              <path d="M65 45 L65 80 L75 80 L75 45 L80 45 L70 30 L60 45 Z" fill="#ffffff" />
-              <path d="M20 85 Q 50 70 80 85 L 80 90 Q 50 75 20 90 Z" fill="#06b6d4" />
-            </svg>
-            Suvicorp
+          <div className="font-playfair text-[1.5rem] md:text-[1.7rem] font-black tracking-tight leading-none mb-4">
+            <span className="text-[#3b82f6]">Suvi</span><span className="text-white">corp</span>
           </div>
           <p className="text-white/40 text-[0.85rem] leading-relaxed max-w-[240px]">
             Strategic technology partner for accounting and consulting firms. Amplifying expertise through elite SAAS solutions and technical talent.
