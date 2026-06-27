@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 interface ButtonProps {
-  href: string;
+  href?: string;
+  onClick?: () => void;
   variant?: 'primary' | 'outline';
   children: React.ReactNode;
   className?: string;
@@ -10,6 +11,7 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ 
   href, 
+  onClick,
   variant = 'primary', 
   children, 
   className = '' 
@@ -21,12 +23,19 @@ export const Button: React.FC<ButtonProps> = ({
     outline: "border-[1.5px] border-white/30 text-white hover:border-teal hover:text-teal"
   };
 
+  const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${className}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={combinedClasses} onClick={onClick}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <Link 
-      href={href} 
-      className={`${baseStyles} ${variantStyles[variant]} ${className}`}
-    >
+    <button onClick={onClick} className={combinedClasses}>
       {children}
-    </Link>
+    </button>
   );
 };

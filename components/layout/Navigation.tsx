@@ -8,12 +8,17 @@ export const Navigation: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  React.useEffect(() => {
+    const handleOpenModal = () => setIsModalOpen(true);
+    window.addEventListener('openPartnerModal', handleOpenModal);
+    return () => window.removeEventListener('openPartnerModal', handleOpenModal);
+  }, []);
+
   const navLinks = [
     { href: '#about', label: 'Our Vision' },
     { href: '#features', label: 'Innovation Lab' },
     { href: '#services', label: 'Services' },
-    { href: '#products', label: 'Products (Lite)' },
-    { href: '#products', label: 'Products (Elite)' },
+    { href: '#products', label: 'Products' },
     { href: '#team', label: 'Team' },
     { href: '#blogs', label: 'Blogs' },
   ];

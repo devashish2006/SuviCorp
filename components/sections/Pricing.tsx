@@ -392,7 +392,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
           {/* Close */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/10"
+            className="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/10 z-50"
             style={{
               background: 'rgba(255,255,255,0.05)',
               border: '1px solid rgba(255,255,255,0.1)',

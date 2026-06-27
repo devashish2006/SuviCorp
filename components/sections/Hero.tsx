@@ -672,17 +672,17 @@ const HubNode: React.FC<HubNodeProps & { mobile?: boolean }> = ({ item, delay, m
       {item.label}
     </p>
     {/* Accent line */}
-      <div
-        className="h-[2px] w-5 rounded-full transition-all duration-300 group-hover:w-full"
-        style={{ background: 'linear-gradient(90deg, #06b6d4, #3b82f6)' }}
-      />
-    </div>
-    );
+    <div
+      className="h-[2px] w-5 rounded-full transition-all duration-300 group-hover:w-full"
+      style={{ background: 'linear-gradient(90deg, #06b6d4, #3b82f6)' }}
+    />
+  </div>
+);
 
 export const Hero: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-    return (
+  return (
     <>
       {/* ─── SECTION 1: Dark Banner ─── */}
       <section
@@ -763,7 +763,7 @@ export const Hero: React.FC = () => {
                 Trusted by our Partners
               </span>
             </div>
-            
+
             <h3 className="mb-12 text-2xl md:text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight">
               A growing network of elite accounting and consulting partners who trust Suvicorp to deliver{' '}
               <span className="relative inline-block whitespace-nowrap">
@@ -810,7 +810,7 @@ export const Hero: React.FC = () => {
               animation: marquee-partners 22s linear infinite;
             }
           `}</style>
-        </div>
+          </div>
       </section>
 
       {/* ─── SECTION 3: White — Audience Cards (team-style layout) ─── */}
@@ -978,5 +978,5 @@ export const Hero: React.FC = () => {
         onClose={() => setSelectedMember(null)}
       />
     </>
-    );
+  );
 };

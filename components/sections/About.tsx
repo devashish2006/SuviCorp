@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { SectionTag, SectionTitle, Button } from '../ui';
 
@@ -103,7 +105,7 @@ export const About: React.FC = () => {
             ))}
           </div>
 
-          <Button href="#cta" variant="primary" className="mt-8">
+          <Button onClick={() => window.dispatchEvent(new Event('openPartnerModal'))} variant="primary" className="mt-8">
             Explore Partnership Opportunities →
           </Button>
         </div>

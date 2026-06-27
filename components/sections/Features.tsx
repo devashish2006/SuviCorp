@@ -242,8 +242,8 @@ export const Features: React.FC = () => {
               <em className="italic font-light opacity-90">Strategic Advantage.</em>
             </h4>
           </div>
-          <a
-            href="#services"
+          <button
+            onClick={() => window.dispatchEvent(new Event('openPartnerModal'))}
             className="relative z-10 shrink-0 inline-flex items-center gap-2 px-8 py-4 text-white font-medium rounded-full
                        transition-all duration-200 hover:scale-105 whitespace-nowrap hover:shadow-[0_8px_24px_rgba(6,182,212,0.5)]"
             style={{ background: 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)', boxShadow: '0 4px 16px rgba(6,182,212,0.3)' }}
@@ -252,7 +252,7 @@ export const Features: React.FC = () => {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>
