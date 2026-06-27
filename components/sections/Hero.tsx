@@ -6,50 +6,21 @@ import { SectionTag, TeamProfileModal } from '../ui';
 import type { TeamMember } from '../ui';
 
 
-const stats = [
+const partners = [
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-accent">
-        <circle cx="12" cy="8" r="4" />
-        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-        <path d="M17 3.34A9 9 0 0 1 21 12" />
-        <path d="M7 3.34A9 9 0 0 0 3 12" />
-      </svg>
-    ),
-    title: '15+ Years',
-    label: 'Experience from Top-Tier Firms',
+    id: 'fsnm',
+    name: 'FSNM',
+    logo: '/FSNM.jpeg',
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-accent">
-        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-      </svg>
-    ),
-    title: '70% Faster',
-    label: 'Deliverable Generation',
+    id: 'gcas',
+    name: 'GCAS',
+    logo: '/GCAS.jpeg',
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-accent">
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <path d="M8 21h8M12 17v4" />
-        <path d="M7 8h.01M11 8h6" />
-        <path d="M7 12h.01M11 12h6" />
-      </svg>
-    ),
-    title: 'Big 4 Caliber',
-    label: 'Technology Solutions',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-blue-accent">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M2 12h20" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
-    ),
-    title: 'Global',
-    label: 'Strategic Partnerships Worldwide',
+    id: 'snr',
+    name: 'SNR',
+    logo: '/SNR.jpeg',
   },
 ];
 
@@ -625,11 +596,11 @@ const HubDiagram: React.FC = () => {
           preserveAspectRatio="xMidYMid meet"
           style={{ opacity: 0.45 }}
         >
-          <line x1="240" y1="210" x2="95"  y2="85"  stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
-          <line x1="240" y1="210" x2="385" y2="85"  stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
-          <line x1="240" y1="210" x2="75"  y2="210" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="95" y2="85" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="385" y2="85" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="75" y2="210" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
           <line x1="240" y1="210" x2="405" y2="210" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
-          <line x1="240" y1="210" x2="95"  y2="340" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
+          <line x1="240" y1="210" x2="95" y2="340" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
           <line x1="240" y1="210" x2="385" y2="340" stroke="url(#lineGrad)" strokeWidth="1.5" strokeDasharray="4 3" />
           <defs>
             <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -640,9 +611,9 @@ const HubDiagram: React.FC = () => {
         </svg>
 
         {/* Node cards — absolute radial positions */}
-        <div className="hub-node absolute" style={{ top: '2%',  left: '0%' }}><HubNode item={hubItems[0]} delay={0}   /></div>
-        <div className="hub-node absolute" style={{ top: '2%',  right: '0%' }}><HubNode item={hubItems[1]} delay={0.1} /></div>
-        <div className="hub-node absolute" style={{ top: '50%', left: '0%',  transform: 'translateY(-50%)' }}><HubNode item={hubItems[2]} delay={0.2} /></div>
+        <div className="hub-node absolute" style={{ top: '2%', left: '0%' }}><HubNode item={hubItems[0]} delay={0} /></div>
+        <div className="hub-node absolute" style={{ top: '2%', right: '0%' }}><HubNode item={hubItems[1]} delay={0.1} /></div>
+        <div className="hub-node absolute" style={{ top: '50%', left: '0%', transform: 'translateY(-50%)' }}><HubNode item={hubItems[2]} delay={0.2} /></div>
         <div className="hub-node absolute" style={{ top: '50%', right: '0%', transform: 'translateY(-50%)' }}><HubNode item={hubItems[3]} delay={0.3} /></div>
         <div className="hub-node absolute" style={{ bottom: '2%', left: '0%' }}><HubNode item={hubItems[4]} delay={0.4} /></div>
         <div className="hub-node absolute" style={{ bottom: '2%', right: '0%' }}><HubNode item={hubItems[5]} delay={0.5} /></div>
@@ -701,17 +672,17 @@ const HubNode: React.FC<HubNodeProps & { mobile?: boolean }> = ({ item, delay, m
       {item.label}
     </p>
     {/* Accent line */}
-    <div
-      className="h-[2px] w-5 rounded-full transition-all duration-300 group-hover:w-full"
-      style={{ background: 'linear-gradient(90deg, #06b6d4, #3b82f6)' }}
-    />
-  </div>
-);
+      <div
+        className="h-[2px] w-5 rounded-full transition-all duration-300 group-hover:w-full"
+        style={{ background: 'linear-gradient(90deg, #06b6d4, #3b82f6)' }}
+      />
+    </div>
+    );
 
 export const Hero: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  return (
+    return (
     <>
       {/* ─── SECTION 1: Dark Banner ─── */}
       <section
@@ -780,32 +751,65 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Bottom padding area to create space for the overlapping stats bar */}
-          <div className="pb-24 md:pb-[120px]" />
-        </div>
-      </section>
+          {/* ── Marquee strip ── */}
+          <div
+            className="mt-28 md:mt-32 overflow-hidden w-full max-w-5xl mx-auto px-4 pb-20 text-center"
+            style={{ animation: 'fadeUp 0.8s ease-out 1s both' }}
+          >
+            {/* Tag & Description */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-teal/30 bg-teal/5 mb-6 mx-auto">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
+              <span className="text-xs font-semibold tracking-[0.18em] uppercase text-teal/90">
+                Trusted by our Partners
+              </span>
+            </div>
+            
+            <h3 className="mb-12 text-2xl md:text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight">
+              A growing network of elite accounting and consulting partners who trust Suvicorp to deliver{' '}
+              <span className="relative inline-block whitespace-nowrap">
+                <span className="relative z-10 bg-gradient-to-r from-blue-400 via-teal to-cyan-300 bg-clip-text text-transparent">
+                  technology that matters.
+                </span>
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 via-teal to-cyan-300 opacity-60 blur-sm" />
+              </span>
+            </h3>
 
-      {/* ─── SECTION 2: Stats Bar — overlapping hero & white ─── */}
-      <section className="bg-white w-full pb-8 relative z-20 flex flex-col">
-        <div className="max-w-5xl w-full mx-auto px-6 -mt-[100px] md:-mt-[150px]">
-          <div className="bg-white rounded-2xl shadow-[0_20px_60px_-16px_rgba(0,0,0,0.18)] border border-gray-100 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-gray-200 overflow-hidden">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="flex-1 py-8 px-6 md:px-8 flex flex-col items-center text-center hover:bg-gray-50 transition-colors duration-300"
-              >
-                <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-xl bg-blue-accent/8">
-                  {stat.icon}
-                </div>
-                <h3 className="font-playfair text-xl md:text-2xl font-bold text-navy mb-1">
-                  {stat.title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed max-w-[180px]">
-                  {stat.label}
-                </p>
+            <div className="flex items-center gap-4 mb-8 justify-center opacity-80">
+              <div className="h-px flex-1 max-w-[160px] bg-gradient-to-r from-transparent to-slate-600" />
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-slate-400">
+                Our Partnership Network
+              </span>
+              <div className="h-px flex-1 max-w-[160px] bg-gradient-to-l from-transparent to-slate-600" />
+            </div>
+
+            <div className="relative">
+              {/* Edge fade masks */}
+              <div className="absolute left-0 top-0 bottom-0 w-24 md:w-32 z-10 bg-gradient-to-r from-[#0a1628] to-transparent pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-24 md:w-32 z-10 bg-gradient-to-l from-[#0a1628] to-transparent pointer-events-none" />
+
+              {/* Scrolling track */}
+              <div className="flex gap-10 animate-marquee-partners whitespace-nowrap items-center">
+                {[...partners, ...partners, ...partners, ...partners, ...partners, ...partners].map((p, i) => (
+                  <div key={i} className="inline-flex items-center gap-3 shrink-0">
+                    <div className="w-16 h-8 rounded-lg overflow-hidden border border-white/10 flex-shrink-0 bg-white flex items-center justify-center p-1">
+                      <Image src={p.logo} alt={p.name} width={56} height={28} className="w-full h-full object-contain" unoptimized />
+                    </div>
+                    <span className="text-slate-500 font-bold text-sm tracking-wider">{p.name}</span>
+                    <span className="text-slate-700 text-xl font-light">·</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
+          <style jsx>{`
+            @keyframes marquee-partners {
+              0%   { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-marquee-partners {
+              animation: marquee-partners 22s linear infinite;
+            }
+          `}</style>
         </div>
       </section>
 
@@ -974,5 +978,5 @@ export const Hero: React.FC = () => {
         onClose={() => setSelectedMember(null)}
       />
     </>
-  );
+    );
 };
