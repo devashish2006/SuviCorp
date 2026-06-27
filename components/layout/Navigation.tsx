@@ -1,33 +1,22 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { PartnerModal } from '../ui/PartnerModal';
 
 export const Navigation: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navLinks = [
     { href: '#about', label: 'Our Vision' },
     { href: '#features', label: 'Innovation Lab' },
     { href: '#services', label: 'Services' },
+    { href: '#products', label: 'Products' },
     { href: '#team', label: 'Team' },
     { href: '#pricing', label: 'Resources' },
+    { href: '#blogs', label: 'Blogs' },
   ];
-
-  const openSearch = () => setIsSearchOpen(true);
-  const closeSearch = () => setIsSearchOpen(false);
-
-  // Close on Escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isSearchOpen) closeSearch();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isSearchOpen]);
 
   return (
     <>
@@ -48,7 +37,7 @@ export const Navigation: React.FC = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex gap-8 items-center">
+          <div className="hidden md:flex gap-6 items-center">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -59,15 +48,6 @@ export const Navigation: React.FC = () => {
               </Link>
             ))}
             <div className="flex items-center gap-4 border-l border-white/20 pl-4">
-              <button
-                onClick={openSearch}
-                className="text-white/75 hover:text-teal transition-colors"
-                aria-label="Open search"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="bg-blue-accent text-white px-5 py-2.5 rounded-md text-[0.85rem] font-semibold transition-colors duration-200 hover:bg-teal"
@@ -106,15 +86,6 @@ export const Navigation: React.FC = () => {
               </Link>
             ))}
             <button
-              onClick={openSearch}
-              className="flex items-center gap-2 text-white/75 text-[0.95rem] font-medium uppercase hover:text-teal transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              Search
-            </button>
-            <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 setIsModalOpen(true);
@@ -129,58 +100,6 @@ export const Navigation: React.FC = () => {
       </nav>
 
       <PartnerModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
-      {/* Search Overlay */}
-      {isSearchOpen && (
-        <div
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-start pt-32"
-          style={{
-            background: 'rgba(5, 10, 30, 0.96)',
-            backdropFilter: 'blur(20px)',
-            animation: 'fadeInSearch 0.2s ease',
-          }}
-          onClick={(e) => { if (e.target === e.currentTarget) closeSearch(); }}
-        >
-          <style>{`
-            @keyframes fadeInSearch {
-              from { opacity: 0; transform: translateY(-8px); }
-              to   { opacity: 1; transform: translateY(0); }
-            }
-          `}</style>
-
-          <div className="w-full max-w-2xl px-6">
-            {/* Header row */}
-            <div className="flex items-center justify-between mb-8">
-              <p className="text-white/40 text-xs uppercase tracking-widest">Quick Navigation</p>
-              <button
-                onClick={closeSearch}
-                className="text-white/40 hover:text-white transition-colors"
-                aria-label="Close"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Nav chips */}
-            <div className="flex flex-wrap gap-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeSearch}
-                  className="px-5 py-3 rounded-xl bg-white/[0.05] border border-white/[0.08] text-white/70 text-sm font-medium hover:bg-[#3b82f6]/20 hover:text-white hover:border-[#3b82f6]/40 transition-all"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-
-            <p className="mt-8 text-white/20 text-sm text-center">Press <kbd className="px-2 py-0.5 rounded bg-white/10 text-white/40 font-mono text-xs">Esc</kbd> to close</p>
-          </div>
-        </div>
-      )}
     </>
   );
 };

@@ -70,18 +70,18 @@ export const About: React.FC = () => {
             className="absolute top-0 left-0 w-full h-64 pointer-events-none"
             style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.15) 0%, transparent 70%)' }}
           />
-          <div className="relative text-white/10 font-playfair text-[5rem] text-center font-black select-none">SUVI</div>
+          <div className="relative text-white/10 font-playfair text-[5rem] text-center font-black select-none">SC</div>
           <div className="absolute bottom-0 left-0 right-0 h-2/5" style={{ background: 'linear-gradient(to top, rgba(6,182,212,0.12) 0%, transparent 100%)' }} />
         </div>
 
         {/* Content */}
         <div>
-          <SectionTag>About SUVI Internationals</SectionTag>
+          <SectionTag>About Suvicorp</SectionTag>
           <SectionTitle className="mt-4 mb-4">
             Bridging Strategy & Technology
           </SectionTitle>
           <p className="text-slate-600 leading-relaxed my-4">
-            SUVI Internationals was founded on a simple, powerful premise: the best consulting insights deserve the best enabling technology. We are the strategic technology partner for accounting and consulting firms worldwide, amplifying your expertise with a robust ecosystem of SAAS solutions and technical talent.
+            Suvicorp was founded on a simple, powerful premise: the best consulting insights deserve the best enabling technology. We are the strategic technology partner for accounting and consulting firms worldwide, amplifying your expertise with a robust ecosystem of SAAS solutions and technical talent.
           </p>
           <p className="text-slate-600 leading-relaxed my-4">
             We enable our partners to deliver &ldquo;Big Four&rdquo; calibre technology solutions with the agility and cost-efficiency of a boutique firm. Our team brings together decades of experience from global consulting firms and specialized technology environments.

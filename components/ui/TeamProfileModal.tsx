@@ -143,7 +143,7 @@ export const TeamProfileModal: React.FC<TeamProfileModalProps> = ({ member, onCl
                   border: '1px solid rgba(6,182,212,0.25)',
                 }}
               >
-                SUVI Corp
+                Suvicorp
               </span>
             </div>
             <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-1 leading-tight" style={{ color: '#0a1628' }}>
@@ -243,7 +243,7 @@ export const TeamProfileModal: React.FC<TeamProfileModalProps> = ({ member, onCl
             animation: 'fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both',
           }}
         >
-          <span className="text-xs" style={{ color: '#9ca3af' }}>SUVI Corp · Team</span>
+          <span className="text-xs" style={{ color: '#9ca3af' }}>Suvicorp · Team</span>
           <button
             onClick={onClose}
             className="text-xs font-semibold uppercase tracking-widest px-5 py-2 rounded-full transition-all duration-200 hover:scale-105"

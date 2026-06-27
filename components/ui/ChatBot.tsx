@@ -10,7 +10,7 @@ type Message = {
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: 'Hi there! I am the SUVI AI assistant. How can I help you today?' }
+    { role: 'model', text: 'Hi there! I am the Suvicorp AI assistant. How can I help you today?' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -91,7 +91,7 @@ export default function ChatBot() {
                 />
               </div>
               <div>
-                <h3 className="font-semibold text-white text-sm leading-tight">SUVI AI Assistant</h3>
+                <h3 className="font-semibold text-white text-sm leading-tight">Suvicorp AI Assistant</h3>
                 <p className="text-[10px]" style={{ color: '#06b6d4' }}>Online · Ready to help</p>
               </div>
             </div>

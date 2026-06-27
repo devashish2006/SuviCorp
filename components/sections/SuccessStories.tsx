@@ -10,7 +10,7 @@ interface Story {
 
 const stories: Story[] = [
   {
-    quote: "SUVI Internationals transformed how we deliver technology to our clients. Their bespoke SAAS platform gave us a competitive edge we couldn't have built ourselves. True partnership at every level.",
+    quote: "Suvicorp transformed how we deliver technology to our clients. Their bespoke SAAS platform gave us a competitive edge we couldn't have built ourselves. True partnership at every level.",
     author: 'David Chen',
     role: 'Managing Partner, Premier Advisory Group',
     initials: 'DC',
@@ -22,7 +22,7 @@ const stories: Story[] = [
     initials: 'ER',
   },
   {
-    quote: 'From concept to deployment in months, not years. SUVI built us a white-labeled consolidation platform that our clients believe we developed in-house. Game-changing partnership.',
+    quote: 'From concept to deployment in months, not years. Suvicorp built us a white-labeled consolidation platform that our clients believe we developed in-house. Game-changing partnership.',
     author: 'James Thompson',
     role: 'Director of Technology, Apex Financial Advisory',
     initials: 'JT',

@@ -112,7 +112,7 @@ export const TrustedPartners: React.FC = () => {
 
           <p className="mt-5 text-slate-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             A growing network of elite accounting and consulting partners who trust
-            SUVI Internationals to deliver technology that matters.
+            Suvicorp to deliver technology that matters.
           </p>
         </div>
 

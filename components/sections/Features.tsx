@@ -150,11 +150,11 @@ export const Features: React.FC = () => {
         {/* ── Section Header ── */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <SectionTag>The SUVI Advantage</SectionTag>
+            <SectionTag>The Suvicorp Advantage</SectionTag>
             <SectionTitle className="mt-5 mb-0 leading-tight">
               Why Leading Firms<br />
               <em className="font-playfair italic font-light opacity-80">
-                Choose SUVI Internationals
+                Choose Suvicorp
               </em>
             </SectionTitle>
           </div>

@@ -6,7 +6,7 @@ const footerLinks = {
     { label: 'Financial Transformation', href: '#services' },
     { label: 'Bespoke SaaS Development', href: '#services' },
     { label: 'Expert Hub', href: '#services' },
-    { label: 'SUVI Knowledge Hub', href: '#services' },
+    { label: 'Suvicorp Knowledge Hub', href: '#services' },
     { label: 'Innovation Lab', href: '#services' },
   ],
   company: [
@@ -17,7 +17,7 @@ const footerLinks = {
   ],
   resources: [
     { label: 'Product Portfolio', href: '#pricing' },
-    { label: 'The SUVI Advantage', href: '#features' },
+    { label: 'The Suvicorp Advantage', href: '#features' },
     { label: 'Contact', href: '#cta' },
     { label: 'Partnerships', href: '#cta' },
   ],
@@ -25,7 +25,10 @@ const footerLinks = {
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-navy px-[5%] pt-12 pb-8 border-t border-white/[0.06]">
+    <>
+      {/* Anchor for Blogs nav link — placeholder until a dedicated Blogs section is built */}
+      <span id="blogs" className="block" aria-hidden="true" />
+      <footer className="bg-navy px-[5%] pt-12 pb-8 border-t border-white/[0.06]">
       <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
         {/* Brand */}
         <div>
@@ -94,5 +97,6 @@ export const Footer: React.FC = () => {
         <p className="text-white/30 text-xs">Privacy Policy · Terms of Service</p>
       </div>
     </footer>
+    </>
   );
 };

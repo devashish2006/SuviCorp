@@ -65,7 +65,10 @@ const plans: PricingPlan[] = [
 
 export const Pricing: React.FC = () => {
   return (
-    <section id="pricing" className="bg-white py-16 md:py-24 px-[5%]">
+    <>
+      {/* Anchor for Products nav link */}
+      <span id="products" className="absolute -top-20" aria-hidden="true" />
+      <section id="pricing" className="bg-white py-16 md:py-24 px-[5%] relative">
       <div className="text-center">
         <SectionTag>Our Product Portfolio</SectionTag>
         <SectionTitle className="mt-4 mb-4">
@@ -154,5 +157,6 @@ export const Pricing: React.FC = () => {
         ))}
       </div>
     </section>
+    </>
   );
 };

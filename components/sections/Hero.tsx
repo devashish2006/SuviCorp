@@ -63,7 +63,7 @@ const teamMembers: TeamMember[] = [
     imageScale: '88%',
     tagline: 'Leading growth-oriented goals with a highly motivated and skilled team.',
     highlights: [
-      'Founded SUVI to create a firm that excels in accounting, advisory, and the development of automation tools — committed to drive transformation and delivering high-quality services to clients, leveraging technology and innovation.',
+      'Founded Suvicorp to create a firm that excels in accounting, advisory, and the development of automation tools — committed to drive transformation and delivering high-quality services to clients, leveraging technology and innovation.',
       'Chartered Accountant with over a decade of experience in auditing and accounting advisory. Worked with prestigious Big Four firms gaining invaluable insights and experience in running innovation agendas.',
       'Experience in transactions such as M&A, IPO/SPAC and Divestitures.',
     ],
@@ -102,7 +102,7 @@ const teamMembers: TeamMember[] = [
     imageScale: '88%',
     tagline: 'Leading growth-oriented goals with a highly motivated and skilled team.',
     highlights: [
-      'Founded SUVI to create a firm that excels in accounting, advisory, and the development of automation tools — committed to drive transformation and delivering high-quality services to clients, leveraging technology and innovation.',
+      'Founded Suvicorp to create a firm that excels in accounting, advisory, and the development of automation tools — committed to drive transformation and delivering high-quality services to clients, leveraging technology and innovation.',
       'Chartered Accountant with over a decade of experience in auditing and accounting advisory. Worked with prestigious Big Four firms gaining invaluable insights and experience in running innovation agendas.',
       'Experience in transactions such as M&A, IPO/SPAC and Divestitures.',
     ],
@@ -248,9 +248,9 @@ const teamMembers: TeamMember[] = [
     image: '/devashishPos-removebg-preview.png',
     imageOffset: '-50px',
     imageScale: '88%',
-    tagline: 'Crafting scalable, high-performance software solutions that power SUVI Corp\'s technology ecosystem.',
+    tagline: 'Crafting scalable, high-performance software solutions that power Suvicorp\'s technology ecosystem.',
     highlights: [
-      'Passionate Software Developer specializing in building modern web applications and internal tooling that streamline operations across SUVI Corp\'s service verticals.',
+      'Passionate Software Developer specializing in building modern web applications and internal tooling that streamline operations across Suvicorp\'s service verticals.',
       'Proficient in full-stack development with a strong focus on React, Next.js, and Node.js — delivering clean, maintainable code that scales.',
       'Drives automation initiatives and integrates AI-powered features to enhance productivity and reduce manual effort across client-facing and internal platforms.',
     ],
@@ -276,11 +276,11 @@ const teamMembers: TeamMember[] = [
     imageClass: 'team-member-img--ritesh',
     imageOffset: '-50px',
     imageScale: '88%',
-    tagline: 'Bringing expertise and dedication to drive meaningful results at SUVI Corp.',
+    tagline: 'Bringing expertise and dedication to drive meaningful results at Suvicorp.',
     highlights: [
-      'Dedicated team member at SUVI Corp contributing to the firm\'s mission of delivering transformative accounting and technology solutions.',
+      'Dedicated team member at Suvicorp contributing to the firm\'s mission of delivering transformative accounting and technology solutions.',
       'Collaborative professional with a strong work ethic and commitment to excellence across client engagements.',
-      'Supports cross-functional initiatives and plays a key role in advancing SUVI Corp\'s growth-oriented goals.',
+      'Supports cross-functional initiatives and plays a key role in advancing Suvicorp\'s growth-oriented goals.',
     ],
     expertise: [
       {
@@ -290,7 +290,7 @@ const teamMembers: TeamMember[] = [
           'Client engagement and service delivery.',
           'Process improvement and operational efficiency.',
           'Knowledge sharing and team enablement.',
-          'Contributing to SUVI Corp\'s technology and advisory mission.',
+          'Contributing to Suvicorp\'s technology and advisory mission.',
         ],
       },
     ],
@@ -971,7 +971,7 @@ export const Hero: React.FC = () => {
             <SectionTag variant="teal">Our Team</SectionTag>
             <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-navy mt-5 leading-tight">
               Meet The Minds<br />
-              <em className="italic font-light opacity-80">Behind SUVI Corp</em>
+              <em className="italic font-light opacity-80">Behind Suvicorp</em>
             </h2>
           </div>
 

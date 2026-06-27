@@ -43,13 +43,13 @@ export async function POST(req: Request) {
       {
         from: 'Partnerships <onboarding@resend.dev>', // Update this to your verified Resend domain in production
         to: [email],
-        subject: 'Thank you for your interest in SUVI Internationals',
-        text: `Hi ${name},\n\nThank you for reaching out to partner with us! We have received your inquiry and our team will get back to you shortly.\n\nBest regards,\nThe SUVI Internationals Team`,
+        subject: 'Thank you for your interest in Suvicorp',
+        text: `Hi ${name},\n\nThank you for reaching out to partner with us! We have received your inquiry and our team will get back to you shortly.\n\nBest regards,\nThe Suvicorp Team`,
         html: `
           <h3>Hi ${name},</h3>
           <p>Thank you for reaching out to partner with us! We have received your inquiry and our team will get back to you shortly.</p>
           <br/>
-          <p>Best regards,<br/><strong>The SUVI Internationals Team</strong></p>
+          <p>Best regards,<br/><strong>The Suvicorp Team</strong></p>
         `,
       }
     ]);

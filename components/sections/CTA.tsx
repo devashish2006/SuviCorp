@@ -69,13 +69,13 @@ export const CTA: React.FC = () => {
         Start the Conversation
       </h2>
       <p className="text-white/85 text-lg max-w-[500px] mx-auto mb-8">
-        Ready to explore how a strategic alliance with SUVI Internationals can transform your firm&apos;s capabilities? Schedule a confidential consultation.
+        Ready to explore how a strategic alliance with Suvicorp can transform your firm&apos;s capabilities? Schedule a confidential consultation.
       </p>
       
       <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 max-w-[480px] mx-auto justify-center">
         <input
           type="email"
-          placeholder="partnerships@suvinternationals.com"
+          placeholder="partnerships@suvicorp.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required

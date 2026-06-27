@@ -78,8 +78,8 @@ const services: ServiceContent[] = [
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
       </svg>
     ),
-    title: 'The SUVI Knowledge Hub',
-    description: 'Technology is only half the equation. The other half? The people who wield it. The SUVI Knowledge Hub connects you with practitioners who\'ve lived through thousands of closes and navigated countless complex accounting scenarios. We transfer that wisdom directly to your team—through training on recent accounting changes, deep dives into complex topics, and battle-tested best practices that transform how you run financial processes. Because true capability isn\'t just having the right tools. It\'s knowing exactly how to use them.',
+    title: 'The Suvicorp Knowledge Hub',
+    description: 'Technology is only half the equation. The other half? The people who wield it. The Suvicorp Knowledge Hub connects you with practitioners who\'ve lived through thousands of closes and navigated countless complex accounting scenarios. We transfer that wisdom directly to your team—through training on recent accounting changes, deep dives into complex topics, and battle-tested best practices that transform how you run financial processes. Because true capability isn\'t just having the right tools. It\'s knowing exactly how to use them.',
     points: [
       'Master complex accounting topics',
       'Navigate new standards with confidence',
@@ -98,7 +98,7 @@ const services: ServiceContent[] = [
       </svg>
     ),
     title: 'Innovation Lab',
-    description: 'The SUVI Innovation Lab is where financial intelligence becomes tangible. Where abstract problems meet concrete solutions. Consider us your research and development arm, where we build the tools that level the playing field.',
+    description: 'The Suvicorp Innovation Lab is where financial intelligence becomes tangible. Where abstract problems meet concrete solutions. Consider us your research and development arm, where we build the tools that level the playing field.',
     points: [
       'Make financial intelligence tangible',
       'Turn abstract problems into concrete solutions',
