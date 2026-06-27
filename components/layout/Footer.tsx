@@ -3,23 +3,23 @@ import Link from 'next/link';
 
 const footerLinks = {
   services: [
-    { label: 'Financial Transformation', href: '#services' },
     { label: 'Bespoke SaaS Development', href: '#services' },
-    { label: 'Expert Hub', href: '#services' },
-    { label: 'Suvicorp Knowledge Hub', href: '#services' },
-    { label: 'Innovation Lab', href: '#services' },
+    { label: 'Finance Transformation', href: '#services' },
+    { label: 'Technical Accounting Advisory', href: '#services' },
+    { label: 'SUVI Innovation Lab', href: '#services' },
+    { label: 'Strategic Technology Partnerships', href: '#services' },
   ],
   company: [
     { label: 'About Us', href: '#about' },
     { label: 'Our Team', href: '#about' },
-    { label: 'Partnership Success', href: '#stories' },
     { label: 'Mission & Vision', href: '#about' },
+    { label: 'Success Stories', href: '#stories' },
   ],
   resources: [
-    { label: 'Product Portfolio', href: '#pricing' },
+    { label: 'Products (Lite)', href: '#products' },
+    { label: 'Products (Elite)', href: '#products' },
     { label: 'The Suvicorp Advantage', href: '#features' },
     { label: 'Contact', href: '#cta' },
-    { label: 'Partnerships', href: '#cta' },
   ],
 };
 

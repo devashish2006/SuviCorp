@@ -12,9 +12,9 @@ export const Navigation: React.FC = () => {
     { href: '#about', label: 'Our Vision' },
     { href: '#features', label: 'Innovation Lab' },
     { href: '#services', label: 'Services' },
-    { href: '#products', label: 'Products' },
+    { href: '#products', label: 'Products (Lite)' },
+    { href: '#products', label: 'Products (Elite)' },
     { href: '#team', label: 'Team' },
-    { href: '#pricing', label: 'Resources' },
     { href: '#blogs', label: 'Blogs' },
   ];
 
