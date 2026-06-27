@@ -3,7 +3,6 @@ import {
   Hero,
   Features,
   Services,
-  Dashboard,
   Pricing,
   SuccessStories,
   About,
@@ -19,7 +18,6 @@ export default function Home() {
         <Hero />
         <Features />
         <Services />
-        <Dashboard />
         <Pricing />
         <SuccessStories />
         <TrustedPartners />
