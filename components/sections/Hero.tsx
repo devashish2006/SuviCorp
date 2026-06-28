@@ -728,19 +728,18 @@ export const Hero: React.FC = () => {
                     className="not-italic"
                     style={{ fontFamily: 'Playfair Display, Georgia, serif', fontStyle: 'italic', fontWeight: 300, opacity: 0.92 }}
                   >
-                    Strategic Hub
+                    Strategic Technical Hub
                   </em>
                   <br />
                   for{' '}
                   <span className="text-blue-accent font-bold">
-                    Accounting Excellence.
+                    Consulting Excellence.
                   </span>
                 </h1>
 
                 <p className="text-white/70 text-sm md:text-lg leading-relaxed max-w-[480px] mb-6 md:mb-10 font-light">
-                  Suvicorp empowers accounting and consulting firms with
-                  elite technology ecosystems and specialized SAAS/AI solutions to
-                  deliver transformative financial outcomes without the overhead.
+                  Suvicorp empowers you with elite technology ecosystem by extending our technological arm and giving them the power to compete at the highest level.
+
                 </p>
 
               </div>
@@ -810,7 +809,7 @@ export const Hero: React.FC = () => {
               animation: marquee-partners 22s linear infinite;
             }
           `}</style>
-          </div>
+        </div>
       </section>
 
       {/* ─── SECTION 3: White — Audience Cards (team-style layout) ─── */}
