@@ -743,7 +743,7 @@ export const Hero: React.FC = () => {
                 
                 <div className="h-px w-full max-w-[400px] bg-gradient-to-r from-white/20 to-transparent mb-6" />
                 
-                <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-[480px] mb-6 md:mb-10 font-medium">
+                <p className="text-[0.95rem] md:text-[1.1rem] leading-relaxed max-w-[480px] mb-6 md:mb-10 font-semibold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal">
                   Level the playing field. Compete with giants with necessary technological firepower.
                 </p>
 
@@ -757,7 +757,7 @@ export const Hero: React.FC = () => {
 
           {/* ── Marquee strip ── */}
           <div
-            className="mt-12 md:mt-16 overflow-hidden w-full max-w-5xl mx-auto px-4 pb-20 text-center"
+            className="mt-6 md:mt-8 overflow-hidden w-full max-w-5xl mx-auto px-4 pb-20 text-center"
             style={{ animation: 'fadeUp 0.8s ease-out 1s both' }}
           >
             {/* Tag & Description */}
@@ -768,7 +768,7 @@ export const Hero: React.FC = () => {
               </span>
             </div>
 
-            <h3 className="mb-20 text-2xl md:text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight">
+            <h3 className="mb-10 text-2xl md:text-3xl lg:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight">
               A growing network of elite accounting and consulting partners who trust Suvicorp to deliver{' '}
               <span className="relative inline-block whitespace-nowrap">
                 <span className="relative z-10 bg-gradient-to-r from-blue-400 via-teal to-cyan-300 bg-clip-text text-transparent">
