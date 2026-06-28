@@ -8,16 +8,16 @@ const footerLinks = {
     { label: 'Finance Transformation', href: '#services' },
     { label: 'Technical Accounting Advisory', href: '#services' },
     { label: 'SUVI Innovation Lab', href: '#services' },
-    { label: 'Strategic Technology Partnerships', href: '#services' },
+    { label: 'Strategic Technology Partnerships', href: '#trusted-partners' },
   ],
   company: [
     { label: 'About Us', href: '#about' },
-    { label: 'Our Team', href: '#about' },
+    { label: 'Our Team', href: '#team' },
     { label: 'Mission & Vision', href: '#about' },
   ],
   resources: [
-    { label: 'Products (Lite)', href: '#products' },
-    { label: 'Products (Elite)', href: '#products' },
+    { label: 'Products (Lite)', href: '#pricing' },
+    { label: 'Products (Elite)', href: '#pricing' },
     { label: 'The Suvicorp Advantage', href: '#features' },
   ],
 };
