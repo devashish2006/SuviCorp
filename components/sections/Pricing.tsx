@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { SectionTag, SectionTitle } from '../ui';
+
 
 /* ─── Data ─── */
 interface Product {
@@ -769,7 +769,7 @@ export const Pricing: React.FC = () => {
                 </div>
 
                 <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px] break-words">
-                  When off-the-shelf solutions aren't enough, SUVI’s Custom Development team engineers bespoke architecture tailored to your exact operational DNA. We build full-stack, enterprise-grade platforms that integrate seamlessly with your existing infrastructure, ensuring you maintain a unique competitive advantage. From white-label deployments to dedicated engineering pods, our custom solutions provide the ultimate flexibility, security, and scalability for firms leading the charge in financial innovation.
+                  When off-the-shelf solutions aren&apos;t enough, SUVI’s Custom Development team engineers bespoke architecture tailored to your exact operational DNA. We build full-stack, enterprise-grade platforms that integrate seamlessly with your existing infrastructure, ensuring you maintain a unique competitive advantage. From white-label deployments to dedicated engineering pods, our custom solutions provide the ultimate flexibility, security, and scalability for firms leading the charge in financial innovation.
                 </p>
 
                 {/* Product pills stacked */}
