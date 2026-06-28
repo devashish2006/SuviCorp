@@ -12,6 +12,7 @@ const partners = [
     accentColor: 'from-blue-500/20 to-cyan-400/20',
     borderColor: 'border-blue-400/30',
     glowColor: 'shadow-blue-500/20',
+    bgClass: 'bg-white',
   },
   {
     id: 'gcas',
@@ -21,6 +22,7 @@ const partners = [
     accentColor: 'from-teal/20 to-emerald-400/20',
     borderColor: 'border-teal/30',
     glowColor: 'shadow-teal/20',
+    bgClass: 'bg-white',
   },
   {
     id: 'snr',
@@ -30,6 +32,17 @@ const partners = [
     accentColor: 'from-purple-500/20 to-indigo-400/20',
     borderColor: 'border-purple-400/30',
     glowColor: 'shadow-purple-500/20',
+    bgClass: 'bg-white',
+  },
+  {
+    id: 'aia',
+    name: 'AIA Engineering',
+    logo: '/AIAengneering.png',
+    description: 'Engineering & Manufacturing Excellence',
+    accentColor: 'from-orange-500/20 to-rose-400/20',
+    borderColor: 'border-orange-400/30',
+    glowColor: 'shadow-orange-500/20',
+    bgClass: 'bg-[#061428]',
   },
 ];
 
@@ -117,7 +130,7 @@ export const TrustedPartners: React.FC = () => {
         </div>
 
         {/* ── Partner Cards ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {partners.map((partner, index) => {
             const isHovered = hoveredId === partner.id;
             return (
@@ -161,7 +174,7 @@ export const TrustedPartners: React.FC = () => {
                       className={`absolute -inset-3 rounded-3xl border ${partner.borderColor} opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105`}
                     />
                     <div
-                      className={`w-44 h-24 rounded-2xl overflow-hidden border-2 ${partner.borderColor} shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl ${partner.glowColor} bg-white flex items-center justify-center p-3`}
+                      className={`w-44 h-24 rounded-2xl overflow-hidden border-2 ${partner.borderColor} shadow-lg transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl ${partner.glowColor} ${partner.bgClass} flex items-center justify-center p-3`}
                     >
                       <Image
                         src={partner.logo}
@@ -213,16 +226,18 @@ export const TrustedPartners: React.FC = () => {
             <div className="h-px flex-1 max-w-[120px] bg-gradient-to-l from-transparent to-slate-700" />
           </div>
 
-          <div className="relative">
-            {/* Edge fade masks */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#040d1a] to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#040d1a] to-transparent pointer-events-none" />
-
+          <div 
+            className="relative"
+            style={{ 
+              maskImage: 'linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent)', 
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent)' 
+            }}
+          >
             {/* Scrolling track */}
-            <div className="flex gap-10 animate-marquee-partners whitespace-nowrap">
+            <div className="flex gap-10 animate-marquee-partners whitespace-nowrap w-max">
               {[...partners, ...partners, ...partners, ...partners].map((p, i) => (
                 <div key={i} className="inline-flex items-center gap-3 shrink-0">
-                  <div className="w-16 h-8 rounded-lg overflow-hidden border border-white/10 flex-shrink-0 bg-white flex items-center justify-center p-1">
+                  <div className={`w-16 h-8 rounded-lg overflow-hidden border border-white/10 flex-shrink-0 ${p.bgClass} flex items-center justify-center p-1`}>
                     <Image src={p.logo} alt={p.name} width={56} height={28} className="w-full h-full object-contain" unoptimized />
                   </div>
                   <span className="text-slate-500 font-bold text-sm tracking-wider">{p.name}</span>

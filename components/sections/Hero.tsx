@@ -11,16 +11,25 @@ const partners = [
     id: 'fsnm',
     name: 'FSNM',
     logo: '/FSNM.jpeg',
+    bgClass: 'bg-white',
   },
   {
     id: 'gcas',
     name: 'GCAS',
     logo: '/GCAS.jpeg',
+    bgClass: 'bg-white',
   },
   {
     id: 'snr',
     name: 'SNR',
     logo: '/SNR.jpeg',
+    bgClass: 'bg-white',
+  },
+  {
+    id: 'aia',
+    name: 'AIA Engineering',
+    logo: '/AIAengneering.png',
+    bgClass: 'bg-[#061428]',
   },
 ];
 
@@ -661,16 +670,18 @@ export const Hero: React.FC = () => {
               <div className="h-px flex-1 max-w-[160px] bg-gradient-to-l from-transparent to-slate-600" />
             </div>
 
-            <div className="relative">
-              {/* Edge fade masks */}
-              <div className="absolute left-0 top-0 bottom-0 w-24 md:w-32 z-10 bg-gradient-to-r from-[#0a1628] to-transparent pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-24 md:w-32 z-10 bg-gradient-to-l from-[#0a1628] to-transparent pointer-events-none" />
-
+            <div 
+              className="relative"
+              style={{ 
+                maskImage: 'linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent)', 
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent)' 
+              }}
+            >
               {/* Scrolling track */}
-              <div className="flex gap-10 animate-marquee-partners whitespace-nowrap items-center">
+              <div className="flex gap-10 animate-marquee-partners whitespace-nowrap items-center w-max">
                 {[...partners, ...partners, ...partners, ...partners, ...partners, ...partners].map((p, i) => (
                   <div key={i} className="inline-flex items-center gap-3 shrink-0">
-                    <div className="w-16 h-8 rounded-lg overflow-hidden border border-white/10 flex-shrink-0 bg-white flex items-center justify-center p-1">
+                    <div className={`w-16 h-8 rounded-lg overflow-hidden border border-white/10 flex-shrink-0 ${p.bgClass} flex items-center justify-center p-1`}>
                       <Image src={p.logo} alt={p.name} width={56} height={28} className="w-full h-full object-contain" unoptimized />
                     </div>
                     <span className="text-slate-500 font-bold text-sm tracking-wider">{p.name}</span>
