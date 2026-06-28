@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { FooterCTA } from './FooterCTA';
 
 const footerLinks = {
   services: [
@@ -29,15 +30,14 @@ export const Footer: React.FC = () => {
       {/* Anchor for Blogs nav link — placeholder until a dedicated Blogs section is built */}
       <span id="blogs" className="block" aria-hidden="true" />
       <footer className="bg-navy px-[5%] pt-12 pb-8 border-t border-white/[0.06]">
-      <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1.5fr] gap-8 lg:gap-12 mb-12">
         {/* Brand */}
-        <div>
+        <div className="sm:col-span-2 lg:col-span-1">
           <div className="font-playfair text-[1.5rem] md:text-[1.7rem] font-black tracking-tight leading-none mb-4">
             <span className="text-[#3b82f6]">Suvi</span><span className="text-white">corp</span>
           </div>
-          <p className="text-white/40 text-[0.85rem] leading-relaxed max-w-[240px]">
-            Strategic technology partner for accounting and consulting firms. Amplifying expertise through elite SAAS solutions and technical talent.
-          </p>
+
+          <FooterCTA />
         </div>
 
         {/* Services */}
@@ -80,6 +80,25 @@ export const Footer: React.FC = () => {
               {link.label}
             </Link>
           ))}
+        </div>
+
+        {/* Contact Info */}
+        <div>
+          <h4 className="text-white font-semibold text-[0.85rem] mb-4">Contact Info</h4>
+          <div className="flex flex-col gap-4">
+            <div>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Gurugram, India</p>
+              <p className="text-white/40 text-[0.8rem] mt-0.5">+91 9811 981834</p>
+            </div>
+            <div>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Ahmedabad, India</p>
+              <p className="text-white/40 text-[0.8rem] mt-0.5">+91 98795 73517</p>
+            </div>
+            <div>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Poland, Europe</p>
+              <p className="text-white/40 text-[0.8rem] mt-0.5">+48 739 658 861</p>
+            </div>
+          </div>
         </div>
       </div>
 

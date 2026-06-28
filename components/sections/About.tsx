@@ -74,33 +74,30 @@ export const About: React.FC = () => {
           />
           
           {/* SC Text Interactive */}
-          <div className="relative flex items-center justify-center select-none z-10 transition-transform duration-700 ease-out group-hover:scale-[1.15]">
-            <span 
-              className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text transition-all duration-700"
-              style={{ backgroundImage: 'linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.1))' }}
-            >
-              S
-            </span>
-            <span 
-              className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text transition-all duration-700"
-              style={{ backgroundImage: 'linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0.1))' }}
-            >
-              C
-            </span>
-            
-            {/* Overlay Gradients that fade in on hover */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          <div className="relative flex items-center justify-center select-none z-10 transition-transform duration-1000 ease-in-out group-hover:scale-105">
+            {/* The base SC that is visible when not hovered */}
+            <div className="absolute inset-0 flex items-center justify-center transition-all duration-1000 ease-in-out group-hover:opacity-0 group-hover:scale-95">
               <span 
-                className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(59,130,246,0.5)]"
+                className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text"
+                style={{ backgroundImage: 'linear-gradient(to bottom right, rgba(255,255,255,0.15), rgba(255,255,255,0.05))' }}
+              >
+                SC
+              </span>
+            </div>
+
+            {/* The expanding Suvicorp that is visible on hover */}
+            <div className="relative flex items-center justify-center opacity-0 scale-[1.03] group-hover:opacity-100 group-hover:scale-100 transition-all duration-1000 ease-in-out">
+              <span 
+                className="font-playfair text-[4rem] md:text-[5.5rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(59,130,246,0.6)]"
                 style={{ backgroundImage: 'linear-gradient(to right, #3b82f6, #60a5fa)' }}
               >
-                S
+                Suvi
               </span>
               <span 
-                className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(255,255,255,0.4)]"
+                className="font-playfair text-[4rem] md:text-[5.5rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(255,255,255,0.5)]"
                 style={{ backgroundImage: 'linear-gradient(to right, #ffffff, #f8fafc)' }}
               >
-                C
+                corp
               </span>
             </div>
           </div>

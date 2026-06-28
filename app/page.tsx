@@ -6,7 +6,6 @@ import {
   Pricing,
   SuccessStories,
   About,
-  CTA,
 } from '@/components/sections';
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
         <Pricing />
         <SuccessStories />
         <About />
-        <CTA />
       </main>
       <Footer />
     </>
