@@ -346,7 +346,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
 
       {/* Full-width Modal */}
       <div
-        className="relative z-10 w-full max-w-6xl max-h-[95vh] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row bg-[#081324]"
+        className="relative z-10 w-full max-w-6xl max-h-[95vh] rounded-[2rem] overflow-y-auto md:overflow-hidden shadow-2xl flex flex-col md:flex-row bg-[#081324] custom-scrollbar"
         style={{
           animation: 'productModalIn 0.4s cubic-bezier(0.16,1,0.3,1) both',
           border: `1px solid ${product.badgeColor}30`,
@@ -356,7 +356,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
       >
         {/* Left Column (Visual & Hero Info) */}
         <div
-          className="relative w-full md:w-[45%] lg:w-[40%] flex flex-col p-10 md:p-12 justify-center overflow-hidden"
+          className="relative w-full md:w-[45%] lg:w-[40%] flex flex-col p-6 md:p-12 justify-center overflow-hidden flex-shrink-0"
           style={{
             background: isElite
               ? 'linear-gradient(160deg, #0a1628 0%, #060d18 100%)'
@@ -446,7 +446,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
         </div>
 
         {/* Right Column (Details) */}
-        <div className="w-full md:w-[55%] lg:w-[60%] flex flex-col max-h-[60vh] md:max-h-none overflow-y-auto custom-scrollbar relative">
+        <div className="w-full md:w-[55%] lg:w-[60%] flex flex-col overflow-visible md:max-h-[95vh] md:overflow-y-auto custom-scrollbar relative">
           
           {/* Close button for Desktop (absolute top right of right panel) */}
           <button
@@ -462,7 +462,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
             </svg>
           </button>
 
-          <div className="p-8 md:p-12 space-y-10">
+          <div className="p-6 md:p-12 space-y-10">
             {/* Description Paragraphs (Handling newlines) */}
             <div className="space-y-6">
               <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">
@@ -563,11 +563,10 @@ const ProductPill: React.FC<{ product: Product; onClick: () => void }> = ({
   return (
     <button
       onClick={onClick}
-      className="group relative w-full h-full text-left rounded-2xl transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628] flex items-center"
+      className="group relative w-full h-full text-left rounded-2xl transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628] flex items-center p-5 md:p-6 overflow-hidden"
       style={{
         background: bgGradient,
         border: `1px solid rgba(255,255,255,0.08)`,
-        padding: '22px 24px',
         boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 24px rgba(0,0,0,0.2)',
       }}
       aria-label={`View details for ${product.name}`}
@@ -663,7 +662,7 @@ export const Pricing: React.FC = () => {
                 for Excellence
               </span>
             </h2>
-            <p className="text-slate-400 text-base md:text-lg max-w-[640px] mx-auto leading-relaxed font-light">
+            <p className="text-slate-400 text-base md:text-lg max-w-[640px] mx-auto leading-relaxed font-light break-words">
               From Excel-powered automation to enterprise cloud platforms. Click any product to explore its capabilities.
               All tools can be seamlessly white-labelled to carry your firm&apos;s brand.
             </p>
@@ -693,7 +692,7 @@ export const Pricing: React.FC = () => {
                   </div>
                 </div>
                 
-                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px]">
+                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px] break-words">
                   SUVI Corp’s Lite Tools are a curated suite of intelligent, Excel and Power BI-based solutions built to solve critical reporting, compliance, and planning challenges – fast and produce enterprise-class outcomes at a fraction of the time and cost.
                 </p>
 
@@ -731,7 +730,7 @@ export const Pricing: React.FC = () => {
                   </div>
                 </div>
                 
-                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px]">
+                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px] break-words">
                   When spreadsheets reach their breaking point and compliance, scale, and control become non-negotiable, SUVI’s Elite Tools step in. These are full-stack, cloud-based applications built for the demands of sophisticated finance teams – combining deep domain workflows with artificial intelligence precisely where it unlocks speed, accuracy, and insight. Each Elite Tool is engineered to run complex processes at enterprise scale without the enterprise IT headache. Fast to deploy, secure by design, and priced for value, they give your team a competitive edge that legacy systems and manual work simply cannot match.
                 </p>
 
@@ -769,7 +768,7 @@ export const Pricing: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px]">
+                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px] break-words">
                   When off-the-shelf solutions aren't enough, SUVI’s Custom Development team engineers bespoke architecture tailored to your exact operational DNA. We build full-stack, enterprise-grade platforms that integrate seamlessly with your existing infrastructure, ensuring you maintain a unique competitive advantage. From white-label deployments to dedicated engineering pods, our custom solutions provide the ultimate flexibility, security, and scalability for firms leading the charge in financial innovation.
                 </p>
 
