@@ -135,12 +135,13 @@ export const Services: React.FC = () => {
 
       <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-16 items-start">
         {/* Service Tabs */}
-        <div className="flex flex-col gap-2">
+        <div className="flex overflow-x-auto md:flex-col gap-2 pb-2 md:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <style>{`.overflow-x-auto::-webkit-scrollbar { display: none; }`}</style>
           {services.map((service) => (
             <button
               key={service.id}
               onClick={() => setActiveService(service.id)}
-              className={`px-6 py-4 rounded-lg cursor-pointer border transition-all duration-200 text-left font-medium flex items-center gap-3 ${
+              className={`px-5 py-3 md:px-6 md:py-4 rounded-lg cursor-pointer border transition-all duration-200 text-left font-medium flex items-center gap-2 md:gap-3 whitespace-nowrap flex-shrink-0 ${
                 activeService === service.id
                   ? 'bg-blue-accent/15 border-blue-accent/30 text-teal'
                   : 'border-transparent text-white/55 hover:bg-blue-accent/15 hover:border-blue-accent/30 hover:text-white'
@@ -153,8 +154,8 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Service Content */}
-        <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-10">
-          <h3 className="font-playfair text-3xl text-white mb-4">
+        <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 md:p-10">
+          <h3 className="font-playfair text-2xl md:text-3xl text-white mb-4">
             {activeContent.title}
           </h3>
           <p className="text-white/65 leading-relaxed mb-6">

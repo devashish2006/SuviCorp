@@ -56,7 +56,7 @@ export const About: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
         {/* Image/Visual */}
         <div
-          className="relative h-[420px] rounded-[20px] flex items-center justify-center overflow-hidden group cursor-default shadow-2xl"
+          className="relative h-[300px] md:h-[420px] rounded-[20px] flex items-center justify-center overflow-hidden group cursor-default shadow-2xl"
           style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)' }}
         >
           {/* Grid overlay */}
@@ -78,7 +78,7 @@ export const About: React.FC = () => {
             {/* The base SC that is visible when not hovered */}
             <div className="absolute inset-0 flex items-center justify-center transition-all duration-1000 ease-in-out group-hover:opacity-0 group-hover:scale-95">
               <span 
-                className="font-playfair text-[6rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text"
+                className="font-playfair text-[5rem] md:text-[8rem] font-black tracking-tighter text-transparent bg-clip-text"
                 style={{ backgroundImage: 'linear-gradient(to bottom right, rgba(255,255,255,0.15), rgba(255,255,255,0.05))' }}
               >
                 SC
@@ -88,13 +88,13 @@ export const About: React.FC = () => {
             {/* The expanding Suvicorp that is visible on hover */}
             <div className="relative flex items-center justify-center opacity-0 scale-[1.03] group-hover:opacity-100 group-hover:scale-100 transition-all duration-1000 ease-in-out">
               <span 
-                className="font-playfair text-[4rem] md:text-[5.5rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(59,130,246,0.6)]"
+                className="font-playfair text-[3.5rem] md:text-[5.5rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(59,130,246,0.6)]"
                 style={{ backgroundImage: 'linear-gradient(to right, #3b82f6, #60a5fa)' }}
               >
                 Suvi
               </span>
               <span 
-                className="font-playfair text-[4rem] md:text-[5.5rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(255,255,255,0.5)]"
+                className="font-playfair text-[3.5rem] md:text-[5.5rem] font-black tracking-tighter text-transparent bg-clip-text drop-shadow-[0_0_24px_rgba(255,255,255,0.5)]"
                 style={{ backgroundImage: 'linear-gradient(to right, #ffffff, #f8fafc)' }}
               >
                 corp
@@ -133,7 +133,7 @@ export const About: React.FC = () => {
             ))}
           </div>
 
-          <Button onClick={() => window.dispatchEvent(new Event('openPartnerModal'))} variant="primary" className="mt-8">
+          <Button onClick={() => window.dispatchEvent(new Event('openPartnerModal'))} variant="primary" className="mt-8 w-full md:w-auto justify-center">
             Explore Partnership Opportunities →
           </Button>
         </div>

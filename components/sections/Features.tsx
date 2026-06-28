@@ -170,7 +170,7 @@ export const Features: React.FC = () => {
             <div
               key={index}
               ref={(el) => { cardsRef.current[index] = el; }}
-              className="group relative bg-white rounded-2xl p-8 border border-gray-100 overflow-hidden
+              className="group relative bg-white rounded-2xl p-6 md:p-8 border border-gray-100 overflow-hidden
                          hover:border-blue-accent/40 hover:shadow-[0_16px_48px_rgba(10,22,40,0.10)]
                          hover:-translate-y-1 transition-all duration-300 cursor-default"
             >
@@ -244,7 +244,7 @@ export const Features: React.FC = () => {
           </div>
           <button
             onClick={() => window.dispatchEvent(new Event('openPartnerModal'))}
-            className="relative z-10 shrink-0 inline-flex items-center gap-2 px-8 py-4 text-white font-medium rounded-full
+            className="relative z-10 w-full md:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-medium rounded-full
                        transition-all duration-200 hover:scale-105 whitespace-nowrap hover:shadow-[0_8px_24px_rgba(6,182,212,0.5)]"
             style={{ background: 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)', boxShadow: '0 4px 16px rgba(6,182,212,0.3)' }}
           >
