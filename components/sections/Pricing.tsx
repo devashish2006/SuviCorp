@@ -25,12 +25,12 @@ const products: Product[] = [
     shortName: 'FinScribe',
     tagline: 'Automated Financial Reporting',
     description:
-      'Transforms raw trial balances into polished, board-ready financial reports within minutes. Eliminates manual linking, formatting, and version-control issues by creating a single source of truth.',
+      'Transform raw trial balances into polished, board-ready financial reports in minutes, not days. FinScribe eliminates manual linking, formatting, and version-control chaos, giving you a single source of truth that updates with one click.',
     features: [
-      'Reduce month-end reporting time by up to 70%',
-      'Minimize manual consolidation errors',
-      'Works directly inside Excel',
-      'Produces consistent, audit-ready reports',
+      'Cuts month-end reporting time by up to 70%',
+      'Reduces error risk from manual data consolidation',
+      'Works inside Excel — no new software to learn',
+      'Produces consistent, audit-friendly report packages every cycle',
     ],
     tier: 'lite',
     icon: (
@@ -59,12 +59,12 @@ const products: Product[] = [
     shortName: 'GAAPBridge',
     tagline: 'GAAP Conversion Tool',
     description:
-      'Automates conversion between Local GAAP, IFRS, and US GAAP by handling mappings, adjustment entries, and reconciliations automatically.',
+      'Moving between local GAAP, IFRS, or US GAAP shouldn’t feel like translating a foreign language. GAAPBridge automates the mapping, adjustment entries, and reconciliation, turning a multi-week chore into a push-button process.',
     features: [
-      'Instant trial balance conversion',
-      'Multi-entity & Multi-currency support',
-      'Simplifies accounting standard conversions',
-      'Keeps organizations audit and investor ready',
+      'Instantly converts trial balances across accounting standards',
+      'Maintains full audit trail of every adjustment',
+      'Handles multi-entity, multi-currency consolidations effortlessly',
+      'Keeps you investor- and auditor-ready without external consultants',
     ],
     tier: 'lite',
     icon: (
@@ -91,14 +91,14 @@ const products: Product[] = [
     id: 'proforma',
     name: 'SUVI ProForma Architect',
     shortName: 'ProForma Architect',
-    tagline: 'Integrated Pro Forma Generator',
+    tagline: 'Pro Forma Financial Statement Automation',
     description:
-      'Automatically generates integrated Pro Forma financial statements, balance sheets, and cash flow statements from operating assumptions.',
+      'Model your future with precision. ProForma Architect dynamically generates integrated pro forma income statements, balance sheets, and cash flows from your operating assumptions, letting you stress-test scenarios in real time.',
     features: [
-      'Automatically links P&L, Balance Sheet, Cash Flow',
-      'Scenario comparison & Budgeting support',
-      'Fundraising & M&A planning',
-      'Fully transparent formulas',
+      'Links P&L, balance sheet, and cash flow automatically',
+      'Scenario manager compares base, upside, and downside cases side by side',
+      'Perfect for budgeting, fundraising, and M&A readiness',
+      'Fully transparent formulas — no black-box logic',
     ],
     tier: 'lite',
     icon: (
@@ -125,13 +125,14 @@ const products: Product[] = [
     id: 'cashflow',
     name: 'SUVI CashFlow Composer',
     shortName: 'CashFlow Composer',
-    tagline: 'Automated Cash Flow Statement',
+    tagline: 'Cash Flow Statement Automation',
     description:
-      'Automates Cash Flow Statement creation using P&L and Balance Sheet data, reducing review time before financial close.',
+      'Build a complete indirect or direct cash flow statement straight from your P&L and balance sheet, with drill-down to every line. CashFlow Composer de-risks one of the most error-prone areas of financial reporting.',
     features: [
-      'Automatic accrual-to-cash reconciliation',
-      'Detects reconciliation breaks',
-      'Supports GAAP and management reporting',
+      'Automates the complex bridging from accrual to cash basis',
+      'Flags reconciliation breaks in real time',
+      'Supports both GAAP and management reporting views',
+      'Slashes review time and last-minute fire drills before close',
     ],
     tier: 'lite',
     icon: (
@@ -154,83 +155,22 @@ const products: Product[] = [
     accentColor: 'rgba(245,158,11,0.15)',
     badgeColor: '#f59e0b',
   },
-  {
-    id: 'iponavigator',
-    name: 'SUVI IPO Navigator',
-    shortName: 'IPO Navigator',
-    tagline: 'IPO Readiness Power BI Dashboard',
-    description:
-      'Power BI dashboard that tracks IPO readiness across governance, financial reporting, internal controls, and operational KPIs.',
-    features: [
-      'IPO readiness scorecards',
-      'Regulatory gap detection',
-      'Live readiness tracking & Interactive dashboards',
-    ],
-    tier: 'lite',
-    icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10 drop-shadow-md">
-        <defs>
-          <linearGradient id="ipoGrad1" x1="0" y1="40" x2="40" y2="0">
-            <stop offset="0%" stopColor="#ec4899" />
-            <stop offset="100%" stopColor="#be185d" />
-          </linearGradient>
-          <linearGradient id="ipoGrad2" x1="0" y1="0" x2="40" y2="40">
-            <stop offset="0%" stopColor="#f472b6" />
-            <stop offset="100%" stopColor="#db2777" />
-          </linearGradient>
-        </defs>
-        <path d="M20 4 L24 16 L36 20 L24 24 L20 36 L16 24 L4 20 L16 16 Z" fill="url(#ipoGrad1)" />
-        <circle cx="20" cy="20" r="4" fill="#ffffff" opacity="0.9" />
-      </svg>
-    ),
-    accentColor: 'rgba(236,72,153,0.15)',
-    badgeColor: '#ec4899',
-  },
-  {
-    id: 'cfoinsight',
-    name: 'SUVI CFO Insight Hub',
-    shortName: 'CFO Insight Hub',
-    tagline: 'Executive Performance Dashboard',
-    description:
-      'Executive Power BI dashboard providing real-time visibility into cash, profitability, working capital, and operational KPIs.',
-    features: [
-      'CEO-ready dashboards (Works without data warehouse)',
-      'Custom KPIs & Continuous performance management',
-      'Accessible across devices',
-    ],
-    tier: 'lite',
-    icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10 drop-shadow-md">
-        <defs>
-          <linearGradient id="cfoGrad1" x1="0" y1="0" x2="40" y2="40">
-            <stop offset="0%" stopColor="#06b6d4" />
-            <stop offset="100%" stopColor="#0369a1" />
-          </linearGradient>
-          <linearGradient id="cfoGrad2" x1="40" y1="0" x2="0" y2="40">
-            <stop offset="0%" stopColor="#22d3ee" />
-            <stop offset="100%" stopColor="#0891b2" />
-          </linearGradient>
-        </defs>
-        <circle cx="20" cy="20" r="14" stroke="url(#cfoGrad1)" strokeWidth="5" />
-        <path d="M20 6 A 14 14 0 0 1 34 20 L 20 20 Z" fill="url(#cfoGrad2)" />
-      </svg>
-    ),
-    accentColor: 'rgba(6,182,212,0.15)',
-    badgeColor: '#06b6d4',
-  },
-
+  
   /* ── Elite Tools ── */
   {
     id: 'hedgeflow',
     name: 'SUVI Hedge Flow.ai',
     shortName: 'Hedge Flow.ai',
-    tagline: 'AI-Powered Hedge Accounting Platform',
+    tagline: 'AI-Powered Hedge Accounting & Valuation Automation',
     description:
-      'AI-powered hedge accounting and valuation platform that automates the entire hedge accounting lifecycle from document ingestion to reporting.',
+      'Hedge accounting is a precision discipline and a documentation marathon. SUVI Hedge Flow.ai automates the complete hedge lifecycle, from input capture to final report, with intelligence at its core. Instead of manually extracting contract terms from term sheets, trade confirmations, and broker statements, Hedge Flow.ai uses AI to ingest and structure those inputs from uploaded documents instantly. The user simply supplies the forward and spot rates, and the engine takes over – calculating fair values, measuring effectiveness, and auto-generating fully compliant documentation at inception and on every subsequent reporting date.',
     features: [
-      'AI document extraction & Automated valuation engine',
-      'Effectiveness testing & Compliance documentation',
-      'Forward design architecture & Secure cloud platform',
+      'AI-Driven Input Extraction',
+      'Hands-Free Valuation Engine',
+      'Automated Effectiveness Documentation',
+      'Refresh, Don’t Rebuild',
+      'Compliance-Forward Design',
+      'Scalable & Secure Cloud Architecture',
     ],
     tier: 'elite',
     icon: (
@@ -258,13 +198,15 @@ const products: Product[] = [
     id: 'fusionclose',
     name: 'SUVI FusionClose',
     shortName: 'FusionClose',
-    tagline: 'Enterprise Financial Consolidation',
+    tagline: 'Intelligent Financial Consolidation & Linked Reporting',
     description:
-      'Enterprise-grade financial consolidation platform with linked reporting, forex translation, and intercompany elimination.',
+      'Taking the best of what modern close platforms offer and pushing it further, SUVI FusionClose is an enterprise-grade consolidation engine built for teams that need control, speed, and narrative-ready output – all from one system.\n\nThe platform starts with a robust base consolidation layer. On top of that, its Forex Translation Module handles complex currency conversions – translating subsidiaries’ financials from functional to presentation currency – automatically applying the correct rates (average, closing, historical) per account type and accounting standard. The Intercompany Elimination Module takes an uploaded input template of intercompany balances and transactions, intelligently matches them, identifies breaks, and generates the elimination entries – removing the most painful part of group close. Finally, the Linked Reporting Engine goes far beyond simple copy-paste: it creates a persistent, dynamic connection between Excel workbooks and Word reports (and presentations). Update a number in your consolidation model, and every linked table, commentary, and disclosure in the Word pack updates instantly – no broken links, no version chaos.',
     features: [
-      'Multi-currency consolidation & Forex translation',
-      'Intercompany elimination & Live Excel-Word linking',
-      'Enterprise audit controls & Cloud-native architecture',
+      'Multi-Currency',
+      'Intercompany Elimination',
+      'Live Excel and Word Linking',
+      'Enterprise Controls & Audit Trail',
+      'Cloud-Native with On-Premises Sensibility',
     ],
     tier: 'elite',
     icon: (
@@ -291,13 +233,17 @@ const products: Product[] = [
     id: 'boardroomiq',
     name: 'SUVI Boardroom IQ',
     shortName: 'Boardroom IQ',
-    tagline: 'Executive Strategic Intelligence',
+    tagline: 'Custom-Engineered CFO Dashboard for Strategic Leadership',
     description:
-      'Custom executive dashboard built specifically for CFOs, CEOs, and board members, delivering live strategic insights.',
+      'Every chairperson, CFO, and leadership team has a unique set of numbers, narratives, and early-warning signals they need at their fingertips – not buried in a 40-slide deck prepared at the last minute. SUVI Boardroom IQ is a fully tailored, enterprise-grade dashboard that puts exactly those metrics on a single, live pane of glass, custom-built to how your leaders think and decide.\n\nInstead of forcing your team to conform to a generic template, we co-design Boardroom IQ around the KPIs, cash-flow levers, operational indicators, and market signal your stakeholders track, freeing your finance team from days of manual report building.\n\nBecause it’s implemented specifically for your organization, Boardroom IQ connects directly to your existing data sources, harmonizes the information automatically, and presents it in a clear, no-training-required interface that the chair can confidently navigate live during board meetings, investor calls, or operational reviews. Time once spent hunting for gaps and preparing reports is now spent finding solutions.',
     features: [
-      'Leadership-focused dashboards & Meeting-ready interface',
-      'Live operational data & Reporting gap detection',
-      'Stakeholder-aligned views & Enterprise security',
+      'Built Around Your Leadership DNA',
+      'Chair-Ready Meeting Navigation',
+      'Dramatic Reduction in Reporting Effort',
+      'Live Data, Always Current',
+      'Gap Detection, Not Just Reporting',
+      'Stakeholder-Aligned Views',
+      'Enterprise Security & Governance',
     ],
     tier: 'elite',
     icon: (
@@ -322,6 +268,8 @@ const products: Product[] = [
     accentColor: 'rgba(139,92,246,0.2)',
     badgeColor: '#8b5cf6',
   },
+  
+  /* ── Custom Tools ── */
   {
     id: 'customengine',
     name: 'SUVI Custom Engine',
@@ -389,153 +337,187 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[300] flex items-center justify-center px-4 py-8"
+      className="fixed inset-0 z-[300] flex items-center justify-center p-4 sm:p-8"
       style={{ animation: 'productOverlayIn 0.3s ease both' }}
       onClick={onClose}
     >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-[#020813]/80 backdrop-blur-xl" />
 
-      {/* Modal */}
+      {/* Full-width Modal */}
       <div
-        className="relative z-10 w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl"
+        className="relative z-10 w-full max-w-6xl max-h-[95vh] rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row bg-[#081324]"
         style={{
           animation: 'productModalIn 0.4s cubic-bezier(0.16,1,0.3,1) both',
-          background: isElite
-            ? 'linear-gradient(160deg, #0a1628 0%, #060d18 100%)'
-            : 'linear-gradient(160deg, #101e33 0%, #0a1628 100%)',
           border: `1px solid ${product.badgeColor}30`,
           boxShadow: `0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px ${product.badgeColor}15, 0 0 80px ${product.badgeColor}10`,
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top gradient accent bar */}
+        {/* Left Column (Visual & Hero Info) */}
         <div
-          className="h-[3px] w-full"
-          style={{ background: `linear-gradient(90deg, transparent 0%, ${product.badgeColor} 50%, transparent 100%)` }}
-        />
-
-        {/* Header */}
-        <div
-          className="px-8 pt-8 pb-6 relative overflow-hidden"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+          className="relative w-full md:w-[45%] lg:w-[40%] flex flex-col p-10 md:p-12 justify-center overflow-hidden"
+          style={{
+            background: isElite
+              ? 'linear-gradient(160deg, #0a1628 0%, #060d18 100%)'
+              : 'linear-gradient(160deg, #101e33 0%, #0a1628 100%)',
+          }}
         >
           {/* Background Glow */}
           <div 
-            className="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-[80px] pointer-events-none"
-            style={{ background: product.badgeColor, opacity: 0.15 }}
+            className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/4"
+            style={{ background: product.badgeColor, opacity: 0.12 }}
           />
 
-          {/* Close */}
+          {/* Close for mobile (absolute top right) */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/10 z-50"
-            style={{
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.1)',
-            }}
+            className="md:hidden absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-white/10 z-50"
+            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
           >
-            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M1 1L13 13M13 1L1 13" stroke="rgba(255,255,255,0.7)" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
           </button>
 
-          {/* Tier badge */}
-          <div className="flex items-center gap-2 mb-5 relative z-10">
+          <div className="relative z-10 flex flex-col gap-8">
             <div
-              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-md"
-              style={{
-                background: `${product.badgeColor}15`,
-                border: `1px solid ${product.badgeColor}40`,
-                color: product.badgeColor,
-              }}
-            >
-              <div
-                className="w-1.5 h-1.5 rounded-full animate-pulse"
-                style={{ background: product.badgeColor, boxShadow: `0 0 8px ${product.badgeColor}` }}
-              />
-              {isElite ? 'Elite Series' : 'Lite Series'}
-            </div>
-          </div>
-
-          {/* Icon + name */}
-          <div className="flex items-center gap-5 relative z-10">
-            <div
-              className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl"
+              className="w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl"
               style={{ 
                 background: `linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)`, 
                 border: `1px solid rgba(255,255,255,0.1)`,
-                boxShadow: `inset 0 1px 1px rgba(255,255,255,0.1), 0 8px 24px rgba(0,0,0,0.4)`
+                boxShadow: `inset 0 1px 1px rgba(255,255,255,0.1), 0 12px 32px rgba(0,0,0,0.5)`
               }}
             >
-              {product.icon}
+              <div className="scale-125">{product.icon}</div>
             </div>
+
             <div>
-              <h3 className="font-playfair text-2xl md:text-3xl font-bold leading-tight text-white">
+              <div className="flex items-center gap-2 mb-4">
+                <div
+                  className="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-md"
+                  style={{
+                    background: `${product.badgeColor}15`,
+                    border: `1px solid ${product.badgeColor}40`,
+                    color: product.badgeColor,
+                  }}
+                >
+                  <div
+                    className="w-2 h-2 rounded-full animate-pulse"
+                    style={{ background: product.badgeColor, boxShadow: `0 0 8px ${product.badgeColor}` }}
+                  />
+                  {isElite ? 'Elite Series' : product.tier === 'custom' ? 'Custom Series' : 'Lite Series'}
+                </div>
+              </div>
+
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold leading-tight text-white mb-3">
                 {product.name}
-              </h3>
+              </h2>
               <p
-                className="text-sm font-medium mt-1 tracking-wide"
+                className="text-lg md:text-xl font-medium tracking-wide"
                 style={{ color: product.badgeColor }}
               >
                 {product.tagline}
               </p>
             </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden md:block mt-8">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                  window.dispatchEvent(new Event('openPartnerModal'));
+                }}
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                style={{
+                  background: `linear-gradient(135deg, ${product.badgeColor} 0%, ${product.badgeColor}aa 100%)`,
+                  color: '#ffffff',
+                  boxShadow: `0 8px 30px ${product.badgeColor}50`,
+                }}
+              >
+                Deploy Now
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Body */}
-        <div className="px-8 py-7 space-y-6 relative z-10">
-          <p className="text-[0.95rem] leading-relaxed text-slate-300 font-light">
-            {product.description}
-          </p>
-
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4 text-slate-500">
-              Core Capabilities
-            </p>
-            <ul className="space-y-3">
-              {product.features.map((f, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <div
-                    className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full"
-                    style={{ background: product.badgeColor, boxShadow: `0 0 8px ${product.badgeColor}80` }}
-                  />
-                  <span className="text-[0.9rem] leading-relaxed text-slate-300">
-                    {f}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Footer CTA */}
-        <div
-          className="px-8 py-6 flex items-center justify-between"
-          style={{
-            borderTop: '1px solid rgba(255,255,255,0.06)',
-            background: 'rgba(0,0,0,0.3)',
-          }}
-        >
-          <p className="text-[11px] text-slate-500 font-medium tracking-wide uppercase">
-            Suvicorp Product Ecosystem
-          </p>
-          <a
-            href="#cta"
+        {/* Right Column (Details) */}
+        <div className="w-full md:w-[55%] lg:w-[60%] flex flex-col max-h-[60vh] md:max-h-none overflow-y-auto custom-scrollbar relative">
+          
+          {/* Close button for Desktop (absolute top right of right panel) */}
+          <button
             onClick={onClose}
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            className="hidden md:flex absolute top-8 right-8 w-12 h-12 rounded-full items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/5 z-50"
             style={{
-              background: `linear-gradient(135deg, ${product.badgeColor} 0%, ${product.badgeColor}aa 100%)`,
-              color: '#ffffff',
-              boxShadow: `0 4px 20px ${product.badgeColor}50`,
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.05)',
             }}
           >
-            Deploy Now
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+              <path d="M1 1L13 13M13 1L1 13" stroke="rgba(255,255,255,0.7)" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
-          </a>
+          </button>
+
+          <div className="p-8 md:p-12 space-y-10">
+            {/* Description Paragraphs (Handling newlines) */}
+            <div className="space-y-6">
+              <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">
+                Product Overview
+              </h3>
+              <div className="space-y-4">
+                {product.description.split('\n').map((paragraph, i) => (
+                  <p key={i} className="text-[1.05rem] md:text-lg leading-relaxed text-slate-300 font-light">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            {/* Core Capabilities */}
+            <div>
+              <h3 className="text-sm font-bold uppercase tracking-[0.2em] mb-6 text-slate-500">
+                Core Capabilities
+              </h3>
+              <ul className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
+                {product.features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                    <div
+                      className="mt-1 flex-shrink-0 w-2 h-2 rounded-full"
+                      style={{ background: product.badgeColor, boxShadow: `0 0 12px ${product.badgeColor}` }}
+                    />
+                    <span className="text-[0.95rem] leading-relaxed text-slate-200">
+                      {f}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Mobile CTA */}
+            <div className="md:hidden pt-8 border-t border-white/10">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                  window.dispatchEvent(new Event('openPartnerModal'));
+                }}
+                className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest"
+                style={{
+                  background: `linear-gradient(135deg, ${product.badgeColor} 0%, ${product.badgeColor}aa 100%)`,
+                  color: '#ffffff',
+                }}
+              >
+                Deploy Now
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -547,6 +529,19 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
         @keyframes productModalIn {
           from { opacity: 0; transform: translateY(32px) scale(0.95); }
           to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(0,0,0,0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255,255,255,0.1);
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(255,255,255,0.2);
         }
       `}</style>
     </div>
@@ -697,6 +692,10 @@ export const Pricing: React.FC = () => {
                     </p>
                   </div>
                 </div>
+                
+                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px]">
+                  SUVI Corp’s Lite Tools are a curated suite of intelligent, Excel and Power BI-based solutions built to solve critical reporting, compliance, and planning challenges – fast and produce enterprise-class outcomes at a fraction of the time and cost.
+                </p>
 
                 {/* Product pills stacked */}
                 <div className="flex flex-col gap-4">
@@ -731,6 +730,10 @@ export const Pricing: React.FC = () => {
                     </p>
                   </div>
                 </div>
+                
+                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px]">
+                  When spreadsheets reach their breaking point and compliance, scale, and control become non-negotiable, SUVI’s Elite Tools step in. These are full-stack, cloud-based applications built for the demands of sophisticated finance teams – combining deep domain workflows with artificial intelligence precisely where it unlocks speed, accuracy, and insight. Each Elite Tool is engineered to run complex processes at enterprise scale without the enterprise IT headache. Fast to deploy, secure by design, and priced for value, they give your team a competitive edge that legacy systems and manual work simply cannot match.
+                </p>
 
                 {/* Product pills stacked */}
                 <div className="flex flex-col gap-4">
@@ -765,6 +768,10 @@ export const Pricing: React.FC = () => {
                     </p>
                   </div>
                 </div>
+
+                <p className="text-[0.9rem] text-slate-400/90 font-light leading-relaxed mb-8 lg:min-h-[260px] xl:min-h-[220px]">
+                  When off-the-shelf solutions aren't enough, SUVI’s Custom Development team engineers bespoke architecture tailored to your exact operational DNA. We build full-stack, enterprise-grade platforms that integrate seamlessly with your existing infrastructure, ensuring you maintain a unique competitive advantage. From white-label deployments to dedicated engineering pods, our custom solutions provide the ultimate flexibility, security, and scalability for firms leading the charge in financial innovation.
+                </p>
 
                 {/* Product pills stacked */}
                 <div className="flex flex-col gap-4">
