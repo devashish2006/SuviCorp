@@ -737,9 +737,14 @@ export const Hero: React.FC = () => {
                   </span>
                 </h1>
 
-                <p className="text-white/70 text-sm md:text-lg leading-relaxed max-w-[480px] mb-6 md:mb-10 font-light">
+                <p className="text-white/70 text-sm md:text-lg leading-relaxed max-w-[480px] mb-6 font-light">
                   Suvicorp empowers you with elite technology ecosystem by extending our technological arm and giving them the power to compete at the highest level.
-
+                </p>
+                
+                <div className="h-px w-full max-w-[400px] bg-gradient-to-r from-white/20 to-transparent mb-6" />
+                
+                <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-[480px] mb-6 md:mb-10 font-medium">
+                  Level the playing field. Compete with giants with necessary technological firepower.
                 </p>
 
               </div>

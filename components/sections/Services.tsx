@@ -7,6 +7,7 @@ interface ServiceContent {
   id: string;
   icon: React.ReactNode;
   title: string;
+  shortTitle: string;
   description: string;
   points: string[];
 }
@@ -20,6 +21,7 @@ const services: ServiceContent[] = [
       </svg>
     ),
     title: 'Financial Transformation Enablement',
+    shortTitle: 'Financial Transformation',
     description: 'We provide the tools and platforms that power digital transformation for your clients. Our solutions automate complex processes, deliver AI-driven insights, and cut delivery timelines dramatically, increasing your capacity and profitability.',
     points: [
       'Automate complex financial processes',
@@ -39,6 +41,7 @@ const services: ServiceContent[] = [
       </svg>
     ),
     title: 'Bespoke SaaS Solution Development',
+    shortTitle: 'Bespoke SaaS',
     description: 'Have a unique challenge or a visionary product idea? Our team specializes in building custom, cloud-based software tools tailored to your specific needs. From consolidation engines to automated financial reporting dashboards, we transform your requirements into powerful, secure, and scalable applications.',
     points: [
       'Transform visionary ideas into production-ready applications',
@@ -60,6 +63,7 @@ const services: ServiceContent[] = [
       </svg>
     ),
     title: 'The Dedicated Expert Hub',
+    shortTitle: 'Dedicated Expert Hub',
     description: 'Access a curated ecosystem of technology professionals, each a specialist in financial systems, data analytics, and software development. This is not an outsourced team; it is an extension of your own, working collaboratively to bring your projects to life with precision and expertise.',
     points: [
       'Access a curated ecosystem of specialists',
@@ -79,6 +83,7 @@ const services: ServiceContent[] = [
       </svg>
     ),
     title: 'The Suvicorp Knowledge Hub',
+    shortTitle: 'Suvicorp Knowledge Hub',
     description: 'Technology is only half the equation. The other half? The people who wield it. The Suvicorp Knowledge Hub connects you with practitioners who\'ve lived through thousands of closes and navigated countless complex accounting scenarios. We transfer that wisdom directly to your team—through training on recent accounting changes, deep dives into complex topics, and battle-tested best practices that transform how you run financial processes. Because true capability isn\'t just having the right tools. It\'s knowing exactly how to use them.',
     points: [
       'Master complex accounting topics',
@@ -98,6 +103,7 @@ const services: ServiceContent[] = [
       </svg>
     ),
     title: 'Innovation Lab',
+    shortTitle: 'Innovation Lab',
     description: 'The Suvicorp Innovation Lab is where financial intelligence becomes tangible. Where abstract problems meet concrete solutions. Consider us your research and development arm, where we build the tools that level the playing field.',
     points: [
       'Make financial intelligence tangible',
@@ -141,7 +147,7 @@ export const Services: React.FC = () => {
               }`}
             >
               <span className="opacity-80">{service.icon}</span>
-              {service.title.split(' ')[0]} {service.title.split(' ')[1]}
+              {service.shortTitle}
             </button>
           ))}
         </div>
