@@ -11,7 +11,7 @@ interface Product {
   tagline: string;
   description: string;
   features: string[];
-  tier: 'lite' | 'elite';
+  tier: 'lite' | 'elite' | 'custom';
   icon: React.ReactNode;
   accentColor: string;
   badgeColor: string;
@@ -322,10 +322,47 @@ const products: Product[] = [
     accentColor: 'rgba(139,92,246,0.2)',
     badgeColor: '#8b5cf6',
   },
+  {
+    id: 'customengine',
+    name: 'SUVI Custom Engine',
+    shortName: 'Custom Development',
+    tagline: 'Tailored Enterprise Solutions',
+    description:
+      'We build bespoke technology solutions that integrate perfectly with your existing architecture, ensuring your firm stays ahead of the curve.',
+    features: [
+      'Dedicated engineering teams',
+      'White-label deployment options',
+      'Full-stack cloud architecture',
+    ],
+    tier: 'custom',
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10 drop-shadow-lg">
+        <defs>
+          <linearGradient id="customGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#34d399" />
+            <stop offset="100%" stopColor="#059669" />
+          </linearGradient>
+          <linearGradient id="customGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#10b981" />
+            <stop offset="100%" stopColor="#047857" />
+          </linearGradient>
+        </defs>
+        <path d="M20 4L34 12V28L20 36L6 28V12L20 4Z" fill="url(#customGrad1)" opacity="0.2" />
+        <path d="M20 4L34 12V28L20 36L6 28V12L20 4Z" stroke="url(#customGrad1)" strokeWidth="2" />
+        <circle cx="20" cy="20" r="4" fill="url(#customGrad2)" />
+        <line x1="20" y1="4" x2="20" y2="12" stroke="url(#customGrad1)" strokeWidth="1.5" />
+        <line x1="6" y1="12" x2="13" y2="16" stroke="url(#customGrad1)" strokeWidth="1.5" />
+        <line x1="34" y1="12" x2="27" y2="16" stroke="url(#customGrad1)" strokeWidth="1.5" />
+      </svg>
+    ),
+    accentColor: 'rgba(16,185,129,0.2)',
+    badgeColor: '#10b981',
+  },
 ];
 
 const liteTools = products.filter((p) => p.tier === 'lite');
 const eliteTools = products.filter((p) => p.tier === 'elite');
+const customTools = products.filter((p) => p.tier === 'custom');
 
 /* ─── Product Detail Modal ─── */
 interface ProductModalProps {
@@ -517,73 +554,79 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
 };
 
 /* ─── Product Pill Card ─── */
-const ProductPill: React.FC<{ product: Product; onClick: () => void; isElite: boolean }> = ({
+const ProductPill: React.FC<{ product: Product; onClick: () => void }> = ({
   product,
   onClick,
-  isElite,
-}) => (
-  <button
-    onClick={onClick}
-    className="group relative w-full text-left rounded-2xl transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
-    style={{
-      background: isElite
-        ? 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)'
-        : 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
-      border: `1px solid rgba(255,255,255,0.08)`,
-      padding: '22px 24px',
-      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 24px rgba(0,0,0,0.2)',
-    }}
-    aria-label={`View details for ${product.name}`}
-  >
-    {/* Hover glow overlay */}
-    <div
-      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+}) => {
+  let bgGradient = 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)'; // lite
+  if (product.tier === 'elite') {
+    bgGradient = 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)';
+  } else if (product.tier === 'custom') {
+    bgGradient = 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%)';
+  }
+
+  return (
+    <button
+      onClick={onClick}
+      className="group relative w-full h-full text-left rounded-2xl transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628] flex items-center"
       style={{
-        background: `radial-gradient(circle at 50% 50%, ${product.badgeColor}15 0%, transparent 80%)`,
-        border: `1px solid ${product.badgeColor}40`,
-        boxShadow: `0 0 30px ${product.badgeColor}20`,
+        background: bgGradient,
+        border: `1px solid rgba(255,255,255,0.08)`,
+        padding: '22px 24px',
+        boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05), 0 4px 24px rgba(0,0,0,0.2)',
       }}
-    />
-
-    <div className="relative flex items-center gap-5">
-      {/* Icon */}
+      aria-label={`View details for ${product.name}`}
+    >
+      {/* Hover glow overlay */}
       <div
-        className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg"
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
-          background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 100%)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
+          background: `radial-gradient(circle at 50% 50%, ${product.badgeColor}15 0%, transparent 80%)`,
+          border: `1px solid ${product.badgeColor}40`,
+          boxShadow: `0 0 30px ${product.badgeColor}20`,
         }}
-      >
-        {/* We shrink the icon slightly for the card view */}
-        <div className="scale-[0.65] transform-gpu transition-transform duration-500 group-hover:rotate-3">
-          {product.icon}
+      />
+
+      <div className="relative flex items-center gap-5 w-full">
+        {/* Icon */}
+        <div
+          className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 100%)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
+          }}
+        >
+          {/* We shrink the icon slightly for the card view */}
+          <div className="scale-[0.65] transform-gpu transition-transform duration-500 group-hover:rotate-3">
+            {product.icon}
+          </div>
         </div>
-      </div>
 
-      {/* Text */}
-      <div className="flex-1 min-w-0">
-        <p className="font-bold text-[0.95rem] leading-tight truncate text-white transition-colors duration-300">
-          {product.shortName}
-        </p>
-        <p className="text-[0.75rem] mt-1 truncate font-medium tracking-wide" style={{ color: product.badgeColor, opacity: 0.9 }}>
-          {product.tagline}
-        </p>
-      </div>
+        {/* Text */}
+        <div className="flex-1 min-w-0">
+          <p className="font-bold text-[0.95rem] leading-tight truncate text-white transition-colors duration-300">
+            {product.shortName}
+          </p>
+          <p className="text-[0.75rem] mt-1 truncate font-medium tracking-wide" style={{ color: product.badgeColor, opacity: 0.9 }}>
+            {product.tagline}
+          </p>
+        </div>
 
-      {/* Arrow */}
-      <svg
-        className="flex-shrink-0 w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-        style={{ color: product.badgeColor }}
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-      </svg>
-    </div>
-  </button>
-);
+        {/* Arrow */}
+        <svg
+          className="flex-shrink-0 w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+          style={{ color: product.badgeColor }}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </button>
+  );
+};
 
 /* ─── Main Export ─── */
 export const Pricing: React.FC = () => {
@@ -631,11 +674,11 @@ export const Pricing: React.FC = () => {
             </p>
           </div>
 
-          {/* Two-column tier layout */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Three-column tier layout */}
+          <div className="grid lg:grid-cols-3 gap-16 lg:gap-0 lg:divide-x lg:divide-white/10 relative">
 
             {/* ── Lite Tools Column ── */}
-            <div className="relative">
+            <div className="relative lg:pr-10">
               {/* Column glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-blue-500/5 blur-[100px] pointer-events-none rounded-full" />
               
@@ -655,13 +698,12 @@ export const Pricing: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Product pills grid */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                {/* Product pills stacked */}
+                <div className="flex flex-col gap-4">
                   {liteTools.map((p) => (
                     <ProductPill
                       key={p.id}
                       product={p}
-                      isElite={false}
                       onClick={() => setSelected(p)}
                     />
                   ))}
@@ -670,9 +712,9 @@ export const Pricing: React.FC = () => {
             </div>
 
             {/* ── Elite Tools Column ── */}
-            <div className="relative">
+            <div className="relative lg:px-10">
               {/* Column glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-purple-500/5 blur-[100px] pointer-events-none rounded-full" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-cyan-500/5 blur-[100px] pointer-events-none rounded-full" />
               
               <div className="relative z-10">
                 {/* Tier header */}
@@ -690,48 +732,49 @@ export const Pricing: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Product pills in dark cards */}
+                {/* Product pills stacked */}
                 <div className="flex flex-col gap-4">
                   {eliteTools.map((p) => (
                     <ProductPill
                       key={p.id}
                       product={p}
-                      isElite={true}
                       onClick={() => setSelected(p)}
                     />
                   ))}
                 </div>
+              </div>
+            </div>
 
-                {/* Elite upsell callout */}
-                <div
-                  className="mt-8 rounded-2xl p-8 relative overflow-hidden group"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
-                    border: '1px solid rgba(34,211,238,0.2)',
-                    boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1), 0 8px 32px rgba(0,0,0,0.3)',
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                    <div>
-                      <p className="text-white text-base font-bold leading-snug">Enterprise Transformation</p>
-                      <p className="text-slate-400 text-sm mt-1.5 font-light">Custom cloud architecture tailored for your firm.</p>
-                    </div>
-                    <a
-                      href="#cta"
-                      className="flex-shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105"
-                      style={{
-                        background: 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)',
-                        boxShadow: '0 4px 20px rgba(6,182,212,0.4)',
-                      }}
-                    >
-                      Book Demo
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </a>
+            {/* ── Custom Tools Column ── */}
+            <div className="relative lg:pl-10">
+              {/* Column glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-emerald-500/5 blur-[100px] pointer-events-none rounded-full" />
+              
+              <div className="relative z-10">
+                {/* Tier header */}
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
                   </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white tracking-wide">Custom Series</h3>
+                    <p className="text-xs text-emerald-400 font-medium tracking-wider uppercase mt-1">
+                      Bespoke Architecture
+                    </p>
+                  </div>
+                </div>
+
+                {/* Product pills stacked */}
+                <div className="flex flex-col gap-4">
+                  {customTools.map((p) => (
+                    <ProductPill
+                      key={p.id}
+                      product={p}
+                      onClick={() => setSelected(p)}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
