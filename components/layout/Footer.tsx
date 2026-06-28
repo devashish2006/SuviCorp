@@ -14,13 +14,11 @@ const footerLinks = {
     { label: 'About Us', href: '#about' },
     { label: 'Our Team', href: '#about' },
     { label: 'Mission & Vision', href: '#about' },
-    { label: 'Success Stories', href: '#stories' },
   ],
   resources: [
     { label: 'Products (Lite)', href: '#products' },
     { label: 'Products (Elite)', href: '#products' },
     { label: 'The Suvicorp Advantage', href: '#features' },
-    { label: 'Contact', href: '#cta' },
   ],
 };
 
@@ -40,10 +38,10 @@ export const Footer: React.FC = () => {
           <FooterCTA />
         </div>
 
-        {/* Services */}
+        {/* Company */}
         <div>
-          <h4 className="text-white font-semibold text-[0.85rem] mb-4">Services</h4>
-          {footerLinks.services.map((link, index) => (
+          <h4 className="text-white font-semibold text-[0.85rem] mb-4">Company</h4>
+          {footerLinks.company.map((link, index) => (
             <Link
               key={index}
               href={link.href}
@@ -54,10 +52,10 @@ export const Footer: React.FC = () => {
           ))}
         </div>
 
-        {/* Company */}
+        {/* Services */}
         <div>
-          <h4 className="text-white font-semibold text-[0.85rem] mb-4">Company</h4>
-          {footerLinks.company.map((link, index) => (
+          <h4 className="text-white font-semibold text-[0.85rem] mb-4">Services</h4>
+          {footerLinks.services.map((link, index) => (
             <Link
               key={index}
               href={link.href}
