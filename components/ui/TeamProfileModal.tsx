@@ -114,6 +114,7 @@ export const TeamProfileModal: React.FC<TeamProfileModalProps> = ({ member, onCl
               style={{
                 width: 130,
                 height: 130,
+                background: 'linear-gradient(145deg, #0a1628 0%, #0d1f3c 50%, #112244 100%)',
                 border: '2.5px solid rgba(6,182,212,0.5)',
                 boxShadow: '0 0 30px rgba(6,182,212,0.18), 0 4px 20px rgba(0,0,0,0.10)',
               }}
