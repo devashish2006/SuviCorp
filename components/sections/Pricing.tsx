@@ -657,8 +657,8 @@ export const Pricing: React.FC = () => {
               </span>
             </div>
             
-            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-2 mb-6 leading-tight">
-              Solutions Engineered <br/>
+            <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-2 mb-6 leading-tight">
+              Solutions Engineered <br className="hidden sm:block"/>
               <span className="italic font-light opacity-90 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                 for Excellence
               </span>
@@ -670,10 +670,10 @@ export const Pricing: React.FC = () => {
           </div>
 
           {/* Three-column tier layout */}
-          <div className="grid lg:grid-cols-3 gap-16 lg:gap-0 lg:divide-x lg:divide-white/10 relative">
+          <div className="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-white/10 relative">
 
             {/* ── Lite Tools Column ── */}
-            <div className="relative lg:pr-10">
+            <div className="relative pb-12 lg:pb-0 lg:pr-10">
               {/* Column glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-blue-500/5 blur-[100px] pointer-events-none rounded-full" />
               
@@ -711,7 +711,7 @@ export const Pricing: React.FC = () => {
             </div>
 
             {/* ── Elite Tools Column ── */}
-            <div className="relative lg:px-10">
+            <div className="relative py-12 lg:py-0 lg:px-10">
               {/* Column glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-cyan-500/5 blur-[100px] pointer-events-none rounded-full" />
               
@@ -749,7 +749,7 @@ export const Pricing: React.FC = () => {
             </div>
 
             {/* ── Custom Tools Column ── */}
-            <div className="relative lg:pl-10">
+            <div className="relative pt-12 lg:pt-0 lg:pl-10">
               {/* Column glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-emerald-500/5 blur-[100px] pointer-events-none rounded-full" />
               
