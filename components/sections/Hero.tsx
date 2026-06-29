@@ -36,8 +36,8 @@ const partners = [
 const teamMembers: TeamMember[] = [
   {
     id: 'jatin-bhatia',
-    name: 'Jatin Bhatia',
-    role: 'Managing Partner and Founder',
+    name: 'Jatin Bhatia (CA)',
+    role: 'Founder and Managing Partner',
     image: '/jatinArmsFolded-removebg-preview.png',
     imageOffset: '-50px',
     imageScale: '88%',
@@ -50,7 +50,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 'mark-warzecha',
-    name: 'Mark Warzecha',
+    name: 'Mark Warzecha (CPA)',
     role: 'Partner and US Chapter Head',
     image: '/mark-removebg-preview.png',
     imageClass: 'team-member-img--mark',
@@ -63,7 +63,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 'saima-siddiqui',
-    name: 'Saima Siddiqui',
+    name: 'Saima Siddiqui (CA)',
     role: 'Partner and MENA Chapter Head',
     image: '/saima-removebg-preview.png',
     imageClass: 'team-member-img--saima',
@@ -76,7 +76,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 'ritesh-shah',
-    name: 'Ritesh Shah',
+    name: 'Ritesh Shah (CA)',
     role: 'Partner and India Regional Head',
     image: '/ritesh-removebg-preview.png',
     imageClass: 'team-member-img--ritesh',
@@ -602,7 +602,7 @@ export const Hero: React.FC = () => {
 
           {/* Content — left text + right hub diagram */}
           <div className="w-full mx-auto px-6 md:px-10 relative z-10 flex items-center">
-            <div className="w-full py-8 md:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="w-full pt-8 pb-0 md:pt-16 md:pb-0 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
               {/* ── Left: text + CTA ── */}
               <div className="flex flex-col justify-center animate-fadeUp">
@@ -641,7 +641,7 @@ export const Hero: React.FC = () => {
 
           {/* ── Marquee strip ── */}
           <div
-            className="mt-6 md:mt-8 overflow-hidden w-full max-w-5xl mx-auto px-4 pb-20 text-center"
+            className="mt-0 md:mt-0 overflow-hidden w-full max-w-5xl mx-auto px-4 pb-20 text-center"
             style={{ animation: 'fadeUp 0.8s ease-out 1s both' }}
           >
             {/* Tag & Description */}

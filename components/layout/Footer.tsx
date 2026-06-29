@@ -4,18 +4,17 @@ import { FooterCTA } from './FooterCTA';
 
 const footerLinks = {
   services: [
-    { label: 'Bespoke SaaS Development', href: '#services' },
-    { label: 'Finance Transformation', href: '#services' },
-    { label: 'Technical Accounting Advisory', href: '#services' },
-    { label: 'SUVI Innovation Lab', href: '#services' },
-    { label: 'Strategic Technology Partnerships', href: '#trusted-partners' },
+    { label: 'Bespoke SaaS Development', href: '#bespoke' },
+    { label: 'Finance Transformation', href: '#transformation' },
+    { label: 'Technical Accounting Advisory', href: '#advisory' },
+    { label: 'SUVI Innovation Lab', href: '#innovation' },
   ],
   company: [
     { label: 'About Us', href: '#about' },
     { label: 'Our Team', href: '#team' },
     { label: 'Mission & Vision', href: '#about' },
   ],
-  resources: [
+  products: [
     { label: 'Products (Lite)', href: '#pricing' },
     { label: 'Products (Elite)', href: '#pricing' },
     { label: 'The Suvicorp Advantage', href: '#features' },
@@ -66,10 +65,10 @@ export const Footer: React.FC = () => {
           ))}
         </div>
 
-        {/* Resources */}
+        {/* Products */}
         <div>
-          <h4 className="text-white font-semibold text-[0.85rem] mb-4">Resources</h4>
-          {footerLinks.resources.map((link, index) => (
+          <h4 className="text-white font-semibold text-[0.85rem] mb-4">Products</h4>
+          {footerLinks.products.map((link, index) => (
             <Link
               key={index}
               href={link.href}
@@ -95,6 +94,10 @@ export const Footer: React.FC = () => {
             <div>
               <p className="text-white/70 text-[0.8rem] font-semibold">Poland, Europe</p>
               <p className="text-white/40 text-[0.8rem] mt-0.5">+48 739 658 861</p>
+            </div>
+            <div>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Dubai, UAE</p>
+              <p className="text-white/40 text-[0.8rem] mt-0.5">+971 50 905 5391</p>
             </div>
           </div>
         </div>

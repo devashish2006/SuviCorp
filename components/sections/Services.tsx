@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SectionTag, SectionTitle } from '../ui';
 
 interface ServiceContent {
@@ -20,8 +20,8 @@ const services: ServiceContent[] = [
         <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
-    title: 'Financial Transformation Enablement',
-    shortTitle: 'Financial Transformation',
+    title: 'Finance Transformation',
+    shortTitle: 'Finance Transformation',
     description: 'We provide the tools and platforms that power digital transformation for your clients. Our solutions automate complex processes, deliver AI-driven insights, and cut delivery timelines dramatically, increasing your capacity and profitability.',
     points: [
       'Automate complex financial processes',
@@ -50,6 +50,73 @@ const services: ServiceContent[] = [
       'Enterprise-grade security and scalability',
       'Seamless integration with existing systems',
       'Future-proof architecture',
+    ],
+  },
+  {
+    id: 'innovation',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+      </svg>
+    ),
+    title: 'Innovation Hub',
+    shortTitle: 'Innovation Hub',
+    description: 'The Suvicorp Innovation Lab is where financial intelligence becomes tangible. Where abstract problems meet concrete solutions. Consider us your research and development arm, where we build the tools that level the playing field.',
+    points: [
+      'Make financial intelligence tangible',
+      'Turn abstract problems into concrete solutions',
+      'Your R&D arm for tools',
+      'Level the playing field',
+      'Incubate new ideas',
+      'Test cutting-edge prototypes',
+    ],
+  },
+  {
+    id: 'advisory',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+        <polyline points="10 9 9 9 8 9" />
+      </svg>
+    ),
+    title: 'Technical Accounting Advisory',
+    shortTitle: 'Technical Accounting Advisory',
+    description: 'At SUVI, we provide expert technical accounting advisory to help you navigate complexity with clarity and confidence. Led by a team of seasoned Chartered Accountants and CPAs with deep Big Four experience, we support clients across the full spectrum of technical accounting matters—from complex transactions and IPO readiness to GAAP conversions and financial statement preparation. What sets us apart is our technology-enabled approach. Our proprietary automation tools streamline research, model complex transactions, and enhance reporting accuracy, delivering Big Four quality with greater efficiency and value. We combine deep technical expertise with a practical, commercial mindset to provide actionable recommendations that align with your business objectives.',
+    points: [
+      'Complex Accounting Transactions',
+      'M&A & Transaction Support',
+      'IPO & Capital Markets Readiness',
+      'GAAP Conversions',
+      'Financial Statement Preparation & Upliftment',
+      'Audit Support',
+      'Benchmarking & Best Practices',
+      'White Papers & Accounting Memorandums',
+      'End-to-End Support',
+      'Global Perspective, Local Expertise',
+      'Technology-Enabled Advisory',
+      'Scalable & Flexible Engagement Models'
+    ],
+  },
+  {
+    id: 'bookkeeping',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+      </svg>
+    ),
+    title: 'Book Keeping',
+    shortTitle: 'Book Keeping',
+    description: 'Comprehensive book keeping solutions designed to streamline your financial operations and ensure compliance. Our team provides accurate, timely, and organized financial records, allowing you to focus on your core business.',
+    points: [
+      'Accurate and timely record keeping',
+      'Financial compliance and organization',
+      'Streamlined financial operations',
+      'Focus on your core business'
     ],
   },
   {
@@ -93,36 +160,28 @@ const services: ServiceContent[] = [
       'Receive practical guidance',
       'Stay ahead of the curve',
     ],
-  },
-  {
-    id: 'innovation',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 flex-shrink-0">
-        <circle cx="12" cy="12" r="3" />
-        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-      </svg>
-    ),
-    title: 'Innovation Lab',
-    shortTitle: 'Innovation Lab',
-    description: 'The Suvicorp Innovation Lab is where financial intelligence becomes tangible. Where abstract problems meet concrete solutions. Consider us your research and development arm, where we build the tools that level the playing field.',
-    points: [
-      'Make financial intelligence tangible',
-      'Turn abstract problems into concrete solutions',
-      'Your R&D arm for tools',
-      'Level the playing field',
-      'Incubate new ideas',
-      'Test cutting-edge prototypes',
-    ],
   }
 ];
 
 export const Services: React.FC = () => {
   const [activeService, setActiveService] = useState('transformation');
 
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (services.some(s => s.id === hash)) {
+        setActiveService(hash);
+      }
+    };
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   const activeContent = services.find((s) => s.id === activeService)!;
 
   return (
-    <section id="services" className="bg-navy py-16 md:py-24 px-[5%]">
+    <section id="services" className="bg-navy pt-16 pb-8 md:pt-24 md:pb-12 px-[5%]">
       <div className="text-center mb-12">
         <SectionTag variant="teal">What we deliver</SectionTag>
         <SectionTitle className="text-white mt-4 mb-4">
@@ -140,6 +199,7 @@ export const Services: React.FC = () => {
           {services.map((service) => (
             <button
               key={service.id}
+              id={service.id}
               onClick={() => setActiveService(service.id)}
               className={`px-5 py-3 md:px-6 md:py-4 rounded-lg cursor-pointer border transition-all duration-200 text-left font-medium flex items-center gap-2 md:gap-3 whitespace-nowrap flex-shrink-0 ${
                 activeService === service.id

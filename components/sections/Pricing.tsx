@@ -631,7 +631,7 @@ export const Pricing: React.FC = () => {
       <span id="products" className="block" aria-hidden="true" />
 
       {/* Premium Dark Section */}
-      <section id="pricing" className="bg-[#0a1628] py-24 md:py-32 px-[5%] relative overflow-hidden">
+      <section id="pricing" className="bg-[#0a1628] pt-12 pb-24 md:pt-16 md:pb-32 px-[5%] relative overflow-hidden">
         
         {/* Elite Ambient Lighting */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-[0.03]"
