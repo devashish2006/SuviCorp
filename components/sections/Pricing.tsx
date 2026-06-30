@@ -436,7 +436,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                   boxShadow: `0 8px 30px ${product.badgeColor}50`,
                 }}
               >
-                Deploy Now
+                Get Demo
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
@@ -511,7 +511,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                   color: '#ffffff',
                 }}
               >
-                Deploy Now
+                Get Demo
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
