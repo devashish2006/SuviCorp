@@ -25,12 +25,6 @@ const partners = [
     logo: '/SNR.jpeg',
     bgClass: 'bg-white',
   },
-  {
-    id: 'aia',
-    name: 'AIA Engineering',
-    logo: '/AIAengneering.png',
-    bgClass: 'bg-[#061428]',
-  },
 ];
 
 const teamMembers: TeamMember[] = [

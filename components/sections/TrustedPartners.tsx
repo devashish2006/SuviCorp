@@ -34,16 +34,6 @@ const partners = [
     glowColor: 'shadow-purple-500/20',
     bgClass: 'bg-white',
   },
-  {
-    id: 'aia',
-    name: 'AIA Engineering',
-    logo: '/AIAengneering.png',
-    description: 'Engineering & Manufacturing Excellence',
-    accentColor: 'from-orange-500/20 to-rose-400/20',
-    borderColor: 'border-orange-400/30',
-    glowColor: 'shadow-orange-500/20',
-    bgClass: 'bg-[#061428]',
-  },
 ];
 
 function useInView(threshold = 0.15) {

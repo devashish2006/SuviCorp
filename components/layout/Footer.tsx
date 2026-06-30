@@ -121,6 +121,10 @@ export const Footer: React.FC = () => {
               <p className="text-white/70 text-[0.8rem] font-semibold">Dubai, UAE</p>
               <p className="text-white/40 text-[0.8rem] mt-0.5">+971 50 905 5391</p>
             </div>
+            <div>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Munich, Germany</p>
+              <p className="text-white/40 text-[0.8rem] mt-0.5">+49 174 7367272</p>
+            </div>
           </div>
         </div>
       </div>
