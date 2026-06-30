@@ -3,3 +3,4 @@ export { SectionTag } from './SectionTag';
 export { SectionTitle } from './SectionTitle';
 export { TeamProfileModal } from './TeamProfileModal';
 export type { TeamMember } from './TeamProfileModal';
+export { ComingSoonModal } from './ComingSoonModal';

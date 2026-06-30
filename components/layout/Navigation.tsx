@@ -3,10 +3,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { PartnerModal } from '../ui/PartnerModal';
+import { ComingSoonModal } from '../ui/ComingSoonModal';
 
 export const Navigation: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
 
   React.useEffect(() => {
     const handleOpenModal = () => setIsModalOpen(true);
@@ -47,6 +49,12 @@ export const Navigation: React.FC = () => {
               <Link
                 key={link.label}
                 href={link.href}
+                onClick={(e) => {
+                  if (link.label === 'Blogs') {
+                    e.preventDefault();
+                    setIsComingSoonOpen(true);
+                  }
+                }}
                 className="flex items-center gap-1 text-white/75 text-[0.85rem] font-medium tracking-[0.5px] uppercase transition-colors duration-200 hover:text-teal"
               >
                 {link.label}
@@ -84,7 +92,14 @@ export const Navigation: React.FC = () => {
               <Link
                 key={link.label}
                 href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => {
+                  if (link.label === 'Blogs') {
+                    e.preventDefault();
+                    setIsComingSoonOpen(true);
+                  } else {
+                    setIsMobileMenuOpen(false);
+                  }
+                }}
                 className="text-white/75 text-[0.95rem] font-medium tracking-[0.5px] uppercase hover:text-teal transition-colors"
               >
                 {link.label}
@@ -105,6 +120,7 @@ export const Navigation: React.FC = () => {
       </nav>
 
       <PartnerModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ComingSoonModal isOpen={isComingSoonOpen} onClose={() => setIsComingSoonOpen(false)} />
     </>
   );
 };
