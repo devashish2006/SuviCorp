@@ -4,20 +4,29 @@ import { FooterCTA } from './FooterCTA';
 
 const footerLinks = {
   services: [
-    { label: 'Bespoke SaaS Development', href: '#bespoke' },
     { label: 'Finance Transformation', href: '#transformation' },
+    { label: 'Bespoke SaaS', href: '#bespoke' },
+    { label: 'Innovation Hub', href: '#innovation' },
     { label: 'Technical Accounting Advisory', href: '#advisory' },
-    { label: 'SUVI Innovation Lab', href: '#innovation' },
+    { label: 'Book Keeping', href: '#bookkeeping' },
+    { label: 'Dedicated Expert Hub', href: '#expert' },
+    { label: 'Suvicorp Knowledge Hub', href: '#knowledge' },
   ],
   company: [
     { label: 'About Us', href: '#about' },
     { label: 'Our Team', href: '#team' },
     { label: 'Mission & Vision', href: '#about' },
   ],
-  products: [
-    { label: 'Products (Lite)', href: '#pricing' },
-    { label: 'Products (Elite)', href: '#pricing' },
-    { label: 'The Suvicorp Advantage', href: '#features' },
+  eliteProducts: [
+    { label: 'SUVI Hedge Flow.ai', href: '#pricing' },
+    { label: 'SUVI FusionClose', href: '#pricing' },
+    { label: 'SUVI Boardroom IQ', href: '#pricing' },
+  ],
+  liteProducts: [
+    { label: 'SUVI FinScribe', href: '#pricing' },
+    { label: 'SUVI GAAPBridge', href: '#pricing' },
+    { label: 'SUVI ProForma Architect', href: '#pricing' },
+    { label: 'SUVI CashFlow Composer', href: '#pricing' },
   ],
 };
 
@@ -68,9 +77,22 @@ export const Footer: React.FC = () => {
         {/* Products */}
         <div>
           <h4 className="text-white font-semibold text-[0.85rem] mb-4">Products</h4>
-          {footerLinks.products.map((link, index) => (
+          
+          <h5 className="text-cyan-400 font-medium text-[0.7rem] mb-2 uppercase tracking-wide">Elite Series</h5>
+          {footerLinks.eliteProducts.map((link, index) => (
             <Link
-              key={index}
+              key={`elite-${index}`}
+              href={link.href}
+              className="block text-white/40 text-[0.8rem] mb-2 transition-colors duration-200 hover:text-teal"
+            >
+              {link.label}
+            </Link>
+          ))}
+          
+          <h5 className="text-blue-400 font-medium text-[0.7rem] mb-2 mt-5 uppercase tracking-wide">Lite Series</h5>
+          {footerLinks.liteProducts.map((link, index) => (
+            <Link
+              key={`lite-${index}`}
               href={link.href}
               className="block text-white/40 text-[0.8rem] mb-2 transition-colors duration-200 hover:text-teal"
             >
