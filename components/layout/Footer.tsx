@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
       {/* Anchor for Blogs nav link — placeholder until a dedicated Blogs section is built */}
       <span id="blogs" className="block" aria-hidden="true" />
       <footer className="bg-navy px-[5%] pt-12 pb-8 border-t border-white/[0.06]">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1.5fr] gap-8 lg:gap-12 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_2fr] gap-8 lg:gap-12 mb-12">
         {/* Brand */}
         <div className="sm:col-span-2 lg:col-span-1">
           <div className="font-playfair text-[1.5rem] md:text-[1.7rem] font-black tracking-tight leading-none mb-4">
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
         {/* Contact Info */}
         <div>
           <h4 className="text-white font-semibold text-[0.85rem] mb-4">Contact Info</h4>
-          <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-4">
             <div>
               <p className="text-white/70 text-[0.8rem] font-semibold">Gurugram, India</p>
               <p className="text-white/40 text-[0.8rem] mt-0.5">+91 9811 981834</p>
@@ -122,8 +122,20 @@ export const Footer: React.FC = () => {
               <p className="text-white/40 text-[0.8rem] mt-0.5">+971 50 905 5391</p>
             </div>
             <div>
-              <p className="text-white/70 text-[0.8rem] font-semibold">Munich, Germany</p>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Germany, Europe</p>
               <p className="text-white/40 text-[0.8rem] mt-0.5">+49 174 7367272</p>
+            </div>
+            <div>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Atlanta, United States</p>
+              <p className="text-white/40 text-[0.8rem] mt-0.5">+1 678 760 6848</p>
+            </div>
+            <div>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Toronto, Canada</p>
+              <p className="text-white/40 text-[0.8rem] mt-0.5">+1 437 234 8082</p>
+            </div>
+            <div>
+              <p className="text-white/70 text-[0.8rem] font-semibold">Melbourne, Australia</p>
+              <p className="text-white/40 text-[0.8rem] mt-0.5">+61 470 620 360</p>
             </div>
           </div>
         </div>
