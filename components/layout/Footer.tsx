@@ -8,7 +8,7 @@ const footerLinks = {
     { label: 'Bespoke SaaS', href: '#bespoke' },
     { label: 'Innovation Hub', href: '#innovation' },
     { label: 'Technical Accounting Advisory', href: '#advisory' },
-    { label: 'Book Keeping', href: '#bookkeeping' },
+    { label: 'Fractional CFO Services', href: '#bookkeeping' },
     { label: 'Dedicated Expert Hub', href: '#expert' },
     { label: 'Suvicorp Knowledge Hub', href: '#knowledge' },
   ],

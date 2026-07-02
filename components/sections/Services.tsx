@@ -109,9 +109,9 @@ const services: ServiceContent[] = [
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
       </svg>
     ),
-    title: 'Book Keeping',
-    shortTitle: 'Book Keeping',
-    description: 'Comprehensive book keeping solutions designed to streamline your financial operations and ensure compliance. Our team provides accurate, timely, and organized financial records, allowing you to focus on your core business.',
+    title: 'Fractional CFO Services',
+    shortTitle: 'Fractional CFO Services',
+    description: 'Comprehensive fractional CFO services designed to streamline your financial operations and ensure compliance. Our team provides accurate, timely, and organized financial records, allowing you to focus on your core business.',
     points: [
       'Accurate and timely record keeping',
       'Financial compliance and organization',
