@@ -33,6 +33,7 @@ const teamMembers: TeamMember[] = [
     name: 'Jatin Bhatia (CA)',
     role: 'Founder and Managing Partner',
     image: '/jatinArmsFolded-removebg-preview.png',
+    imageClass: 'team-member-img--jatin',
     imageOffset: '-50px',
     imageScale: '88%',
     highlights: [
@@ -59,9 +60,9 @@ const teamMembers: TeamMember[] = [
     id: 'saima-siddiqui',
     name: 'Saima Siddiqui (CA)',
     role: 'Partner and MENA Chapter Head',
-    image: '/saima-removebg-preview.png',
+    image: '/saima2-removebg-preview-removebg-preview.png',
     imageClass: 'team-member-img--saima',
-    imageOffset: '-40px',
+    imageOffset: '-50px',
     imageScale: '88%',
     highlights: [
       'Saima Siddique serves as Partner and MENA Chapter Head at SUVI, where she leads our operations across Saudi Arabia and the broader Middle East and North Africa (MENA) region. As the primary strategic lead for our clients in this dynamic and rapidly evolving market, Saima ensures that every engagement is deeply attuned to local regulatory frameworks, cultural nuances, and the unique business drivers of the region.',
@@ -87,6 +88,7 @@ const teamMembers: TeamMember[] = [
     name: 'Aman Garg',
     role: 'Partner and Technical Head',
     image: '/amanArmsFolded-removebg-preview.png',
+    imageClass: 'team-member-img--aman',
     imageOffset: '-50px',
     imageScale: '88%',
     highlights: [
@@ -99,6 +101,7 @@ const teamMembers: TeamMember[] = [
     name: 'Ankur Tiwari',
     role: 'Lead Developer',
     image: '/ankurArmsFolded-removebg-preview.png',
+    imageClass: 'team-member-img--ankur',
     imageOffset: '-50px',
     imageScale: '88%',
     highlights: [
@@ -111,6 +114,7 @@ const teamMembers: TeamMember[] = [
     name: 'Amit Salunkhe',
     role: 'Developer and AI Lead',
     image: '/amitPosture-removebg-preview.png',
+    imageClass: 'team-member-img--amit',
     imageOffset: '-40px',
     imageScale: '88%',
     highlights: [
@@ -123,7 +127,9 @@ const teamMembers: TeamMember[] = [
     name: 'Devashish Mishra',
     role: 'Software Developer',
     image: '/devashishPos-removebg-preview.png',
+    imageClass: 'team-member-img--devashish',
     imageOffset: '-50px',
+
     imageScale: '88%',
     highlights: [
       'Crafting scalable, high-performance software solutions that power Suvicorp\'s technology ecosystem. Passionate Software Developer specializing in building modern web applications and internal tooling that streamline operations across Suvicorp\'s service verticals.',

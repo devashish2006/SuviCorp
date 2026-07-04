@@ -177,12 +177,23 @@ body {
   }
 }
 
+/* ─── Jatin image: scale down to match Ritesh ─── */
+.team-member-img--jatin {
+  bottom: 0 !important;
+  top: auto !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  transform: translateX(-50%) scale(0.88) !important;
+  transform-origin: bottom center !important;
+}
+
 /* ─── Saima image: push down slightly so figure starts from card base ─── */
 .team-member-img--saima {
   bottom: 0 !important;
   object-fit: contain !important;
   object-position: bottom center !important;
-  transform: translateX(-50%) translateY(15%) !important;
+  transform: translateX(-50%) scale(0.98) translateY(16%) !important;
+  transform-origin: bottom center !important;
 }
 
 /* ─── Mark image: scale down so figure is same relative size as Jatin ─── */
@@ -191,7 +202,7 @@ body {
   top: auto !important;
   object-fit: contain !important;
   object-position: bottom center !important;
-  transform: translateX(-50%) scale(0.82) !important;
+  transform: translateX(-50%) scale(0.72) !important;
   transform-origin: bottom center !important;
 }
 
@@ -201,6 +212,19 @@ body {
   top: auto !important;
   object-fit: contain !important;
   object-position: bottom center !important;
-  transform: translateX(-50%) scale(0.72) !important;
+  transform: translateX(-50%) scale(0.66) !important;
+  transform-origin: bottom center !important;
+}
+
+/* ─── Aman, Ankur, Amit, Devashish images: scale down to match Jatin ─── */
+.team-member-img--aman,
+.team-member-img--ankur,
+.team-member-img--amit,
+.team-member-img--devashish {
+  bottom: 0 !important;
+  top: auto !important;
+  object-fit: contain !important;
+  object-position: bottom center !important;
+  transform: translateX(-50%) scale(0.88) !important;
   transform-origin: bottom center !important;
 }
