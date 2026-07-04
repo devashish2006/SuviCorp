@@ -145,9 +145,10 @@ body {
   left: 50% !important;
   transform: translateX(-50%) !important;
   transform-origin: bottom center !important;
-  width: 100% !important;
+  width: 150% !important;
   height: 260px !important;
   object-fit: contain !important;
+
   object-position: bottom center !important;
 }
 
@@ -214,6 +215,15 @@ body {
   object-position: bottom center !important;
   transform: translateX(-50%) scale(0.66) !important;
   transform-origin: bottom center !important;
+}
+
+@media (max-width: 639px) {
+  .team-member-img--ritesh {
+    transform: translateX(-50%) scale(0.74) !important;
+  }
+  .team-member-img--saima {
+    transform: translateX(-50%) scale(1.22) translateY(19%) !important;
+  }
 }
 
 /* ─── Aman, Ankur, Amit, Devashish images: scale down to match Jatin ─── */
